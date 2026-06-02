@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Etrazia SAC</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0a0c10;
+    color: #f0ede6;
+    font-family: 'Syne', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+  }
+  .logo { font-size: 32px; font-weight: 800; letter-spacing: -1px; margin-bottom: 6px; }
+  .logo span { color: #e8892a; }
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: #3a3835;
+    text-transform: uppercase;
+    margin-bottom: 64px;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(232,137,42,0.08);
+    border: 1px solid rgba(232,137,42,0.2);
+    color: #e8892a;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    padding: 6px 16px;
+    border-radius: 99px;
+    margin-bottom: 32px;
+  }
+  .dot { width: 6px; height: 6px; background: #e8892a; border-radius: 50%; animation: pulse 2s infinite; }
+  h1 { font-size: 48px; font-weight: 800; letter-spacing: -2px; line-height: 1.05; margin-bottom: 20px; max-width: 500px; }
+  h1 span { color: #e8892a; }
+  p { font-size: 15px; color: #6b6860; line-height: 1.8; max-width: 400px; font-family: 'DM Sans', sans-serif; font-weight: 300; margin-bottom: 48px; }
+  .divider { width: 40px; height: 1px; background: #1f242d; margin: 0 auto 32px; }
+  .links { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .link-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .link-primary { background: #e8892a; color: #0a0c10; }
+  .link-ghost { background: #111318; border: 1px solid #1f242d; color: #a09d96; }
+  .link-btn:hover { opacity: 0.85; }
+  .footer {
+    position: fixed; bottom: 24px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: #1f242d;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
+</style>
+</head>
+<body>
+  <div class="logo">e·<span>trazia</span></div>
+  <div class="tag">// Empresa · Lima, Perú</div>
+  <div class="badge"><span class="dot"></span>Sitio corporativo en construcción</div>
+  <h1>Tecnología para<br><span>negocios reales.</span></h1>
+  <p>Etrazia SAC es la empresa detrás de Suite Etraziapp — soluciones digitales para pequeños negocios y marcas personales en Latinoamérica.</p>
+  <div class="divider"></div>
+  <div class="links">
+    <a href="https://etraziapp.com" class="link-btn link-primary">Ver Suite Etraziapp →</a>
+    <a href="mailto:hola@etrazia.com" class="link-btn link-ghost">✉ Contacto</a>
+  </div>
+  <div class="footer">Etrazia SAC · RUC en trámite · etrazia.com</div>
+</body>
+</html>
