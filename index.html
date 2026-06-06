@@ -596,6 +596,9 @@ body::before{
 }
 
 /* ── NAV ── */
+/* ── NAV ── */
+.section-pad{padding:120px 60px}
+
 nav{
   position:fixed;
   top:0;left:0;right:0;
@@ -604,7 +607,7 @@ nav{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  background:rgba(11,17,32,0.85);
+  background:rgba(11,17,32,0.92);
   backdrop-filter:blur(20px);
   border-bottom:1px solid rgba(184,115,51,0.1);
   transition:all .3s;
@@ -615,13 +618,10 @@ nav{
   align-items:center;
   gap:12px;
   text-decoration:none;
+  z-index:101;
 }
 
-/* SVG LOGO — Camino Ascendente */
-.logo-mark{
-  width:36px;
-  height:36px;
-}
+.logo-mark{width:36px;height:36px}
 
 .logo-text{
   font-family:'Montserrat',sans-serif;
@@ -663,11 +663,98 @@ nav{
   color:var(--midnight) !important;
 }
 
+/* ── HAMBURGER ── */
+.nav-hamburger{
+  display:none;
+  flex-direction:column;
+  justify-content:center;
+  gap:5px;
+  width:40px;height:40px;
+  cursor:pointer;
+  background:none;
+  border:none;
+  padding:4px;
+  z-index:101;
+}
+.nav-hamburger span{
+  display:block;
+  width:24px;height:2px;
+  background:var(--ice);
+  border-radius:2px;
+  transition:all .28s;
+  transform-origin:center;
+}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ── MOBILE MENU OVERLAY ── */
+.nav-mobile{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:99;
+  background:rgba(11,17,32,0.98);
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:0;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .3s;
+}
+.nav-mobile.open{
+  opacity:1;
+  pointer-events:all;
+}
+.nav-mobile ul{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0;
+  width:100%;
+}
+.nav-mobile ul li{
+  width:100%;
+  border-bottom:1px solid rgba(184,115,51,0.08);
+}
+.nav-mobile ul li:first-child{
+  border-top:1px solid rgba(184,115,51,0.08);
+}
+.nav-mobile ul a{
+  display:block;
+  padding:20px 40px;
+  font-family:'Montserrat',sans-serif;
+  font-size:18px;
+  font-weight:700;
+  letter-spacing:0.05em;
+  color:var(--ice);
+  text-decoration:none;
+  text-align:center;
+  transition:color .2s,background .2s;
+}
+.nav-mobile ul a:hover{color:var(--copper);background:rgba(184,115,51,0.04)}
+.nav-mobile-cta{
+  margin-top:32px;
+  background:var(--copper);
+  color:var(--midnight) !important;
+  padding:14px 40px;
+  border-radius:6px;
+  font-family:'Montserrat',sans-serif;
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:0.08em;
+  text-decoration:none;
+  display:inline-block;
+}
+
 /* ── HERO ── */
 #hero{
   min-height:100vh;
   display:flex;
   align-items:center;
+  padding-top:80px;
   position:relative;
   padding:140px 60px 80px;
   overflow:hidden;
@@ -2037,22 +2124,111 @@ footer{
 }
 
 /* ── RESPONSIVE ── */
+/* ═══ RESPONSIVE ════════════════════════════════════════════════════════ */
+
+@media(max-width:1100px){
+  nav{padding:20px 40px}
+  .section-pad{padding:100px 40px}
+  #hero{padding:140px 40px 100px}
+  #founder-section{padding:100px 40px}
+  #contacto-section{padding:100px 40px}
+  footer{padding:60px 40px 40px}
+}
+
 @media(max-width:900px){
+  /* Nav */
   nav{padding:16px 24px}
   .nav-links{display:none}
-  section,#hero{padding:80px 24px}
-  .hero-h1{font-size:42px}
+  .nav-hamburger{display:flex}
+  .nav-mobile{display:flex}
+
+  /* Secciones */
+  .section-pad{padding:80px 24px}
+  #hero{padding:120px 24px 80px}
+  section{padding:80px 24px}
+  #founder-section{padding:72px 24px}
+  #contacto-section{padding:80px 24px}
+  footer{padding:60px 24px 32px}
+
+  /* Hero */
+  .hero-h1{font-size:clamp(32px,8vw,48px);letter-spacing:-0.02em}
+  .hero-sub{font-size:16px}
+  .hero-actions{flex-direction:column;align-items:flex-start;gap:12px}
   .hero-stats{display:none}
-  .what-grid,.apps-cta-inner,.verticals-header{grid-template-columns:1fr;gap:40px}
-  .verticals-grid{grid-template-columns:1fr 1fr}
+  .hero-content{max-width:100%}
+
+  /* What */
+  .what-grid{grid-template-columns:1fr;gap:40px}
+  .what-visual{display:none}
+
+  /* Verticales */
+  .verticals-header{grid-template-columns:1fr;gap:24px}
+  .vtabs-nav{gap:0}
+  .vtab-btn{padding:12px 10px;font-size:9px;letter-spacing:0.05em;flex:1;justify-content:center;flex-direction:column;gap:4px;text-align:center}
+  .vtab-icon{font-size:18px}
+  .vtab-btn .vtab-num{display:none}
+  .vtab-panel{grid-template-columns:1fr}
+  .vp-left::after{display:none}
+  .vp-left,.vp-right{padding:28px 24px}
+  .vp-metrics{grid-template-columns:1fr 1fr}
+  .vv-label{min-width:80px;font-size:10px}
+
+  /* Academy mobile */
+  .acad-panel-header{flex-direction:column;align-items:flex-start;gap:12px;padding:20px 24px 16px}
+  .acad-header-left{flex-direction:column;align-items:flex-start;gap:8px}
+  .acad-header-sep{display:none}
+  .acad-catalog{padding:16px 24px 0}
+  .acad-courses-row{grid-template-columns:1fr 1fr}
+  .acad-panel-footer{grid-template-columns:1fr;gap:16px;padding:16px 24px 20px}
+  .acad-footer-ctas{align-items:flex-start;flex-direction:row;gap:16px;align-items:center}
+  .acad-footer-sep{display:none}
+
+  /* Apps CTA */
+  .apps-cta-inner{grid-template-columns:1fr;gap:40px}
+
+  /* Founder */
+  .founder-grid{grid-template-columns:1fr;gap:40px}
+  .founder-photo-col{margin:0 auto}
+  .founder-stats{grid-template-columns:1fr 1fr}
+
+  /* Contacto */
+  .contact-grid{grid-template-columns:1fr;gap:40px}
+  .contact-form-wrap{padding:28px 24px}
+  .cf-row{grid-template-columns:1fr}
+
+  /* Footer */
   .footer-top{grid-template-columns:1fr 1fr;gap:32px}
   .footer-bottom{flex-direction:column;gap:16px;text-align:center}
 }
 
 @media(max-width:600px){
-  .verticals-grid{grid-template-columns:1fr}
-  .hero-actions{flex-direction:column}
-  .btn-primary,.btn-secondary{text-align:center;justify-content:center}
+  /* Hero */
+  .hero-h1{font-size:32px}
+  .btn-primary,.btn-secondary{text-align:center;justify-content:center;width:100%}
+
+  /* Tabs verticales — scroll horizontal */
+  .vtabs-nav{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .vtab-btn{min-width:60px;padding:12px 8px}
+
+  /* Academy */
+  .acad-courses-row{grid-template-columns:1fr}
+  .academy-badges{gap:4px}
+  .acad-badge{font-size:8.5px;padding:3px 8px}
+
+  /* Verticales métricas */
+  .vp-metrics{grid-template-columns:1fr}
+  .vm-val{font-size:22px}
+
+  /* Founder */
+  .founder-stats{grid-template-columns:1fr}
+  .founder-photo-wrap{width:200px;height:200px}
+  .founder-photo{width:200px;height:200px}
+
+  /* Contacto */
+  .cf-btns{flex-direction:column}
+
+  /* Footer */
+  .footer-top{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -2086,7 +2262,23 @@ footer{
     <li><a href="#contacto-section">Contacto</a></li>
     <li><a href="https://etraziapp.com" class="nav-cta">Ir a EtraziApp →</a></li>
   </ul>
+
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE NAV OVERLAY -->
+<div class="nav-mobile" id="nav-mobile" aria-hidden="true">
+  <ul>
+    <li><a href="#what" class="nav-mobile-link">Ecosistema</a></li>
+    <li><a href="#verticals" class="nav-mobile-link">Verticales</a></li>
+    <li><a href="#founder-section" class="nav-mobile-link">Fundador</a></li>
+    <li><a href="https://etraziapp.com" class="nav-mobile-link">EtraziApp</a></li>
+    <li><a href="#contacto-section" class="nav-mobile-link">Contacto</a></li>
+  </ul>
+  <a href="https://etraziapp.com" class="nav-mobile-cta">Ir a EtraziApp →</a>
+</div>
 
 <!-- HERO -->
 <section id="hero">
@@ -2232,7 +2424,7 @@ footer{
 </section>
 
 <!-- VERTICALS -->
-<section id="verticals" style="padding:120px 60px">
+<section id="verticals" class="section-pad">
   <div style="max-width:1200px;margin:0 auto">
 
     <div class="verticals-header reveal">
@@ -2832,7 +3024,7 @@ footer{
 </section>
 
 <!-- ETRAZIAPP CTA -->
-<section id="apps-cta" style="padding:120px 60px">
+<section id="apps-cta" class="section-pad">
   <div class="apps-cta-inner">
     <div class="apps-cta-left reveal">
       <div class="section-tag">EtraziApp</div>
@@ -3166,6 +3358,42 @@ footer{
 </footer>
 
 <script>
+// ── Hamburger menu ──
+(function(){
+  const btn = document.getElementById('nav-hamburger');
+  const overlay = document.getElementById('nav-mobile');
+  const links = document.querySelectorAll('.nav-mobile-link');
+  if(!btn || !overlay) return;
+
+  function openMenu(){
+    btn.classList.add('open');
+    overlay.classList.add('open');
+    btn.setAttribute('aria-expanded','true');
+    overlay.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+  }
+  function closeMenu(){
+    btn.classList.remove('open');
+    overlay.classList.remove('open');
+    btn.setAttribute('aria-expanded','false');
+    overlay.setAttribute('aria-hidden','true');
+    document.body.style.overflow='';
+  }
+
+  btn.addEventListener('click', function(){
+    btn.classList.contains('open') ? closeMenu() : openMenu();
+  });
+
+  links.forEach(function(l){
+    l.addEventListener('click', closeMenu);
+  });
+
+  // Cerrar con Escape
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeMenu();
+  });
+})();
+
 // ── Formulario de contacto ──
 function getFormData(){
   const nombre   = document.getElementById('cf-nombre')?.value.trim()   || '';
