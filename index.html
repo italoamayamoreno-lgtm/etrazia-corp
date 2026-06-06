@@ -303,38 +303,60 @@
   --copper-glow-strong:rgba(184,115,51,0.25);
 }
 
-/* ── ACADEMY CURSOS — Pro Redesign ── */
-.academy-panel-inner{
-  display:grid;
-  grid-template-columns:360px 1fr;
-  min-height:500px;
+/* ── ACADEMY — Full-width redesign ── */
+
+/* Romper el grid de 2 col heredado del vtab-panel */
+#panel-academy{
+  display:block !important;
 }
 
-/* ─ Panel izquierdo ─ */
-.academy-left{
-  padding:48px 44px;
-  border-right:1px solid rgba(184,115,51,0.08);
+/* Header horizontal */
+.acad-panel-header{
   display:flex;
-  flex-direction:column;
-  gap:0;
-  background:rgba(11,17,32,0.4);
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:16px;
+  padding:28px 40px 22px;
+  border-bottom:1px solid rgba(184,115,51,0.08);
 }
-.academy-left .vp-title{margin-bottom:14px}
-.academy-left .vp-desc{margin-bottom:24px;font-size:13px;line-height:1.75}
-
+.acad-header-left{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
+}
+.acad-header-sep{
+  width:1px;height:20px;
+  background:rgba(184,115,51,0.2);
+  flex-shrink:0;
+}
+.acad-header-title{
+  font-family:'Montserrat',sans-serif;
+  font-size:clamp(16px,1.6vw,20px);
+  font-weight:800;
+  color:var(--ice);
+  letter-spacing:-0.01em;
+}
+.acad-header-title em{
+  font-style:normal;
+  background:linear-gradient(90deg,var(--copper),var(--amber));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
 .academy-badges{
   display:flex;
   gap:6px;
   flex-wrap:wrap;
-  margin-bottom:28px;
 }
 .acad-badge{
   display:inline-flex;
   align-items:center;
-  gap:5px;
+  gap:4px;
   font-size:9.5px;
   font-weight:700;
-  letter-spacing:0.08em;
+  letter-spacing:0.07em;
   padding:4px 11px;
   border-radius:20px;
 }
@@ -343,48 +365,19 @@
 .acad-badge.cert{background:rgba(250,204,21,0.08);color:#FBBF24;border:1px solid rgba(250,204,21,0.18)}
 .acad-badge.corp{background:rgba(167,139,250,0.08);color:#A78BFA;border:1px solid rgba(167,139,250,0.18)}
 
-.academy-modalities{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  margin-bottom:32px;
-  flex:1;
+/* Catálogo */
+.acad-catalog{
+  padding:24px 40px 0;
 }
-.acad-mod{
-  display:flex;
-  align-items:flex-start;
-  gap:12px;
-  padding:14px 16px;
-  background:rgba(184,115,51,0.04);
-  border:1px solid rgba(184,115,51,0.08);
-  border-radius:8px;
-  transition:border-color .2s;
-}
-.acad-mod:hover{border-color:rgba(184,115,51,0.2)}
-.acad-mod-icon{font-size:16px;flex-shrink:0;margin-top:1px}
-.acad-mod-body{}
-.acad-mod-title{font-size:12px;font-weight:600;color:var(--ice);margin-bottom:3px}
-.acad-mod-sub{font-size:11px;color:var(--graphite);line-height:1.5}
-
-/* ─ Panel derecho — catálogo ─ */
-.academy-right{
-  padding:40px 44px;
-  display:flex;
-  flex-direction:column;
-  overflow:hidden;
-  background:var(--navy);
-}
-
 .acad-catalog-header{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  margin-bottom:28px;
-  flex-shrink:0;
+  margin-bottom:20px;
 }
 .acad-catalog-title{
   font-family:'Montserrat',sans-serif;
-  font-size:11px;
+  font-size:9px;
   font-weight:700;
   letter-spacing:0.2em;
   text-transform:uppercase;
@@ -394,55 +387,54 @@
   font-family:'Montserrat',sans-serif;
   font-size:9px;
   font-weight:700;
-  letter-spacing:0.15em;
+  letter-spacing:0.12em;
   color:var(--copper);
   background:rgba(184,115,51,0.08);
   border:1px solid rgba(184,115,51,0.18);
-  padding:3px 10px;
+  padding:2px 10px;
   border-radius:20px;
 }
 
-/* Ecosistemas — grupos de cursos */
+/* Ecosistemas */
 .acad-ecosystem{
-  margin-bottom:20px;
-  flex-shrink:0;
+  margin-bottom:16px;
 }
-.acad-ecosystem:last-of-type{margin-bottom:0}
-
 .acad-eco-header{
   display:flex;
   align-items:center;
   gap:10px;
   margin-bottom:10px;
 }
+.acad-eco-label{
+  font-size:8.5px;
+  font-weight:700;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--copper);
+  opacity:.85;
+  white-space:nowrap;
+}
 .acad-eco-line{
   flex:1;
   height:1px;
   background:linear-gradient(90deg,rgba(184,115,51,0.3),transparent);
 }
-.acad-eco-label{
-  font-size:9px;
-  font-weight:700;
-  letter-spacing:0.2em;
-  text-transform:uppercase;
-  color:var(--copper);
-  opacity:.8;
-  white-space:nowrap;
-}
 
+/* Grid 4 columnas */
 .acad-courses-row{
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:repeat(4,1fr);
   gap:8px;
 }
 
+/* Cards */
 .course-card{
   display:flex;
   align-items:center;
-  gap:12px;
-  padding:12px 16px;
-  background:rgba(11,17,32,0.5);
-  border:1px solid rgba(184,115,51,0.08);
+  gap:10px;
+  padding:11px 14px;
+  background:rgba(255,255,255,0.025);
+  border:1px solid rgba(184,115,51,0.09);
   border-radius:8px;
   cursor:default;
   transition:all .2s;
@@ -457,22 +449,21 @@
   background:linear-gradient(180deg,var(--copper),var(--amber));
   transform:scaleY(0);
   transform-origin:bottom;
-  transition:transform .25s;
+  transition:transform .22s;
 }
 .course-card:hover{
   background:rgba(184,115,51,0.06);
-  border-color:rgba(184,115,51,0.2);
+  border-color:rgba(184,115,51,0.22);
   transform:translateX(3px);
 }
 .course-card:hover::after{transform:scaleY(1)}
 .course-card-icon{
-  font-size:16px;
+  font-size:14px;
   flex-shrink:0;
-  width:32px;
-  height:32px;
+  width:30px;height:30px;
   display:flex;align-items:center;justify-content:center;
-  background:rgba(184,115,51,0.08);
-  border-radius:8px;
+  background:rgba(184,115,51,0.09);
+  border-radius:7px;
 }
 .course-card-body{flex:1;min-width:0}
 .course-card-name{
@@ -482,48 +473,99 @@
   color:var(--ice);
   line-height:1.3;
   margin-bottom:2px;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
 }
 .course-card-cert{
-  font-size:9px;
+  font-size:8.5px;
   color:var(--copper);
   opacity:.7;
   font-weight:500;
 }
 
-/* CTA inferior */
-.academy-cta-bottom{
-  margin-top:20px;
-  padding-top:18px;
+/* Footer del panel */
+.acad-panel-footer{
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:center;
+  gap:24px;
+  padding:18px 40px 24px;
+  margin-top:12px;
   border-top:1px solid rgba(184,115,51,0.08);
+}
+.acad-footer-modalities{
+  display:flex;
+  gap:28px;
+  flex-wrap:wrap;
+}
+.acad-fmod{
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  flex-wrap:wrap;
+  gap:10px;
+}
+.acad-fmod-icon{
+  width:32px;height:32px;
+  background:rgba(184,115,51,0.07);
+  border:1px solid rgba(184,115,51,0.15);
+  border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;
   flex-shrink:0;
 }
-.acad-bottom-note{font-size:11px;color:var(--graphite);line-height:1.5}
-.acad-bottom-note strong{color:var(--ice)}
+.acad-fmod-title{font-size:11px;font-weight:600;color:var(--ice);margin-bottom:2px}
+.acad-fmod-sub{font-size:10px;color:var(--graphite)}
+.acad-footer-sep{width:1px;height:36px;background:rgba(184,115,51,0.12);flex-shrink:0}
+.acad-footer-ctas{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:8px;
+}
+.acad-cta-wa{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(37,211,102,0.1);
+  border:1px solid rgba(37,211,102,0.28);
+  color:#25D366;
+  padding:10px 20px;
+  border-radius:8px;
+  font-family:'Montserrat',sans-serif;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  text-decoration:none;
+  transition:all .2s;
+  white-space:nowrap;
+}
+.acad-cta-wa:hover{background:rgba(37,211,102,0.18);transform:translateY(-1px)}
+.acad-cta-inco{
+  font-size:9.5px;
+  color:var(--copper);
+  opacity:.8;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  text-decoration:none;
+  font-weight:600;
+  transition:opacity .2s;
+}
+.acad-cta-inco:hover{opacity:1}
 
-/* Legacy — ocultar chips viejos si quedan */
-.course-chip{display:none}
-.courses-title{display:none}
-.courses-grid{display:none}
-.course-dot{display:none}
+/* Legacy — ocultar todo lo anterior */
+.academy-panel-inner,.academy-left,.academy-right,
+.course-chip,.courses-title,.courses-grid,.course-dot,
+.academy-modalities,.academy-cta-bottom{display:none!important}
 
 @media(max-width:1100px){
-  .academy-panel-inner{grid-template-columns:300px 1fr}
-  .academy-left{padding:36px 28px}
-  .academy-right{padding:32px 28px}
+  .acad-courses-row{grid-template-columns:repeat(3,1fr)}
+  .acad-panel-header{padding:22px 28px 18px}
+  .acad-catalog{padding:20px 28px 0}
+  .acad-panel-footer{padding:16px 28px 20px}
 }
 @media(max-width:899px){
-  .academy-panel-inner{grid-template-columns:1fr}
-  .academy-left{padding:32px 24px;border-right:none;border-bottom:1px solid rgba(184,115,51,0.08)}
-  .academy-right{padding:28px 24px}
+  .acad-panel-header{flex-direction:column;align-items:flex-start}
   .acad-courses-row{grid-template-columns:1fr 1fr}
+  .acad-panel-footer{grid-template-columns:1fr;gap:16px}
+  .acad-footer-ctas{align-items:flex-start}
 }
 @media(max-width:480px){
   .acad-courses-row{grid-template-columns:1fr}
@@ -2415,200 +2457,197 @@ footer{
 
       <!-- 03 · ACADEMY -->
       <div class="vtab-panel" id="panel-academy">
-        <div class="academy-panel-inner">
 
-          <!-- Izquierda -->
-          <div class="academy-left">
-            <div class="vp-eyebrow">
-              <span class="vp-num">03</span>
-              <span class="vp-badge">Formación & Certificación</span>
-            </div>
-            <h3 class="vp-title" style="font-size:clamp(20px,2.2vw,26px)">Certifícate con<br><em>estándares internacionales.</em></h3>
-            <p class="vp-desc" style="font-size:13px;margin-bottom:20px">15 programas en metodologías ágiles, innovación y gestión. Dictados por profesionales certificados, para personas y empresas. Todos incluyen <strong style="color:var(--ice)">certificación internacional.</strong></p>
+        <!-- Header horizontal -->
+        <div class="acad-panel-header">
+          <div class="acad-header-left">
+            <span class="vp-eyebrow" style="margin-bottom:0"><span class="vp-num">03</span>&nbsp;&nbsp;<span class="vp-badge">Formación & Certificación</span></span>
+            <div class="acad-header-sep"></div>
+            <div class="acad-header-title">Certifícate con <em>estándares internacionales.</em></div>
+          </div>
+          <div class="academy-badges">
+            <span class="acad-badge presencial">🏛️ Presencial</span>
+            <span class="acad-badge virtual">💻 Virtual</span>
+            <span class="acad-badge cert">🏆 Certificación</span>
+            <span class="acad-badge corp">🏢 In-Company</span>
+          </div>
+        </div>
 
-            <div class="academy-badges">
-              <span class="acad-badge presencial">🏛️ Presencial</span>
-              <span class="acad-badge virtual">💻 Virtual</span>
-              <span class="acad-badge cert">🏆 Certificación</span>
-              <span class="acad-badge corp">🏢 In-Company</span>
-            </div>
-
-            <div class="academy-modalities">
-              <div class="acad-mod">
-                <div class="acad-mod-icon">🎓</div>
-                <div class="acad-mod-body">
-                  <div class="acad-mod-title">Para personas y profesionales</div>
-                  <div class="acad-mod-sub">Inscripción individual con certificación internacional incluida. Modalidad presencial o virtual.</div>
-                </div>
-              </div>
-              <div class="acad-mod">
-                <div class="acad-mod-icon">🏢</div>
-                <div class="acad-mod-body">
-                  <div class="acad-mod-title">Para empresas — In-Company</div>
-                  <div class="acad-mod-sub">Programa a medida en las instalaciones o plataforma de tu organización.</div>
-                </div>
-              </div>
-            </div>
-
-            <a href="https://wa.me/51981527408?text=Hola%20Etrazia%20%F0%9F%91%8B%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20los%20programas%20de%20Academy." class="vp-cta" target="_blank" rel="noopener" aria-label="Consultar programas Etrazia Academy por WhatsApp">Consultar por un programa →</a>
+        <!-- Catálogo por ecosistema -->
+        <div class="acad-catalog">
+          <div class="acad-catalog-header">
+            <span class="acad-catalog-title">Catálogo de programas</span>
+            <span class="acad-catalog-count">15 programas · CertiProf</span>
           </div>
 
-          <!-- Derecha — catálogo por ecosistema -->
-          <div class="academy-right">
-            <div class="acad-catalog-header">
-              <span class="acad-catalog-title">Catálogo de programas</span>
-              <span class="acad-catalog-count">15 programas · CertiProf</span>
+          <div class="acad-ecosystem">
+            <div class="acad-eco-header">
+              <span class="acad-eco-label">Agilidad Empresarial</span>
+              <div class="acad-eco-line"></div>
             </div>
-
-            <div class="acad-ecosystem">
-              <div class="acad-eco-header">
-                <span class="acad-eco-label">Agilidad Empresarial</span>
-                <div class="acad-eco-line"></div>
+            <div class="acad-courses-row">
+              <div class="course-card">
+                <div class="course-card-icon">🎯</div>
+                <div class="course-card-body">
+                  <div class="course-card-name">Agile Coach</div>
+                  <div class="course-card-cert">CertiProf</div>
+                </div>
               </div>
-              <div class="acad-courses-row">
-                <div class="course-card">
-                  <div class="course-card-icon">🎯</div>
-                  <div class="course-card-body">
-                    <div class="course-card-name">Agile Coach</div>
-                    <div class="course-card-cert">🏆 CertiProf</div>
-                  </div>
+              <div class="course-card">
+                <div class="course-card-icon">👥</div>
+                <div class="course-card-body">
+                  <div class="course-card-name">Agile HR</div>
+                  <div class="course-card-cert">CertiProf</div>
                 </div>
-                <div class="course-card">
-                  <div class="course-card-icon">👥</div>
-                  <div class="course-card-body">
-                    <div class="course-card-name">Agile HR</div>
-                    <div class="course-card-cert">🏆 CertiProf</div>
-                  </div>
+              </div>
+              <div class="course-card">
+                <div class="course-card-icon">🧭</div>
+                <div class="course-card-body">
+                  <div class="course-card-name">Agile Leader</div>
+                  <div class="course-card-cert">CertiProf</div>
                 </div>
-                <div class="course-card">
-                  <div class="course-card-icon">🧭</div>
-                  <div class="course-card-body">
-                    <div class="course-card-name">Agile Leader</div>
-                    <div class="course-card-cert">🏆 CertiProf</div>
-                  </div>
+              </div>
+              <div class="course-card">
+                <div class="course-card-icon">⚡</div>
+                <div class="course-card-body">
+                  <div class="course-card-name">Business Agility</div>
+                  <div class="course-card-cert">CertiProf</div>
                 </div>
-                <div class="course-card">
-                  <div class="course-card-icon">⚡</div>
-                  <div class="course-card-body">
-                    <div class="course-card-name">Business Agility</div>
-                    <div class="course-card-cert">🏆 CertiProf</div>
-                  </div>
+              </div>
+              <div class="course-card">
+                <div class="course-card-icon">🔄</div>
+                <div class="course-card-body">
+                  <div class="course-card-name">Scrum Master</div>
+                  <div class="course-card-cert">CertiProf</div>
                 </div>
-                <div class="course-card">
-                  <div class="course-card-icon">🔄</div>
-                  <div class="course-card-body">
-                    <div class="course-card-name">Scrum Master</div>
-                    <div class="course-card-cert">🏆 CertiProf</div>
-                  </div>
-                </div>
-                <div class="course-card">
-                  <div class="course-card-icon">🌐</div>
-                  <div class="course-card-body">
-                    <div class="course-card-name">Scrum Scaled</div>
-                    <div class="course-card-cert">🏆 CertiProf</div>
-                  </div>
+              </div>
+              <div class="course-card">
+                <div class="course-card-icon">🌐</div>
+                <div class="course-card-body">
+                  <div class="course-card-name">Scrum Scaled</div>
+                  <div class="course-card-cert">CertiProf</div>
                 </div>
               </div>
             </div>
-            <div class="acad-ecosystem">
-              <div class="acad-eco-header">
-                <span class="acad-eco-label">Product & Flow</span>
-                <div class="acad-eco-line"></div>
-              </div>
-              <div class="acad-courses-row">
-                <div class="course-card">
-                  <div class="course-card-icon">🏗️</div>
-                  <div class="course-card-body">
-                    <div class="course-card-name">Product Owner</div>
-                    <div class="course-card-cert">🏆 CertiProf</div>
-                  </div>
+          </div>
+          <div class="acad-ecosystem">
+            <div class="acad-eco-header">
+              <span class="acad-eco-label">Innovación & Diseño</span>
+              <div class="acad-eco-line"></div>
+            </div>
+            <div class="acad-courses-row">
+              <div class="course-card">
+                <div class="course-card-icon">💡</div>
+                <div class="course-card-body">
+                  <div class="course-card-name">Design Thinking</div>
+                  <div class="course-card-cert">CertiProf</div>
                 </div>
-                <div class="course-card">
-                  <div class="course-card-icon">📋</div>
-                  <div class="course-card-body">
-                    <div class="course-card-name">Kanban</div>
-                    <div class="course-card-cert">🏆 CertiProf</div>
-                  </div>
+              </div>
+              <div class="course-card">
+                <div class="course-card-icon">🏃</div>
+                <div class="course-card-body">
+                  <div class="course-card-name">Design Sprint</div>
+                  <div class="course-card-cert">CertiProf</div>
+                </div>
+              </div>
+              <div class="course-card">
+                <div class="course-card-icon">🚀</div>
+                <div class="course-card-body">
+                  <div class="course-card-name">Innovation Management</div>
+                  <div class="course-card-cert">CertiProf</div>
+                </div>
+              </div>
+              <div class="course-card">
+                <div class="course-card-icon">🗺️</div>
+                <div class="course-card-body">
+                  <div class="course-card-name">Business Model Canvas</div>
+                  <div class="course-card-cert">CertiProf</div>
                 </div>
               </div>
             </div>
-            <div class="acad-ecosystem">
-              <div class="acad-eco-header">
-                <span class="acad-eco-label">Innovación & Diseño</span>
-                <div class="acad-eco-line"></div>
+          </div>
+          <div class="acad-ecosystem">
+            <div class="acad-eco-header">
+              <span class="acad-eco-label">Product & Flow</span>
+              <div class="acad-eco-line"></div>
+            </div>
+            <div class="acad-courses-row">
+              <div class="course-card">
+                <div class="course-card-icon">🏗️</div>
+                <div class="course-card-body">
+                  <div class="course-card-name">Product Owner</div>
+                  <div class="course-card-cert">CertiProf</div>
+                </div>
               </div>
-              <div class="acad-courses-row">
-                <div class="course-card">
-                  <div class="course-card-icon">💡</div>
-                  <div class="course-card-body">
-                    <div class="course-card-name">Design Thinking</div>
-                    <div class="course-card-cert">🏆 CertiProf</div>
-                  </div>
-                </div>
-                <div class="course-card">
-                  <div class="course-card-icon">🏃</div>
-                  <div class="course-card-body">
-                    <div class="course-card-name">Design Sprint</div>
-                    <div class="course-card-cert">🏆 CertiProf</div>
-                  </div>
-                </div>
-                <div class="course-card">
-                  <div class="course-card-icon">🚀</div>
-                  <div class="course-card-body">
-                    <div class="course-card-name">Innovation Management</div>
-                    <div class="course-card-cert">🏆 CertiProf</div>
-                  </div>
-                </div>
-                <div class="course-card">
-                  <div class="course-card-icon">🗺️</div>
-                  <div class="course-card-body">
-                    <div class="course-card-name">Business Model Canvas</div>
-                    <div class="course-card-cert">🏆 CertiProf</div>
-                  </div>
+              <div class="course-card">
+                <div class="course-card-icon">📋</div>
+                <div class="course-card-body">
+                  <div class="course-card-name">Kanban</div>
+                  <div class="course-card-cert">CertiProf</div>
                 </div>
               </div>
             </div>
-            <div class="acad-ecosystem">
-              <div class="acad-eco-header">
-                <span class="acad-eco-label">Gestión & Marketing</span>
-                <div class="acad-eco-line"></div>
-              </div>
-              <div class="acad-courses-row">
-                <div class="course-card">
-                  <div class="course-card-icon">🎖️</div>
-                  <div class="course-card-body">
-                    <div class="course-card-name">OKR Master</div>
-                    <div class="course-card-cert">🏆 CertiProf</div>
-                  </div>
-                </div>
-                <div class="course-card">
-                  <div class="course-card-icon">📊</div>
-                  <div class="course-card-body">
-                    <div class="course-card-name">OKR Professional</div>
-                    <div class="course-card-cert">🏆 CertiProf</div>
-                  </div>
-                </div>
-                <div class="course-card">
-                  <div class="course-card-icon">📱</div>
-                  <div class="course-card-body">
-                    <div class="course-card-name">Digital Marketing Pro</div>
-                    <div class="course-card-cert">🏆 CertiProf</div>
-                  </div>
-                </div>
-              </div>
+          </div>
+          <div class="acad-ecosystem">
+            <div class="acad-eco-header">
+              <span class="acad-eco-label">Gestión & Marketing</span>
+              <div class="acad-eco-line"></div>
             </div>
-
-            <div class="academy-cta-bottom">
-              <div class="acad-bottom-note">
-                <strong>¿Necesitas un programa a medida para tu empresa?</strong><br>
-                Diseñamos el contenido según tu industria, equipo y objetivos.
+            <div class="acad-courses-row">
+              <div class="course-card">
+                <div class="course-card-icon">🎖️</div>
+                <div class="course-card-body">
+                  <div class="course-card-name">OKR Master</div>
+                  <div class="course-card-cert">CertiProf</div>
+                </div>
               </div>
-              <a href="https://wa.me/51981527408?text=Hola%20Etrazia%2C%20quiero%20un%20programa%20In-Company%20para%20mi%20empresa." class="vp-cta" target="_blank" rel="noopener" style="white-space:nowrap" aria-label="Consultar programa In-Company por WhatsApp">In-Company →</a>
+              <div class="course-card">
+                <div class="course-card-icon">📊</div>
+                <div class="course-card-body">
+                  <div class="course-card-name">OKR Professional</div>
+                  <div class="course-card-cert">CertiProf</div>
+                </div>
+              </div>
+              <div class="course-card">
+                <div class="course-card-icon">📱</div>
+                <div class="course-card-body">
+                  <div class="course-card-name">Digital Marketing Pro</div>
+                  <div class="course-card-cert">CertiProf</div>
+                </div>
+              </div>
             </div>
           </div>
 
         </div>
+
+        <!-- Footer: modalidades + CTA -->
+        <div class="acad-panel-footer">
+          <div class="acad-footer-modalities">
+            <div class="acad-fmod">
+              <div class="acad-fmod-icon">🎓</div>
+              <div>
+                <div class="acad-fmod-title">Para personas y profesionales</div>
+                <div class="acad-fmod-sub">Inscripción individual · Certificación internacional incluida</div>
+              </div>
+            </div>
+            <div class="acad-footer-sep"></div>
+            <div class="acad-fmod">
+              <div class="acad-fmod-icon">🏢</div>
+              <div>
+                <div class="acad-fmod-title">Para empresas — In-Company</div>
+                <div class="acad-fmod-sub">Programa a medida · Presencial o virtual</div>
+              </div>
+            </div>
+          </div>
+          <div class="acad-footer-ctas">
+            <a href="https://wa.me/51981527408?text=Hola%20Etrazia%20%F0%9F%91%8B%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20los%20programas%20de%20Academy." class="acad-cta-wa" target="_blank" rel="noopener" aria-label="Consultar programas Academy por WhatsApp">💬 Consultar por WhatsApp</a>
+            <a href="https://wa.me/51981527408?text=Hola%20Etrazia%2C%20quiero%20un%20programa%20In-Company%20para%20mi%20empresa." class="acad-cta-inco" target="_blank" rel="noopener" aria-label="Consultar programa In-Company">In-Company →</a>
+          </div>
+        </div>
+
       </div>
+
+      
             <!-- 04 · VENTURES -->
       <div class="vtab-panel" id="panel-ventures">
         <div class="vp-left">
