@@ -22,14 +22,8 @@
   "name": "Blog Etrazia",
   "url": "https://etrazia.com/blog",
   "description": "Contenido práctico sobre estrategia empresarial, agilidad organizacional, gestión del talento, innovación y tecnología para negocios en Perú.",
-  "publisher": {
-    "@type": "Organization",
-    "name": "ETRAZIA",
-    "url": "https://etrazia.com",
-    "logo": "https://etrazia.com/logo.png"
-  },
-  "inLanguage": "es-PE",
-  "about": ["Estrategia empresarial", "Agilidad organizacional", "Gestión del talento", "Innovación", "Tecnología SaaS", "Emprendimiento en Perú"]
+  "publisher": {"@type": "Organization","name": "ETRAZIA","url": "https://etrazia.com"},
+  "inLanguage": "es-PE"
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,6 +35,8 @@
 html{scroll-behavior:smooth}
 body{background:var(--midnight);color:var(--ice);font-family:'Inter',sans-serif;overflow-x:hidden}
 body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.4}
+
+/* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 60px;display:flex;align-items:center;justify-content:space-between;background:rgba(11,17,32,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(184,115,51,0.1);transition:border-color .3s}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .nav-links{display:flex;align-items:center;gap:32px;list-style:none}
@@ -54,9 +50,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 60px;display:fl
 .nav-dropdown-toggle:hover{color:var(--ice)}
 .nav-dropdown-toggle svg{transition:transform .2s}
 .nav-dropdown:hover .nav-dropdown-toggle svg{transform:rotate(180deg)}
-.nav-dropdown-menu{position:absolute;top:calc(100% + 16px);left:50%;transform:translateX(-50%) translateY(-8px);background:rgba(11,17,32,0.98);backdrop-filter:blur(24px);border:1px solid rgba(184,115,51,0.15);border-radius:10px;padding:8px 0;min-width:200px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:200}
+.nav-dropdown::after{content:'';position:absolute;top:100%;left:-20px;right:-20px;height:20px;background:transparent}
+.nav-dropdown-menu{position:absolute;top:calc(100% + 20px);left:50%;transform:translateX(-50%) translateY(-6px);background:rgba(11,17,32,0.98);backdrop-filter:blur(24px);border:1px solid rgba(184,115,51,0.15);border-radius:10px;padding:8px 0;min-width:210px;opacity:0;pointer-events:none;transition:opacity .18s,transform .18s;z-index:200}
 .nav-dropdown:hover .nav-dropdown-menu{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0)}
-.nav-dropdown-menu a{display:flex;align-items:center;gap:10px;padding:10px 20px;font-size:13px;font-weight:500;color:var(--graphite);text-decoration:none;transition:color .2s,background .2s;white-space:nowrap}
+.nav-dropdown-menu a{display:flex;align-items:center;gap:10px;padding:11px 20px;font-size:13px;font-weight:500;color:var(--graphite);text-decoration:none;transition:color .2s,background .2s;white-space:nowrap}
 .nav-dropdown-menu a:hover{color:var(--ice);background:rgba(184,115,51,0.06)}
 .nav-dropdown-divider{height:1px;background:rgba(184,115,51,0.1);margin:4px 0}
 .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;cursor:pointer;background:none;border:none;padding:4px;z-index:101}
@@ -72,10 +69,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 60px;display:fl
 .nav-mobile ul a{display:block;padding:18px 40px;font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:var(--ice);text-decoration:none;text-align:center;transition:color .2s}
 .nav-mobile ul a:hover{color:var(--copper)}
 .nav-mobile-cta{margin-top:28px;background:var(--copper);color:var(--midnight)!important;padding:14px 40px;border-radius:6px;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;text-decoration:none;display:inline-block}
-.btn-primary{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--copper),var(--amber));color:var(--midnight);padding:14px 32px;border-radius:6px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;transition:all .2s}
+
+/* ── BOTONES ── */
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--copper),var(--amber));color:var(--midnight);padding:14px 32px;border-radius:6px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;transition:all .2s;border:none;cursor:pointer}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(184,115,51,0.4)}
 
-/* HERO BLOG */
+/* ── HERO ── */
 #blog-hero{padding:140px 60px 60px;position:relative;overflow:hidden;border-bottom:1px solid rgba(184,115,51,0.1)}
 .hero-bg{position:absolute;inset:0;z-index:0}
 .hero-bg::before{content:'';position:absolute;top:-200px;right:-100px;width:600px;height:600px;background:radial-gradient(ellipse,rgba(184,115,51,0.08) 0%,transparent 70%);border-radius:50%}
@@ -89,47 +88,85 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 60px;display:fl
 .blog-cad-label{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--copper);opacity:.7;margin-bottom:8px}
 .blog-cad-val{font-family:'Montserrat',sans-serif;font-size:28px;font-weight:800;color:var(--ice)}
 
-/* FILTROS */
-#blog-filters{padding:32px 60px;border-bottom:1px solid rgba(184,115,51,0.08);background:rgba(17,24,39,0.3);position:sticky;top:72px;z-index:80}
-.filters-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+/* ── FILTROS ── */
+#blog-filters{padding:28px 60px;border-bottom:1px solid rgba(184,115,51,0.08);background:rgba(17,24,39,0.5);position:sticky;top:72px;z-index:80;backdrop-filter:blur(12px)}
+.filters-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .filter-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--graphite);margin-right:4px}
-.filter-btn{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.08em;padding:7px 16px;border-radius:20px;border:1px solid rgba(184,115,51,0.15);background:transparent;color:var(--graphite);cursor:pointer;transition:all .2s}
+.filter-btn{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:600;letter-spacing:0.06em;padding:7px 16px;border-radius:20px;border:1px solid rgba(184,115,51,0.15);background:transparent;color:var(--graphite);cursor:pointer;transition:all .2s}
 .filter-btn:hover,.filter-btn.active{background:rgba(184,115,51,0.1);border-color:rgba(184,115,51,0.3);color:var(--copper)}
 
-/* GRID BLOG */
+/* ── GRID BLOG ── */
 #blog-content{padding:60px 60px 80px}
 .blog-inner{max-width:1100px;margin:0 auto}
-.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-bottom:48px}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:64px}
 
-/* POST CARD */
-.post-card{background:rgba(255,255,255,0.025);border:1px solid rgba(184,115,51,0.1);border-radius:12px;overflow:hidden;transition:all .25s;cursor:pointer;display:flex;flex-direction:column}
-.post-card:hover{border-color:rgba(184,115,51,0.25);background:rgba(184,115,51,0.03);transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,0.3)}
-.post-card-thumb{height:160px;display:flex;align-items:center;justify-content:center;font-size:48px;position:relative;overflow:hidden}
-.thumb-consulting{background:linear-gradient(135deg,rgba(184,115,51,0.15),rgba(217,119,6,0.08))}
-.thumb-academy{background:linear-gradient(135deg,rgba(99,179,237,0.12),rgba(59,130,246,0.06))}
-.thumb-talent{background:linear-gradient(135deg,rgba(167,139,250,0.12),rgba(139,92,246,0.06))}
-.thumb-ventures{background:linear-gradient(135deg,rgba(52,211,153,0.12),rgba(16,185,129,0.06))}
-.thumb-apps{background:linear-gradient(135deg,rgba(251,191,36,0.12),rgba(245,158,11,0.06))}
-.post-card-body{padding:24px;flex:1;display:flex;flex-direction:column}
-.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+/* ── POST CARD ── */
+.post-card{background:rgba(255,255,255,0.025);border:1px solid rgba(184,115,51,0.1);border-radius:12px;overflow:hidden;transition:border-color .25s,box-shadow .25s;cursor:pointer}
+.post-card:hover:not(.expanded){border-color:rgba(184,115,51,0.28);box-shadow:0 12px 40px rgba(0,0,0,0.3)}
+.post-card.expanded{border-color:rgba(184,115,51,0.35);grid-column:1/-1;cursor:default;box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+.post-card-preview{display:flex;flex-direction:column}
+.post-card-thumb{height:140px;display:flex;align-items:center;justify-content:center;font-size:44px;position:relative;overflow:hidden;flex-shrink:0}
+.thumb-consulting{background:linear-gradient(135deg,rgba(184,115,51,0.2),rgba(217,119,6,0.1))}
+.thumb-academy{background:linear-gradient(135deg,rgba(99,179,237,0.18),rgba(59,130,246,0.08))}
+.thumb-talent{background:linear-gradient(135deg,rgba(167,139,250,0.18),rgba(139,92,246,0.08))}
+.thumb-ventures{background:linear-gradient(135deg,rgba(52,211,153,0.18),rgba(16,185,129,0.08))}
+.thumb-apps{background:linear-gradient(135deg,rgba(251,191,36,0.18),rgba(245,158,11,0.08))}
+.post-card-body{padding:22px}
+.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:12px}
 .post-cat{font-family:'Montserrat',sans-serif;font-size:9px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--copper);background:rgba(184,115,51,0.08);border:1px solid rgba(184,115,51,0.18);padding:3px 9px;border-radius:20px}
 .post-date{font-size:11px;color:var(--graphite-dim)}
-.post-title{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:var(--ice);line-height:1.35;margin-bottom:10px}
-.post-excerpt{font-size:13px;color:var(--graphite);line-height:1.65;flex:1;margin-bottom:20px}
-.post-read{font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--copper);text-decoration:none;display:flex;align-items:center;gap:6px;transition:gap .2s}
-.post-card:hover .post-read{gap:10px}
+.post-title{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:700;color:var(--ice);line-height:1.35;margin-bottom:10px}
+.post-excerpt{font-size:13px;color:var(--graphite);line-height:1.65;margin-bottom:16px}
+.post-read-more{display:flex;align-items:center;gap:6px;font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--copper);transition:gap .2s}
+.post-card:hover:not(.expanded) .post-read-more{gap:10px}
+.post-read-icon{transition:transform .2s}
+.post-card.expanded .post-read-icon{transform:rotate(180deg)}
 
-/* PRONTO */
-.coming-soon-band{background:rgba(184,115,51,0.04);border:1px dashed rgba(184,115,51,0.2);border-radius:12px;padding:40px;text-align:center;margin-top:8px}
-.cs-icon{font-size:40px;margin-bottom:16px}
-.cs-title{font-family:'Montserrat',sans-serif;font-size:18px;font-weight:700;color:var(--ice);margin-bottom:8px}
-.cs-desc{font-size:14px;color:var(--graphite);line-height:1.6;max-width:400px;margin:0 auto 24px}
+/* ── ARTÍCULO EXPANDIDO ── */
+.post-article{display:none;padding:0 36px 36px;border-top:1px solid rgba(184,115,51,0.12);margin-top:4px}
+.post-card.expanded .post-article{display:block}
+.article-header{padding:28px 0 24px;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.article-title-full{font-family:'Montserrat',sans-serif;font-size:clamp(20px,2vw,28px);font-weight:800;color:var(--ice);line-height:1.2;letter-spacing:-0.02em}
+.close-btn{flex-shrink:0;background:rgba(184,115,51,0.08);border:1px solid rgba(184,115,51,0.2);color:var(--copper);font-size:13px;font-weight:600;padding:8px 16px;border-radius:6px;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif;white-space:nowrap}
+.close-btn:hover{background:rgba(184,115,51,0.15)}
+.article-content{font-size:15px;color:var(--graphite);line-height:1.8;max-width:780px}
+.article-content h3{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:700;color:var(--ice);margin:28px 0 10px;letter-spacing:-0.01em}
+.article-content p{margin-bottom:16px}
+.article-content strong{color:var(--ice);font-weight:600}
+.article-content ul{margin:12px 0 16px 0;padding:0}
+.article-content ul li{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;list-style:none}
+.article-content ul li::before{content:'→';color:var(--copper);font-size:12px;flex-shrink:0;margin-top:3px}
+.article-divider{height:1px;background:linear-gradient(90deg,rgba(184,115,51,0.3),transparent);margin:28px 0}
+.article-cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--copper),var(--amber));color:var(--midnight);padding:12px 24px;border-radius:6px;font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;transition:all .2s;margin-top:8px}
+.article-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(184,115,51,0.4)}
 
-/* NEWSLETTER */
-.newsletter-band{margin-top:64px;padding:48px;background:rgba(184,115,51,0.06);border:1px solid rgba(184,115,51,0.15);border-radius:16px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:48px}
-.nl-title{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:800;color:var(--ice);margin-bottom:8px}
-.nl-desc{font-size:14px;color:var(--graphite);line-height:1.6}
+/* ── SUSCRIPCIÓN ── */
+.suscripcion-band{background:rgba(184,115,51,0.05);border:1px solid rgba(184,115,51,0.18);border-radius:16px;padding:48px 56px;margin-top:16px}
+.sus-header{display:grid;grid-template-columns:1fr auto;align-items:start;gap:40px;margin-bottom:32px}
+.sus-title{font-family:'Montserrat',sans-serif;font-size:clamp(20px,2.2vw,28px);font-weight:800;color:var(--ice);letter-spacing:-0.02em;margin-bottom:10px}
+.sus-title em{font-style:normal;background:linear-gradient(90deg,var(--copper),var(--amber));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sus-desc{font-size:15px;color:var(--graphite);line-height:1.65;max-width:520px}
+.sus-badge{flex-shrink:0;background:rgba(37,211,102,0.08);border:1px solid rgba(37,211,102,0.2);border-radius:10px;padding:16px 20px;text-align:center}
+.sus-badge-icon{font-size:28px;margin-bottom:6px}
+.sus-badge-label{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#25D366}
+.sus-form{display:flex;flex-direction:column;gap:16px;max-width:520px}
+.sus-input-wrap{display:flex;gap:12px}
+.sus-prefix{display:flex;align-items:center;padding:0 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(184,115,51,0.2);border-radius:6px;font-size:14px;color:var(--graphite);white-space:nowrap;font-weight:500}
+.sus-input{flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(184,115,51,0.2);border-radius:6px;padding:13px 16px;font-size:14px;color:var(--ice);font-family:'Inter',sans-serif;outline:none;transition:border-color .2s}
+.sus-input:focus{border-color:rgba(184,115,51,0.5);background:rgba(184,115,51,0.04)}
+.sus-input::placeholder{color:var(--graphite-dim)}
+.sus-legal{display:flex;align-items:flex-start;gap:12px}
+.sus-checkbox{width:18px;height:18px;flex-shrink:0;margin-top:2px;accent-color:var(--copper);cursor:pointer}
+.sus-legal-text{font-size:12px;color:var(--graphite);line-height:1.6}
+.sus-legal-text a{color:var(--copper);text-decoration:none;transition:opacity .2s}
+.sus-legal-text a:hover{opacity:.8;text-decoration:underline}
+.sus-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,var(--copper),var(--amber));color:var(--midnight);padding:14px 28px;border-radius:6px;font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;border:none;cursor:pointer;transition:all .2s;width:fit-content}
+.sus-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(184,115,51,0.4)}
+.sus-btn:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+.sus-error{font-size:12px;color:#F87171;display:none}
+.sus-error.visible{display:block}
 
+/* ── FOOTER ── */
 footer{background:var(--navy);border-top:1px solid rgba(184,115,51,0.1);padding:60px 60px 40px}
 .footer-inner{max-width:1200px;margin:0 auto}
 .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
@@ -144,14 +181,20 @@ footer{background:var(--navy);border-top:1px solid rgba(184,115,51,0.1);padding:
 .footer-copy span{color:var(--copper)}
 .footer-legal{display:flex;gap:24px}
 .footer-legal a{font-size:12px;color:var(--graphite-dim);text-decoration:none}
+
+/* ── REVEAL ── */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .5s,transform .5s}
 .reveal.visible{opacity:1;transform:none}
-@media(max-width:1100px){nav,#blog-hero,#blog-filters,#blog-content,footer{padding-left:40px;padding-right:40px}.footer-top{grid-template-columns:1fr 1fr;gap:32px}}
-@media(max-width:900px){nav{padding:16px 24px}#blog-filters{padding:20px 24px}.nav-links{display:none}.nav-hamburger{display:flex}.nav-mobile{display:flex}#blog-hero{padding:120px 24px 40px}.blog-hero-inner{grid-template-columns:1fr}.blog-cadencia{text-align:left}#blog-content{padding:40px 24px 60px}.blog-grid{grid-template-columns:1fr 1fr}.newsletter-band{grid-template-columns:1fr;gap:24px}footer{padding:60px 24px 32px}}
-@media(max-width:600px){.blog-hero-h1{font-size:32px}.blog-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr}.footer-bottom{flex-direction:column;gap:12px;text-align:center}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){nav,#blog-hero,#blog-filters,#blog-content,footer{padding-left:40px;padding-right:40px}.footer-top{grid-template-columns:1fr 1fr;gap:32px}.suscripcion-band{padding:40px}}
+@media(max-width:900px){nav{padding:16px 24px}#blog-filters{padding:18px 24px;top:64px}.nav-links{display:none}.nav-hamburger{display:flex}.nav-mobile{display:flex}#blog-hero{padding:120px 24px 40px}.blog-hero-inner{grid-template-columns:1fr}.blog-cadencia{text-align:left}#blog-content{padding:40px 24px 60px}.blog-grid{grid-template-columns:1fr 1fr}.sus-header{grid-template-columns:1fr}.sus-badge{display:none}.suscripcion-band{padding:32px 28px}footer{padding:60px 24px 32px}}
+@media(max-width:600px){.blog-hero-h1{font-size:32px}.blog-grid{grid-template-columns:1fr}.post-card.expanded{grid-column:auto}.sus-input-wrap{flex-direction:column}.post-article{padding:0 20px 24px}.footer-top{grid-template-columns:1fr}.footer-bottom{flex-direction:column;gap:12px;text-align:center}}
 </style>
 </head>
 <body>
+
+<!-- NAV -->
 <nav id="navbar">
   <a href="https://etrazia.com" class="nav-logo">
     <svg width="44" height="44" viewBox="0 0 44 44" fill="none"><path d="M16 22 C16 15.37 21.37 10 28 10 C34.63 10 40 15.37 40 22 C40 28.63 34.63 34 28 34" stroke="#1B2B4B" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M28 22 C28 28.63 22.63 34 16 34 C9.37 34 4 28.63 4 22 C4 15.37 9.37 10 16 10" stroke="url(#lg1)" stroke-width="4" fill="none" stroke-linecap="round"/><rect x="17.5" y="17.5" width="9" height="9" rx="1.5" fill="#D97706" transform="rotate(45 22 22)"/><defs><linearGradient id="lg1" x1="28" y1="10" x2="4" y2="34" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#B87333"/><stop offset="100%" stop-color="#D97706"/></linearGradient></defs></svg>
@@ -209,7 +252,7 @@ footer{background:var(--navy);border-top:1px solid rgba(184,115,51,0.1);padding:
 <!-- FILTROS -->
 <div id="blog-filters">
   <div class="filters-inner">
-    <span class="filter-label">Filtrar por:</span>
+    <span class="filter-label">Filtrar:</span>
     <button class="filter-btn active" onclick="filterPosts('all',this)">Todo</button>
     <button class="filter-btn" onclick="filterPosts('consulting',this)">📊 Consulting</button>
     <button class="filter-btn" onclick="filterPosts('talent',this)">🎯 Talent</button>
@@ -224,71 +267,183 @@ footer{background:var(--navy);border-top:1px solid rgba(184,115,51,0.1);padding:
   <div class="blog-inner">
     <div class="blog-grid" id="posts-grid">
 
-      <!-- POST 1 — PLACEHOLDER -->
-      <article class="post-card reveal" data-cat="consulting">
-        <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Por qué tu empresa necesita una estrategia antes de escalar","description":"Muchos negocios en Lima crecen rápido pero sin dirección. Aquí explicamos por qué el orden estratégico no es un lujo, es el único camino sostenible.","author":{"@type":"Person","name":"Italo Amaya Moreno"},"publisher":{"@type":"Organization","name":"ETRAZIA","url":"https://etrazia.com"},"datePublished":"2026-06-16","url":"https://etrazia.com/blog","inLanguage":"es-PE"}</script>
-        <div class="post-card-thumb thumb-consulting">📊</div>
-        <div class="post-card-body">
-          <div class="post-meta">
-            <span class="post-cat">Consulting</span>
-            <span class="post-date">Jun 16, 2026</span>
+      <!-- POST 1: ESTRATEGIA -->
+      <article class="post-card reveal" data-cat="consulting" onclick="togglePost(this)">
+        <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Por qué tu empresa necesita una estrategia antes de escalar","description":"Muchos negocios en Lima crecen rápido pero sin dirección. El caos operativo es el síntoma de no haber definido a dónde vas antes de acelerar.","author":{"@type":"Person","name":"Italo Amaya Moreno"},"publisher":{"@type":"Organization","name":"ETRAZIA","url":"https://etrazia.com"},"datePublished":"2026-06-16","url":"https://etrazia.com/blog","inLanguage":"es-PE"}</script>
+        <div class="post-card-preview">
+          <div class="post-card-thumb thumb-consulting">📊</div>
+          <div class="post-card-body">
+            <div class="post-meta">
+              <span class="post-cat">Consulting</span>
+              <span class="post-date">Jun 16, 2026</span>
+            </div>
+            <h2 class="post-title">Por qué tu empresa necesita una estrategia antes de escalar</h2>
+            <p class="post-excerpt">Muchos negocios en Lima crecen rápido pero sin dirección. El caos operativo no es solo ineficiencia — es el síntoma de no haber definido a dónde vas antes de acelerar.</p>
+            <div class="post-read-more">Leer artículo <span class="post-read-icon">↓</span></div>
           </div>
-          <h2 class="post-title">Por qué tu empresa necesita una estrategia antes de escalar</h2>
-          <p class="post-excerpt">Muchos negocios en Lima crecen rápido pero sin dirección. El caos operativo no es solo ineficiencia — es el síntoma de no haber definido a dónde vas antes de acelerar.</p>
-          <a href="https://wa.me/51922339690?text=Hola%2C%20quiero%20recibir%20el%20artículo%20sobre%20estrategia%20empresarial%20de%20Etrazia" class="post-read" target="_blank" rel="noopener">Recibir artículo →</a>
+        </div>
+        <div class="post-article">
+          <div class="article-header">
+            <h2 class="article-title-full">Por qué tu empresa necesita una estrategia antes de escalar</h2>
+            <button class="close-btn" onclick="closePost(event,this)">✕ Cerrar</button>
+          </div>
+          <div class="article-content">
+            <p>En Lima hay cientos de negocios que crecieron rápido. Facturan bien, tienen clientes, tienen equipo. Pero en algún punto del camino dejaron de saber exactamente hacia dónde van. Y ese momento, casi siempre, llega cuando intentan escalar.</p>
+            <p><strong>El crecimiento sin estrategia no es crecimiento — es acumulación de problemas a mayor velocidad.</strong></p>
+
+            <h3>El síntoma más común: hacer todo bien, pero sin dirección</h3>
+            <p>La mayoría de líderes con los que trabajamos no tienen un problema de capacidad ni de talento. Tienen un problema de foco. Persiguen múltiples oportunidades al mismo tiempo, reaccionan al mercado en lugar de anticiparlo, y toman decisiones en función de lo urgente, no de lo importante.</p>
+            <p>El resultado es predecible: el equipo está ocupado, pero no alineado. Los recursos se dispersan. El crecimiento se estanca o, peor, se vuelve caótico.</p>
+
+            <h3>Qué es realmente una estrategia empresarial</h3>
+            <p>Una estrategia no es un plan de 50 páginas que nadie lee. Es la respuesta clara a tres preguntas:</p>
+            <ul>
+              <li>¿Dónde quiero estar en 12-24 meses?</li>
+              <li>¿Qué tengo que hacer diferente para llegar ahí?</li>
+              <li>¿Qué voy a dejar de hacer para enfocarme en lo que importa?</li>
+            </ul>
+            <p>La tercera pregunta es la más difícil — y la más importante. La estrategia no solo define qué hacer: define qué <strong>no</strong> hacer.</p>
+
+            <h3>El costo real de no tener estrategia</h3>
+            <p>No tener estrategia no significa estar estático. Significa estar en movimiento constante sin saber si ese movimiento te acerca o te aleja de donde quieres llegar. El costo se manifiesta en rotación de equipo, decisiones contradictorias, clientes confundidos sobre qué haces exactamente y oportunidades perdidas por falta de posicionamiento claro.</p>
+
+            <h3>Por dónde empezar</h3>
+            <p>El primer paso no es contratar una consultoría ni hacer un retiro estratégico de dos días. Es honestidad brutal sobre el estado actual del negocio. Dónde estás ganando, dónde estás perdiendo, qué te diferencia realmente del mercado y qué haría tu mejor cliente si no existieras.</p>
+            <p>Con esa claridad como base, construir la estrategia es mucho más directo de lo que parece.</p>
+
+            <div class="article-divider"></div>
+            <p style="color:var(--graphite);font-size:14px"><em>Si quieres explorar cómo Etrazia Consulting puede ayudarte a construir o revisar la estrategia de tu organización, el primer diagnóstico es gratuito.</em></p>
+            <a href="https://wa.me/51922339690?text=Hola%2C%20leí%20el%20artículo%20sobre%20estrategia%20empresarial%20en%20el%20blog%20de%20Etrazia%20y%20quiero%20agendar%20un%20diagnóstico" class="article-cta" target="_blank" rel="noopener">Agendar diagnóstico gratuito →</a>
+          </div>
         </div>
       </article>
 
-      <!-- POST 2 — PLACEHOLDER -->
-      <article class="post-card reveal" data-cat="academy">
-        <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"OKR vs KPI: cuál usar y cuándo","description":"La diferencia no es solo técnica. Te explicamos cuándo necesitas KPIs de control y cuándo OKRs de transformación, con ejemplos de negocios peruanos.","author":{"@type":"Person","name":"Italo Amaya Moreno"},"publisher":{"@type":"Organization","name":"ETRAZIA","url":"https://etrazia.com"},"datePublished":"2026-06-09","url":"https://etrazia.com/blog","inLanguage":"es-PE"}</script>
-        <div class="post-card-thumb thumb-academy">🎓</div>
-        <div class="post-card-body">
-          <div class="post-meta">
-            <span class="post-cat">Academy</span>
-            <span class="post-date">Jun 9, 2026</span>
+      <!-- POST 2: OKR vs KPI -->
+      <article class="post-card reveal" data-cat="academy" onclick="togglePost(this)">
+        <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"OKR vs KPI: cuál usar y cuándo en tu organización","description":"La diferencia no es solo técnica. Te explicamos cuándo necesitas KPIs de control y cuándo OKRs de transformación, con ejemplos del contexto peruano.","author":{"@type":"Person","name":"Italo Amaya Moreno"},"publisher":{"@type":"Organization","name":"ETRAZIA","url":"https://etrazia.com"},"datePublished":"2026-06-09","url":"https://etrazia.com/blog","inLanguage":"es-PE"}</script>
+        <div class="post-card-preview">
+          <div class="post-card-thumb thumb-academy">🎓</div>
+          <div class="post-card-body">
+            <div class="post-meta">
+              <span class="post-cat">Academy</span>
+              <span class="post-date">Jun 9, 2026</span>
+            </div>
+            <h2 class="post-title">OKR vs KPI: cuál usar y cuándo en tu organización</h2>
+            <p class="post-excerpt">La diferencia no es solo técnica. Cuándo necesitas KPIs de control y cuándo OKRs de transformación — con ejemplos reales del contexto peruano.</p>
+            <div class="post-read-more">Leer artículo <span class="post-read-icon">↓</span></div>
           </div>
-          <h2 class="post-title">OKR vs KPI: cuál usar y cuándo en tu organización</h2>
-          <p class="post-excerpt">La diferencia no es solo técnica. Te explicamos cuándo necesitas KPIs de control y cuándo OKRs de transformación, con ejemplos reales del contexto peruano.</p>
-          <a href="https://wa.me/51922339690?text=Hola%2C%20quiero%20recibir%20el%20artículo%20sobre%20OKR%20vs%20KPI%20de%20Etrazia" class="post-read" target="_blank" rel="noopener">Recibir artículo →</a>
+        </div>
+        <div class="post-article">
+          <div class="article-header">
+            <h2 class="article-title-full">OKR vs KPI: cuál usar y cuándo en tu organización</h2>
+            <button class="close-btn" onclick="closePost(event,this)">✕ Cerrar</button>
+          </div>
+          <div class="article-content">
+            <p>Una de las preguntas más frecuentes cuando hablamos de gestión por objetivos es: <strong>¿uso OKR o KPI?</strong> La respuesta corta es: probablemente ambos, pero para cosas distintas. La confusión viene de creer que son herramientas competidoras, cuando en realidad son complementarias.</p>
+
+            <h3>Qué es un KPI y para qué sirve</h3>
+            <p>Un KPI (Indicador Clave de Rendimiento) mide el estado de salud de una operación que ya existe. Es un termómetro, no una brújula. Ejemplos típicos: tasa de conversión, ticket promedio, tiempo de respuesta al cliente, rotación del inventario.</p>
+            <p>Los KPIs son ideales para <strong>monitorear lo que ya funciona</strong> y detectar desvíos antes de que se conviertan en problemas. No te dicen hacia dónde ir — te dicen si tu motor está funcionando bien.</p>
+
+            <h3>Qué es un OKR y para qué sirve</h3>
+            <p>Un OKR (Objetivo y Resultado Clave) es una herramienta de transformación. Define <strong>a dónde quieres llegar</strong> (Objetivo) y cómo sabrás que llegaste (Resultados Clave). Fue popularizado por Google y adoptado por las organizaciones más innovadoras del mundo precisamente porque fuerza la conversación sobre el cambio, no sobre el mantenimiento.</p>
+            <p>Un OKR bien escrito es ambicioso, inspirador y temporal — generalmente trimestral. Si puedes alcanzarlo con el 100% de certeza, probablemente no es suficientemente retador.</p>
+
+            <h3>La diferencia que importa en la práctica</h3>
+            <ul>
+              <li>Los KPIs miden operaciones; los OKR impulsan transformaciones</li>
+              <li>Los KPIs son continuos; los OKR tienen ciclos definidos (trimestral, anual)</li>
+              <li>Los KPIs alertan sobre problemas; los OKRs alinean esfuerzo hacia metas</li>
+              <li>Los KPIs miden el pasado; los OKRs diseñan el futuro</li>
+            </ul>
+
+            <h3>Cómo combinarlos en una empresa peruana</h3>
+            <p>Un ejemplo práctico: tienes una tienda en Lima con buen volumen de ventas. Tu KPI de ticket promedio es S/85 y quieres que llegue a S/120. Eso es un OKR — un objetivo de transformación que requiere cambios en tu mix de productos, tu proceso de venta y tu comunicación con clientes. Una vez que S/120 sea tu nuevo normal, se convierte en un KPI a monitorear.</p>
+            <p>Así funciona en la práctica: los OKRs empujan el sistema hacia adelante; los KPIs lo mantienen estable en el nuevo nivel alcanzado.</p>
+
+            <div class="article-divider"></div>
+            <p style="color:var(--graphite);font-size:14px"><em>En Etrazia Academy ofrecemos programas de OKR Master y OKR Professional con certificación internacional. Si quieres implementar OKR en tu organización, podemos acompañarte.</em></p>
+            <a href="https://wa.me/51922339690?text=Hola%2C%20leí%20el%20artículo%20sobre%20OKR%20vs%20KPI%20en%20el%20blog%20de%20Etrazia%20y%20quiero%20saber%20más%20sobre%20los%20programas%20de%20OKR" class="article-cta" target="_blank" rel="noopener">Conocer programas de OKR →</a>
+          </div>
         </div>
       </article>
 
-      <!-- POST 3 — PLACEHOLDER -->
-      <article class="post-card reveal" data-cat="talent">
-        <div class="post-card-thumb thumb-talent">🎯</div>
-        <div class="post-card-body">
-          <div class="post-meta">
-            <span class="post-cat">Talent</span>
-            <span class="post-date">Jun 2, 2026</span>
+      <!-- POST 3: TALENTO -->
+      <article class="post-card reveal" data-cat="talent" onclick="togglePost(this)">
+        <div class="post-card-preview">
+          <div class="post-card-thumb thumb-talent">🎯</div>
+          <div class="post-card-body">
+            <div class="post-meta">
+              <span class="post-cat">Talent</span>
+              <span class="post-date">Jun 2, 2026</span>
+            </div>
+            <h2 class="post-title">Los 3 errores más comunes al contratar en una empresa en crecimiento</h2>
+            <p class="post-excerpt">Contratar mal cuesta mucho más que no contratar. Los errores más frecuentes en pymes limeñas y cómo evitarlos con un proceso simple y ágil.</p>
+            <div class="post-read-more">Leer artículo <span class="post-read-icon">↓</span></div>
           </div>
-          <h2 class="post-title">Los 3 errores más comunes al contratar en una empresa en crecimiento</h2>
-          <p class="post-excerpt">Contratar mal cuesta mucho más que no contratar. Repasamos los errores más frecuentes que vemos en pymes limeñas y cómo evitarlos con un proceso simple y ágil.</p>
-          <a href="https://wa.me/51922339690?text=Hola%2C%20quiero%20recibir%20el%20artículo%20sobre%20errores%20al%20contratar%20de%20Etrazia" class="post-read" target="_blank" rel="noopener">Recibir artículo →</a>
+        </div>
+        <div class="post-article">
+          <div class="article-header">
+            <h2 class="article-title-full">Los 3 errores más comunes al contratar en una empresa en crecimiento</h2>
+            <button class="close-btn" onclick="closePost(event,this)">✕ Cerrar</button>
+          </div>
+          <div class="article-content">
+            <p>Contratar es una de las decisiones más importantes que toma un líder. Y también una de las que se toma con menos estructura. En la mayoría de pymes que acompañamos en Lima, el proceso de selección se reduce a revisar un CV, hacer una entrevista de 20 minutos y decidir por intuición. El resultado es predecible: rotación alta, expectativas no alineadas y tiempo perdido en procesos de onboarding que no terminan de funcionar.</p>
+            <p>Estos son los tres errores más frecuentes — y cómo evitarlos.</p>
+
+            <h3>Error 1: Contratar para el presente, no para el futuro</h3>
+            <p>El error más común es contratar a alguien que resuelve el problema de hoy sin preguntarse si esa persona puede acompañar al negocio en los próximos 12-18 meses. Una empresa en crecimiento necesita personas que puedan <strong>escalar con ella</strong>, no solo cubrir un puesto.</p>
+            <p>Antes de publicar una vacante, pregúntate: ¿cómo se ve este rol en 18 meses? ¿La persona que necesito hoy puede crecer hacia esa versión del rol?</p>
+
+            <h3>Error 2: Evaluar solo habilidades técnicas</h3>
+            <p>Las habilidades técnicas son el requisito de entrada, no el criterio de decisión. Lo que diferencia a alguien que dura seis meses de alguien que construye algo contigo durante años es el fit cultural y la capacidad de adaptación. Dos preguntas que siempre recomendamos hacer en entrevistas: ¿Cuéntame de una vez que tomaste una decisión con información incompleta? ¿Qué aprendiste de tu mayor error profesional?</p>
+            <p>Las respuestas revelan más sobre la persona que cualquier prueba técnica.</p>
+
+            <h3>Error 3: Hacer el onboarding sobre la marcha</h3>
+            <p>Contratar bien y hacer mal el onboarding es como ganar la carrera y caerse en la meta. Los primeros 30 días determinan si la persona va a comprometerse con la empresa o va a empezar a buscar otras opciones. Un onboarding mínimo efectivo incluye: claridad sobre el rol y expectativas, presentación del equipo y la cultura, y una primera tarea con impacto real en la primera semana.</p>
+            <p>No tiene que ser un proceso complicado — tiene que ser intencional.</p>
+
+            <div class="article-divider"></div>
+            <p style="color:var(--graphite);font-size:14px"><em>Etrazia Talent acompaña procesos de atracción, selección y onboarding para empresas en crecimiento en Lima. Si quieres mejorar tu proceso de contratación, podemos ayudarte.</em></p>
+            <a href="https://wa.me/51922339690?text=Hola%2C%20leí%20el%20artículo%20sobre%20errores%20al%20contratar%20en%20el%20blog%20de%20Etrazia%20y%20quiero%20hablar%20sobre%20mi%20proceso%20de%20selección" class="article-cta" target="_blank" rel="noopener">Hablar con un especialista →</a>
+          </div>
         </div>
       </article>
 
     </div>
 
-    <!-- PRÓXIMAS PUBLICACIONES -->
-    <div class="coming-soon-band reveal">
-      <div class="cs-icon">✍️</div>
-      <div class="cs-title">Más contenido en camino</div>
-      <p class="cs-desc">Publicamos cada semana sobre estrategia, agilidad, talento y tecnología para negocios peruanos. Escríbenos por WhatsApp para recibir los artículos directo en tu celular.</p>
-      <a href="https://wa.me/51922339690?text=Hola%2C%20quiero%20suscribirme%20al%20blog%20de%20Etrazia%20y%20recibir%20los%20artículos%20semanales" class="btn-primary" target="_blank" rel="noopener">Suscribirme al blog →</a>
-    </div>
-
-    <!-- NEWSLETTER VIA WHATSAPP -->
-    <div class="newsletter-band reveal">
-      <div>
-        <div class="nl-title">Contenido semanal, directo a tu WhatsApp</div>
-        <p class="nl-desc">Sin email marketing, sin spam. Te enviamos el artículo de la semana cuando está listo. Sin algoritmos de por medio.</p>
+    <!-- SUSCRIPCIÓN ÚNICA -->
+    <div class="suscripcion-band reveal">
+      <div class="sus-header">
+        <div>
+          <h2 class="sus-title">Suscríbete al blog.<br><em>Te avisamos cada semana.</em></h2>
+          <p class="sus-desc">Cuando subimos una nueva entrada, te llega una notificación directa por WhatsApp. Sin algoritmos, sin email marketing, sin spam. Solo el artículo de la semana cuando está listo.</p>
+        </div>
+        <div class="sus-badge">
+          <div class="sus-badge-icon">💬</div>
+          <div class="sus-badge-label">Vía WhatsApp</div>
+        </div>
       </div>
-      <a href="https://wa.me/51922339690?text=Hola%2C%20quiero%20recibir%20el%20contenido%20semanal%20del%20blog%20de%20Etrazia" class="btn-primary" target="_blank" rel="noopener">Quiero recibirlo →</a>
+      <div class="sus-form">
+        <div class="sus-input-wrap">
+          <div class="sus-prefix">🇵🇪 +51</div>
+          <input type="tel" class="sus-input" id="sus-telefono" placeholder="Ej: 987 654 321" maxlength="9" inputmode="numeric">
+        </div>
+        <label class="sus-legal">
+          <input type="checkbox" class="sus-checkbox" id="sus-check">
+          <span class="sus-legal-text">
+            Acepto el tratamiento de mis datos personales conforme a la <strong>Ley N° 29733</strong> — Ley de Protección de Datos Personales del Perú — y autorizo a ETRAZIA a contactarme vía WhatsApp para enviarme notificaciones del blog y comunicaciones comerciales relacionadas con sus servicios. Puedo revocar esta autorización en cualquier momento escribiendo al mismo número.
+          </span>
+        </label>
+        <span class="sus-error" id="sus-error"></span>
+        <button class="sus-btn" id="sus-btn" onclick="suscribirse()">Suscribirme al blog →</button>
+      </div>
     </div>
+
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
@@ -303,19 +458,110 @@ footer{background:var(--navy);border-top:1px solid rgba(184,115,51,0.1);padding:
     <div class="footer-bottom"><div class="footer-copy">© 2026 <span>ETRAZIA</span> · Todos los derechos reservados</div><div class="footer-legal"><a href="#">Términos</a><a href="#">Privacidad</a><a href="#">Cookies</a></div></div>
   </div>
 </footer>
+
 <script>
-(function(){const btn=document.getElementById('nav-hamburger'),overlay=document.getElementById('nav-mobile'),links=document.querySelectorAll('.nav-mobile-link');if(!btn||!overlay)return;function open(){btn.classList.add('open');overlay.classList.add('open');btn.setAttribute('aria-expanded','true');overlay.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}function close(){btn.classList.remove('open');overlay.classList.remove('open');btn.setAttribute('aria-expanded','false');overlay.setAttribute('aria-hidden','true');document.body.style.overflow=''}btn.addEventListener('click',()=>btn.classList.contains('open')?close():open());links.forEach(l=>l.addEventListener('click',close));document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});})();
-const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:0.1});
+// ── Hamburger ──
+(function(){
+  const btn=document.getElementById('nav-hamburger'),overlay=document.getElementById('nav-mobile'),links=document.querySelectorAll('.nav-mobile-link');
+  if(!btn||!overlay)return;
+  function open(){btn.classList.add('open');overlay.classList.add('open');btn.setAttribute('aria-expanded','true');overlay.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}
+  function close(){btn.classList.remove('open');overlay.classList.remove('open');btn.setAttribute('aria-expanded','false');overlay.setAttribute('aria-hidden','true');document.body.style.overflow=''}
+  btn.addEventListener('click',()=>btn.classList.contains('open')?close():open());
+  links.forEach(l=>l.addEventListener('click',close));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+})();
+
+// ── Scroll reveal ──
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:0.08});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// ── Nav scroll ──
 window.addEventListener('scroll',()=>{document.getElementById('navbar').style.borderBottomColor=window.scrollY>60?'rgba(184,115,51,0.2)':'rgba(184,115,51,0.1)'});
+
+// ── Filtro posts ──
 function filterPosts(cat,btn){
   document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   document.querySelectorAll('.post-card').forEach(card=>{
-    if(cat==='all'||card.dataset.cat===cat){card.style.display='flex'}
-    else{card.style.display='none'}
+    const show = cat==='all'||card.dataset.cat===cat;
+    card.style.display = show ? 'block' : 'none';
+    if(!show && card.classList.contains('expanded')) collapseCard(card);
   });
 }
+
+// ── Toggle artículo expandido ──
+function togglePost(card){
+  const isExpanded = card.classList.contains('expanded');
+  // Colapsar todos primero
+  document.querySelectorAll('.post-card.expanded').forEach(c=>collapseCard(c));
+  if(!isExpanded){
+    card.classList.add('expanded');
+    // Scroll suave al card
+    setTimeout(()=>{
+      const top = card.getBoundingClientRect().top + window.scrollY - 140;
+      window.scrollTo({top, behavior:'smooth'});
+    }, 80);
+  }
+}
+
+function collapseCard(card){
+  card.classList.remove('expanded');
+}
+
+function closePost(e, btn){
+  e.stopPropagation();
+  const card = btn.closest('.post-card');
+  collapseCard(card);
+  const top = card.getBoundingClientRect().top + window.scrollY - 160;
+  window.scrollTo({top, behavior:'smooth'});
+}
+
+// ── Suscripción WhatsApp ──
+function suscribirse(){
+  const telInput = document.getElementById('sus-telefono');
+  const check = document.getElementById('sus-check');
+  const errorEl = document.getElementById('sus-error');
+  const btn = document.getElementById('sus-btn');
+
+  errorEl.classList.remove('visible');
+  errorEl.textContent = '';
+
+  const tel = telInput.value.replace(/\s/g,'').trim();
+
+  if(!tel || tel.length < 9 || !/^\d{9}$/.test(tel)){
+    errorEl.textContent = 'Ingresa un número de celular peruano válido (9 dígitos).';
+    errorEl.classList.add('visible');
+    telInput.focus();
+    return;
+  }
+  if(!check.checked){
+    errorEl.textContent = 'Debes aceptar la autorización de datos personales para continuar.';
+    errorEl.classList.add('visible');
+    check.focus();
+    return;
+  }
+
+  const mensaje = encodeURIComponent(
+    `Hola Etrazia 👋\n\n` +
+    `Mi número es +51 ${tel}.\n\n` +
+    `Quiero suscribirme al Blog de Etrazia y recibir una notificación por WhatsApp cada vez que publiquen una nueva entrada.\n\n` +
+    `Acepto el tratamiento de mis datos personales conforme a la Ley N° 29733 y autorizo a Etrazia a contactarme con notificaciones del blog y comunicaciones comerciales.`
+  );
+
+  btn.textContent = 'Abriendo WhatsApp...';
+  btn.disabled = true;
+
+  setTimeout(()=>{
+    window.open(`https://wa.me/51922339690?text=${mensaje}`, '_blank', 'noopener');
+    btn.textContent = '¡Listo! Completa el registro en WhatsApp ✓';
+    btn.style.background = 'linear-gradient(135deg,#25D366,#128C7E)';
+  }, 400);
+}
+
+// Solo números en el input
+document.getElementById('sus-telefono').addEventListener('input',function(){
+  this.value = this.value.replace(/\D/g,'').slice(0,9);
+});
 </script>
 </body>
 </html>
