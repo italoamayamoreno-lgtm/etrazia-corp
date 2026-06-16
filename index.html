@@ -749,6 +749,45 @@ nav{
   display:inline-block;
 }
 
+/* ── DROPDOWN SERVICIOS ── */
+.nav-dropdown{position:relative}
+.nav-dropdown-toggle{
+  display:flex;align-items:center;gap:5px;
+  text-decoration:none;color:var(--graphite);
+  font-size:13px;font-weight:500;letter-spacing:0.05em;
+  transition:color .2s;cursor:pointer;
+  background:none;border:none;padding:0;font-family:'Inter',sans-serif;
+}
+.nav-dropdown-toggle:hover{color:var(--ice)}
+.nav-dropdown-toggle svg{transition:transform .2s}
+.nav-dropdown:hover .nav-dropdown-toggle svg{transform:rotate(180deg)}
+.nav-dropdown-toggle:hover{color:var(--ice)}
+.nav-dropdown-menu{
+  position:absolute;top:calc(100% + 16px);left:50%;transform:translateX(-50%);
+  background:rgba(11,17,32,0.98);backdrop-filter:blur(24px);
+  border:1px solid rgba(184,115,51,0.15);border-radius:10px;
+  padding:8px 0;min-width:200px;
+  opacity:0;pointer-events:none;
+  transform:translateX(-50%) translateY(-8px);
+  transition:opacity .2s,transform .2s;
+  z-index:200;
+}
+.nav-dropdown:hover .nav-dropdown-menu{
+  opacity:1;pointer-events:all;
+  transform:translateX(-50%) translateY(0);
+}
+.nav-dropdown-menu a{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 20px;
+  font-size:13px;font-weight:500;color:var(--graphite);
+  text-decoration:none;transition:color .2s,background .2s;
+  white-space:nowrap;
+}
+.nav-dropdown-menu a:hover{color:var(--ice);background:rgba(184,115,51,0.06)}
+.nav-dropdown-menu a span.dd-icon{font-size:14px;width:20px;text-align:center}
+.nav-dropdown-menu a span.dd-label{flex:1}
+.nav-dropdown-divider{height:1px;background:rgba(184,115,51,0.1);margin:4px 0}
+
 /* ── HERO ── */
 #hero{
   min-height:100vh;
@@ -2256,11 +2295,24 @@ footer{
 
   <ul class="nav-links">
     <li><a href="#what">Ecosistema</a></li>
-    <li><a href="#verticals">Verticales</a></li>
-    <li><a href="#founder-section">Fundador</a></li>
+    <li class="nav-dropdown">
+      <button class="nav-dropdown-toggle">
+        Servicios Etrazia
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="nav-dropdown-menu">
+        <a href="https://etrazia.com/consulting"><span class="dd-icon">📊</span><span class="dd-label">Consulting</span></a>
+        <a href="https://etrazia.com/talent"><span class="dd-icon">🎯</span><span class="dd-label">Talent</span></a>
+        <a href="https://etrazia.com/academy"><span class="dd-icon">🎓</span><span class="dd-label">Academy</span></a>
+        <a href="https://etrazia.com/ventures"><span class="dd-icon">🚀</span><span class="dd-label">Ventures</span></a>
+        <div class="nav-dropdown-divider"></div>
+        <a href="https://etraziapp.com"><span class="dd-icon">⚙️</span><span class="dd-label">Apps — EtraziApp</span></a>
+      </div>
+    </li>
+    <li><a href="https://etrazia.com/blog">Blog</a></li>
     <li><a href="https://etraziapp.com">EtraziApp</a></li>
     <li><a href="#contacto-section">Contacto</a></li>
-    <li><a href="https://etraziapp.com" class="nav-cta">Ir a EtraziApp →</a></li>
+    <li><a href="https://wa.me/51922339690" class="nav-cta" target="_blank" rel="noopener">Hablar con un asesor →</a></li>
   </ul>
 
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
@@ -2272,12 +2324,15 @@ footer{
 <div class="nav-mobile" id="nav-mobile" aria-hidden="true">
   <ul>
     <li><a href="#what" class="nav-mobile-link">Ecosistema</a></li>
-    <li><a href="#verticals" class="nav-mobile-link">Verticales</a></li>
-    <li><a href="#founder-section" class="nav-mobile-link">Fundador</a></li>
+    <li><a href="https://etrazia.com/consulting" class="nav-mobile-link">Consulting</a></li>
+    <li><a href="https://etrazia.com/talent" class="nav-mobile-link">Talent</a></li>
+    <li><a href="https://etrazia.com/academy" class="nav-mobile-link">Academy</a></li>
+    <li><a href="https://etrazia.com/ventures" class="nav-mobile-link">Ventures</a></li>
+    <li><a href="https://etrazia.com/blog" class="nav-mobile-link">Blog</a></li>
     <li><a href="https://etraziapp.com" class="nav-mobile-link">EtraziApp</a></li>
     <li><a href="#contacto-section" class="nav-mobile-link">Contacto</a></li>
   </ul>
-  <a href="https://etraziapp.com" class="nav-mobile-cta">Ir a EtraziApp →</a>
+  <a href="https://wa.me/51922339690" class="nav-mobile-cta" target="_blank" rel="noopener">Hablar con un asesor →</a>
 </div>
 
 <!-- HERO -->
