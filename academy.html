@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="es" prefix="og: https://ogp.me/ns#">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Etrazia Academy — Formación Ejecutiva con Certificación Internacional | Lima, Perú</title>
+<meta name="description" content="15 programas de formación ejecutiva con certificación internacional en Agilidad, Innovación, Product Management y Marketing Digital. Presencial, virtual e In-Company en Lima, Perú.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://etrazia.com/academy">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://etrazia.com/academy">
+<meta property="og:title" content="Etrazia Academy — Formación Ejecutiva con Certificación Internacional">
+<meta property="og:description" content="15 programas ejecutivos con certificación internacional. Agilidad, Innovación, Product Management y Marketing Digital. Lima, Perú.">
+<meta property="og:image" content="https://etrazia.com/og-image.png">
+<meta property="og:locale" content="es_PE">
+<meta property="og:site_name" content="ETRAZIA">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "Etrazia Academy",
+  "url": "https://etrazia.com/academy",
+  "description": "Programas de formación ejecutiva con certificación internacional en Agilidad Empresarial, Product Management, Innovación y Marketing Digital.",
+  "address": {"@type": "PostalAddress", "addressLocality": "Lima", "addressCountry": "PE"},
+  "telephone": "+51922339690"
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --midnight:#0B1120;
+  --navy:#111827;
+  --copper:#B87333;
+  --amber:#D97706;
+  --ice:#F8FAFC;
+  --graphite:#94A3B8;
+  --graphite-dim:#4B5563;
+  --white:#FFFFFF;
+  --copper-glow:rgba(184,115,51,0.15);
+  --copper-glow-strong:rgba(184,115,51,0.25);
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--midnight);
+  color:var(--ice);
+  font-family:'Inter',sans-serif;
+  font-weight:400;
+  overflow-x:hidden;
+}
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;
+  z-index:0;
+  opacity:.4;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:20px 60px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(11,17,32,0.92);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(184,115,51,0.1);
+  transition:all .3s;
+}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;z-index:101}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{text-decoration:none;color:var(--graphite);font-size:13px;font-weight:500;letter-spacing:0.05em;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--ice)}
+.nav-links a.active{color:var(--copper)}
+.nav-cta{background:var(--copper);color:var(--midnight)!important;padding:10px 24px;border-radius:4px;font-weight:600!important;letter-spacing:0.08em!important;transition:all .2s!important}
+.nav-cta:hover{background:var(--amber)!important}
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;width:40px;height:40px;cursor:pointer;background:none;border:none;padding:4px;z-index:101}
+.nav-hamburger span{display:block;width:24px;height:2px;background:var(--ice);border-radius:2px;transition:all .28s;transform-origin:center}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.nav-mobile{display:none;position:fixed;inset:0;z-index:99;background:rgba(11,17,32,0.98);flex-direction:column;align-items:center;justify-content:center;gap:0;opacity:0;pointer-events:none;transition:opacity .3s}
+.nav-mobile.open{opacity:1;pointer-events:all}
+.nav-mobile ul{list-style:none;display:flex;flex-direction:column;align-items:center;gap:0;width:100%}
+.nav-mobile ul li{width:100%;border-bottom:1px solid rgba(184,115,51,0.08)}
+.nav-mobile ul li:first-child{border-top:1px solid rgba(184,115,51,0.08)}
+.nav-mobile ul a{display:block;padding:20px 40px;font-family:'Montserrat',sans-serif;font-size:18px;font-weight:700;letter-spacing:0.05em;color:var(--ice);text-decoration:none;text-align:center;transition:color .2s,background .2s}
+.nav-mobile ul a:hover{color:var(--copper);background:rgba(184,115,51,0.04)}
+.nav-mobile-cta{margin-top:32px;background:var(--copper);color:var(--midnight)!important;padding:14px 40px;border-radius:6px;font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;letter-spacing:0.08em;text-decoration:none;display:inline-block}
+
+/* ── BUTTONS ── */
+.btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,var(--copper),var(--amber));
+  color:var(--midnight);padding:14px 32px;border-radius:6px;
+  font-family:'Montserrat',sans-serif;font-size:13px;font-weight:700;
+  letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;
+  transition:all .2s;cursor:pointer;border:none;
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(184,115,51,0.4)}
+.btn-secondary{
+  display:inline-flex;align-items:center;gap:8px;
+  background:transparent;color:var(--ice);
+  padding:13px 32px;border-radius:6px;border:1px solid rgba(248,250,252,0.2);
+  font-family:'Montserrat',sans-serif;font-size:13px;font-weight:600;
+  letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;
+  transition:all .2s;
+}
+.btn-secondary:hover{border-color:var(--copper);color:var(--copper)}
+
+/* ── HERO ACADEMY ── */
+#acad-hero{
+  min-height:72vh;
+  display:flex;align-items:center;
+  padding:140px 60px 80px;
+  position:relative;overflow:hidden;
+}
+.acad-hero-bg{position:absolute;inset:0;z-index:0}
+.acad-hero-bg::before{
+  content:'';position:absolute;top:-200px;right:-100px;
+  width:700px;height:700px;
+  background:radial-gradient(ellipse,rgba(184,115,51,0.1) 0%,transparent 70%);
+  border-radius:50%;
+}
+.acad-hero-bg::after{
+  content:'';position:absolute;bottom:-200px;left:-100px;
+  width:500px;height:500px;
+  background:radial-gradient(ellipse,rgba(217,119,6,0.06) 0%,transparent 70%);
+  border-radius:50%;
+}
+.acad-hero-content{position:relative;z-index:1;max-width:760px}
+.acad-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:0.25em;text-transform:uppercase;color:var(--copper);
+  margin-bottom:24px;
+}
+.acad-eyebrow::before{content:'';width:32px;height:1px;background:var(--copper)}
+.acad-hero-h1{
+  font-family:'Montserrat',sans-serif;
+  font-size:clamp(40px,5.5vw,72px);
+  font-weight:800;line-height:1.05;
+  letter-spacing:-0.03em;color:var(--ice);
+  margin-bottom:12px;
+}
+.acad-hero-h1 em{
+  font-style:normal;
+  background:linear-gradient(90deg,var(--copper),var(--amber));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.acad-hero-tagline{
+  font-size:clamp(18px,2vw,24px);
+  font-weight:300;color:var(--graphite);
+  line-height:1.4;margin-bottom:36px;
+  letter-spacing:-0.01em;
+}
+.acad-hero-tagline strong{color:var(--ice);font-weight:500}
+.acad-badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px}
+.acad-badge-hero{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:10.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  padding:6px 14px;border-radius:20px;
+}
+.badge-pres{background:rgba(184,115,51,0.1);color:var(--copper);border:1px solid rgba(184,115,51,0.25)}
+.badge-virt{background:rgba(99,179,237,0.08);color:#63B3ED;border:1px solid rgba(99,179,237,0.2)}
+.badge-inco{background:rgba(167,139,250,0.08);color:#A78BFA;border:1px solid rgba(167,139,250,0.2)}
+.badge-cert{background:rgba(251,191,36,0.08);color:#FBBF24;border:1px solid rgba(251,191,36,0.2)}
+.acad-hero-stats{display:flex;gap:48px;padding-top:40px;border-top:1px solid rgba(184,115,51,0.1)}
+.hs-item{display:flex;flex-direction:column;gap:4px}
+.hs-num{font-family:'Montserrat',sans-serif;font-size:32px;font-weight:800;background:linear-gradient(90deg,var(--copper),var(--amber));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hs-label{font-size:11px;font-weight:500;color:var(--graphite);letter-spacing:0.08em;text-transform:uppercase}
+
+/* ── ECOSYSTEMS NAV ── */
+#eco-nav{
+  position:sticky;top:72px;z-index:80;
+  background:rgba(11,17,32,0.96);backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(184,115,51,0.1);
+  padding:0 60px;
+}
+.eco-nav-inner{display:flex;gap:0;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.eco-nav-btn{
+  display:flex;align-items:center;gap:8px;
+  padding:18px 28px;
+  font-family:'Montserrat',sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--graphite);background:none;border:none;cursor:pointer;
+  border-bottom:2px solid transparent;
+  transition:all .2s;white-space:nowrap;
+}
+.eco-nav-btn:hover{color:var(--ice)}
+.eco-nav-btn.active{color:var(--copper);border-bottom-color:var(--copper)}
+
+/* ── SECTIONS ── */
+.eco-section{padding:80px 60px}
+.eco-section:nth-child(even){background:rgba(17,24,39,0.3)}
+.eco-header{margin-bottom:56px}
+.eco-eyebrow{
+  font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;
+  letter-spacing:0.25em;text-transform:uppercase;color:var(--copper);
+  margin-bottom:12px;
+}
+.eco-title{
+  font-family:'Montserrat',sans-serif;
+  font-size:clamp(24px,2.5vw,36px);
+  font-weight:800;color:var(--ice);
+  letter-spacing:-0.02em;line-height:1.15;
+  margin-bottom:12px;
+}
+.eco-desc{font-size:15px;color:var(--graphite);line-height:1.7;max-width:620px}
+
+/* ── COURSE GRID ── */
+.courses-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px}
+
+/* ── COURSE CARD ── */
+.course-card{
+  background:rgba(255,255,255,0.025);
+  border:1px solid rgba(184,115,51,0.1);
+  border-radius:12px;overflow:hidden;
+  transition:all .25s;position:relative;
+}
+.course-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;
+  height:2px;
+  background:linear-gradient(90deg,var(--copper),var(--amber));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .3s;
+}
+.course-card:hover{
+  border-color:rgba(184,115,51,0.28);
+  background:rgba(184,115,51,0.04);
+  transform:translateY(-3px);
+  box-shadow:0 12px 40px rgba(0,0,0,0.3);
+}
+.course-card:hover::before{transform:scaleX(1)}
+.course-header{
+  padding:24px 24px 0;
+  display:flex;align-items:flex-start;gap:14px;
+}
+.course-icon{
+  width:44px;height:44px;flex-shrink:0;
+  background:rgba(184,115,51,0.1);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;
+}
+.course-meta{flex:1}
+.course-name{
+  font-family:'Montserrat',sans-serif;
+  font-size:15px;font-weight:700;color:var(--ice);
+  line-height:1.3;margin-bottom:4px;
+}
+.course-badge{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
+  padding:3px 9px;border-radius:20px;
+  background:rgba(184,115,51,0.08);color:var(--copper);border:1px solid rgba(184,115,51,0.18);
+}
+.course-body{padding:16px 24px 24px}
+.course-desc{
+  font-size:13.5px;color:var(--graphite);
+  line-height:1.65;margin-bottom:16px;
+}
+.course-learns{margin-bottom:18px}
+.course-learns-title{
+  font-family:'Montserrat',sans-serif;font-size:9.5px;font-weight:700;
+  letter-spacing:0.15em;text-transform:uppercase;color:var(--copper);
+  margin-bottom:10px;opacity:.8;
+}
+.learn-item{
+  display:flex;align-items:flex-start;gap:8px;
+  font-size:12.5px;color:var(--graphite);line-height:1.5;
+  margin-bottom:6px;
+}
+.learn-item::before{content:'→';color:var(--copper);flex-shrink:0;font-size:11px;margin-top:2px}
+.course-exam{
+  display:flex;gap:8px;flex-wrap:wrap;
+  padding-top:16px;border-top:1px solid rgba(184,115,51,0.08);
+}
+.exam-chip{
+  font-size:10.5px;font-weight:600;color:var(--graphite-dim);
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);
+  padding:4px 10px;border-radius:6px;
+  display:flex;align-items:center;gap:4px;
+}
+.exam-chip span{color:var(--ice);font-weight:700}
+
+/* ── COURSE CARD AUDIENCE ── */
+.course-audience{
+  font-size:12px;color:var(--graphite-dim);
+  line-height:1.55;margin-bottom:14px;
+  padding:10px 12px;
+  background:rgba(248,250,252,0.02);
+  border-radius:6px;border-left:2px solid rgba(184,115,51,0.2);
+}
+.course-audience strong{color:var(--graphite);font-weight:600}
+
+/* ── CTA BAND ── */
+#acad-cta{
+  padding:80px 60px;
+  background:linear-gradient(135deg,rgba(184,115,51,0.08) 0%,rgba(11,17,32,0) 60%);
+  border-top:1px solid rgba(184,115,51,0.12);
+}
+.cta-inner{
+  display:grid;grid-template-columns:1fr auto;align-items:center;gap:48px;
+  max-width:900px;margin:0 auto;
+}
+.cta-text h2{
+  font-family:'Montserrat',sans-serif;
+  font-size:clamp(22px,2.5vw,32px);font-weight:800;
+  color:var(--ice);letter-spacing:-0.02em;margin-bottom:8px;
+}
+.cta-text p{font-size:15px;color:var(--graphite);line-height:1.6}
+.cta-btns{display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+.incorp-link{
+  font-size:11px;font-weight:600;color:var(--copper);
+  text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;
+  opacity:.8;transition:opacity .2s;
+}
+.incorp-link:hover{opacity:1}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--navy);
+  border-top:1px solid rgba(184,115,51,0.1);
+  padding:60px 60px 40px;
+}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-brand{}
+.footer-tagline{font-size:13px;color:var(--graphite);line-height:1.8;margin-top:12px}
+.footer-col-title{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--copper);margin-bottom:20px}
+.footer-links{list-style:none}
+.footer-links li{margin-bottom:10px}
+.footer-links a{color:var(--graphite);text-decoration:none;font-size:13px;transition:color .2s}
+.footer-links a:hover{color:var(--ice)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:32px;border-top:1px solid rgba(184,115,51,0.08)}
+.footer-copy{font-size:12px;color:var(--graphite-dim)}
+.footer-copy span{color:var(--copper)}
+.footer-legal{display:flex;gap:24px}
+.footer-legal a{font-size:12px;color:var(--graphite-dim);text-decoration:none;transition:color .2s}
+.footer-legal a:hover{color:var(--graphite)}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .5s,transform .5s}
+.reveal.visible{opacity:1;transform:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  nav,#eco-nav{padding:20px 40px}
+  #acad-hero,.eco-section,#acad-cta,footer{padding-left:40px;padding-right:40px}
+  .footer-top{grid-template-columns:1fr 1fr;gap:32px}
+}
+@media(max-width:900px){
+  nav{padding:16px 24px}
+  #eco-nav{padding:0 24px}
+  .nav-links{display:none}
+  .nav-hamburger{display:flex}
+  .nav-mobile{display:flex}
+  #acad-hero{padding:120px 24px 60px}
+  .eco-section,#acad-cta{padding:60px 24px}
+  .acad-hero-stats{gap:28px}
+  .hs-num{font-size:24px}
+  .courses-grid{grid-template-columns:1fr}
+  .cta-inner{grid-template-columns:1fr;gap:28px}
+  .cta-btns{align-items:flex-start}
+  footer{padding:60px 24px 32px}
+}
+@media(max-width:600px){
+  .acad-hero-h1{font-size:36px}
+  .acad-hero-stats{flex-direction:column;gap:20px}
+  .footer-top{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;gap:12px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="https://etrazia.com" class="nav-logo">
+    <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16 22 C16 15.37 21.37 10 28 10 C34.63 10 40 15.37 40 22 C40 28.63 34.63 34 28 34" stroke="#1B2B4B" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <path d="M28 22 C28 28.63 22.63 34 16 34 C9.37 34 4 28.63 4 22 C4 15.37 9.37 10 16 10" stroke="url(#logoGradA)" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <rect x="17.5" y="17.5" width="9" height="9" rx="1.5" fill="#D97706" transform="rotate(45 22 22)"/>
+      <defs><linearGradient id="logoGradA" x1="28" y1="10" x2="4" y2="34" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#B87333"/><stop offset="100%" stop-color="#D97706"/></linearGradient></defs>
+    </svg>
+    <span style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:18px;letter-spacing:0.15em;color:#F8FAFC">ETRAZIA</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="https://etrazia.com">Inicio</a></li>
+    <li><a href="https://etrazia.com#verticals">Servicios</a></li>
+    <li><a href="https://etrazia.com/academy" class="active">Academy</a></li>
+    <li><a href="https://etrazia.com/blog">Blog</a></li>
+    <li><a href="https://etraziapp.com">EtraziApp</a></li>
+    <li><a href="https://wa.me/51922339690" class="nav-cta">Hablar con un asesor →</a></li>
+  </ul>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="nav-mobile" id="nav-mobile" aria-hidden="true">
+  <ul>
+    <li><a href="https://etrazia.com" class="nav-mobile-link">Inicio</a></li>
+    <li><a href="https://etrazia.com#verticals" class="nav-mobile-link">Servicios</a></li>
+    <li><a href="https://etrazia.com/academy" class="nav-mobile-link">Academy</a></li>
+    <li><a href="https://etrazia.com/blog" class="nav-mobile-link">Blog</a></li>
+    <li><a href="https://etraziapp.com" class="nav-mobile-link">EtraziApp</a></li>
+  </ul>
+  <a href="https://wa.me/51922339690" class="nav-mobile-cta">Hablar con un asesor →</a>
+</div>
+
+<!-- HERO -->
+<section id="acad-hero">
+  <div class="acad-hero-bg"></div>
+  <div class="acad-hero-content">
+    <div class="acad-eyebrow">Etrazia Academy</div>
+    <h1 class="acad-hero-h1">El conocimiento que<br><em>transforma carreras</em><br>y organizaciones.</h1>
+    <p class="acad-hero-tagline">Porque no basta con hacer más.<br><strong>Hay que saber hacer diferente.</strong></p>
+    <div class="acad-badges">
+      <span class="acad-badge-hero badge-pres">🏢 Presencial</span>
+      <span class="acad-badge-hero badge-virt">💻 Virtual</span>
+      <span class="acad-badge-hero badge-inco">🏆 In-Company</span>
+      <span class="acad-badge-hero badge-cert">🌐 Certificación Internacional</span>
+    </div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap">
+      <a href="https://wa.me/51922339690?text=Hola%2C%20quiero%20información%20sobre%20los%20programas%20de%20Etrazia%20Academy" class="btn-primary" target="_blank" rel="noopener">Ver programas disponibles →</a>
+      <a href="#eco-agilidad" class="btn-secondary">Explorar catálogo</a>
+    </div>
+    <div class="acad-hero-stats">
+      <div class="hs-item"><div class="hs-num">15</div><div class="hs-label">Programas</div></div>
+      <div class="hs-item"><div class="hs-num">4</div><div class="hs-label">Ecosistemas</div></div>
+      <div class="hs-item"><div class="hs-num">100%</div><div class="hs-label">Aplicable desde el día 1</div></div>
+      <div class="hs-item"><div class="hs-num">+20K</div><div class="hs-label">Profesionales certificados globalmente</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STICKY ECOSYSTEM NAV -->
+<div id="eco-nav">
+  <div class="eco-nav-inner">
+    <button class="eco-nav-btn active" onclick="scrollToSection('eco-agilidad',this)">🔄 Agilidad Empresarial</button>
+    <button class="eco-nav-btn" onclick="scrollToSection('eco-product',this)">📦 Product & Flow</button>
+    <button class="eco-nav-btn" onclick="scrollToSection('eco-innovacion',this)">💡 Innovación & Diseño</button>
+    <button class="eco-nav-btn" onclick="scrollToSection('eco-gestion',this)">📈 Gestión & Marketing</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     ECOSISTEMA 1 — AGILIDAD EMPRESARIAL
+════════════════════════════════════════════════════════ -->
+<section class="eco-section" id="eco-agilidad">
+  <div class="eco-header reveal">
+    <div class="eco-eyebrow">Ecosistema 01</div>
+    <h2 class="eco-title">Agilidad Empresarial</h2>
+    <p class="eco-desc">Desarrolla la mentalidad y las herramientas para liderar equipos y organizaciones en entornos de alta incertidumbre. Desde la filosofía hasta la práctica, estos programas forman a los protagonistas del cambio.</p>
+  </div>
+  <div class="courses-grid">
+
+    <!-- AGILE COACH -->
+    <div class="course-card reveal">
+      <div class="course-header">
+        <div class="course-icon">🧭</div>
+        <div class="course-meta">
+          <div class="course-name">Agile Coach</div>
+          <span class="course-badge">ACPC®</span>
+        </div>
+      </div>
+      <div class="course-body">
+        <p class="course-desc">Aprende a guiar a personas y organizaciones en su transformación continua. El Agile Coach no solo conoce los marcos ágiles: los domina en profundidad para facilitar cambios reales y sostenibles, combinando coaching profesional con liderazgo Lean-Agile.</p>
+        <div class="course-audience"><strong>Para quién:</strong> Líderes de transformación, consultores, Scrum Masters con experiencia y profesionales que quieren convertirse en catalizadores del cambio organizacional.</div>
+        <div class="course-learns">
+          <div class="course-learns-title">Lo que aprenderás</div>
+          <div class="learn-item">Competencias fundamentales del Agile Coaching: facilitación, mentoring, enseñanza y coaching profesional</div>
+          <div class="learn-item">Marcos ágiles a profundidad: Scrum, Kanban, SAFe, LeSS, XP, Scrumban y DevOps</div>
+          <div class="learn-item">ADN del Agile Coach y cómo guiar organizaciones de su estado actual a uno futuro mejor</div>
+          <div class="learn-item">Técnicas de preguntas poderosas, Kafe Model y Learning Canvas para el proceso de coaching</div>
+          <div class="learn-item">Métricas en Agile Coaching y cómo medir el impacto real del proceso</div>
+        </div>
+        <div class="course-exam">
+          <div class="exam-chip">📝 <span>40</span> preguntas</div>
+          <div class="exam-chip">⏱ <span>60</span> min</div>
+          <div class="exam-chip">✅ <span>80%</span> aprobación</div>
+          <div class="exam-chip">🌐 En línea</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AGILE HR -->
+    <div class="course-card reveal">
+      <div class="course-header">
+        <div class="course-icon">👥</div>
+        <div class="course-meta">
+          <div class="course-name">Agile HR</div>
+          <span class="course-badge">AHRCP™</span>
+        </div>
+      </div>
+      <div class="course-body">
+        <p class="course-desc">Reimagina la gestión del talento humano desde una mentalidad ágil. Aprende a transformar los procesos de atracción, formación, desempeño y compensaciones para que RRHH deje de ser soporte y se convierta en partner estratégico del negocio.</p>
+        <div class="course-audience"><strong>Para quién:</strong> Líderes de recursos humanos, consultores de talento y directores de transformación organizacional.</div>
+        <div class="course-learns">
+          <div class="course-learns-title">Lo que aprenderás</div>
+          <div class="learn-item">Agilidad como mindset: diferencias entre pensar en cascada y pensar en ágil aplicado a RRHH</div>
+          <div class="learn-item">Rediseño de la atracción de talento: pipeline activo, reclutamiento peer-to-peer y modelo STAR</div>
+          <div class="learn-item">Agile Career Model: mapas de desarrollo, matrices de especialización y upskilling continuo</div>
+          <div class="learn-item">Gestión del desempeño centrada en conversaciones, feedback 360° y compensaciones por impacto</div>
+          <div class="learn-item">Planning ágil con OKR aplicado al ciclo de vida del talento</div>
+        </div>
+        <div class="course-exam">
+          <div class="exam-chip">📝 <span>40</span> preguntas</div>
+          <div class="exam-chip">⏱ <span>60</span> min</div>
+          <div class="exam-chip">✅ <span>80%</span> aprobación</div>
+          <div class="exam-chip">🌐 En línea</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AGILE LEADER -->
+    <div class="course-card reveal">
+      <div class="course-header">
+        <div class="course-icon">🚀</div>
+        <div class="course-meta">
+          <div class="course-name">Agile Leader</div>
+          <span class="course-badge">ALPC™</span>
+        </div>
+      </div>
+      <div class="course-body">
+        <p class="course-desc">Descubre qué significa ser, pensar y actuar como un líder ágil. Este programa entrega una caja de herramientas práctica para desarrollar equipos de alto impacto en entornos VUCA y BANI, combinando liderazgo consciente con agilidad organizacional.</p>
+        <div class="course-audience"><strong>Para quién:</strong> Managers, jefes de área, directores y profesionales con rol de liderazgo que quieran evolucionar su estilo de conducción.</div>
+        <div class="course-learns">
+          <div class="course-learns-title">Lo que aprenderás</div>
+          <div class="learn-item">Los 9 principios del Liderazgo Ágil y las 12 dimensiones del líder de alto impacto</div>
+          <div class="learn-item">Facilitación, coaching, empatía y negociación como habilidades esenciales del líder ágil</div>
+          <div class="learn-item">Modelos de desarrollo de equipos: Tuckman, Teoría U, seguridad psicológica y empowerment</div>
+          <div class="learn-item">Paradigmas organizacionales: Redarquía, Holocracia, Modelo Dual y Sociocracia 3.0</div>
+          <div class="learn-item">Liderazgo consciente: características, ventajas y claves para empezar a practicarlo</div>
+        </div>
+        <div class="course-exam">
+          <div class="exam-chip">📝 <span>40</span> preguntas</div>
+          <div class="exam-chip">⏱ <span>60</span> min</div>
+          <div class="exam-chip">✅ <span>80%</span> aprobación</div>
+          <div class="exam-chip">🌐 En línea</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BUSINESS AGILITY -->
+    <div class="course-card reveal">
+      <div class="course-header">
+        <div class="course-icon">🏗️</div>
+        <div class="course-meta">
+          <div class="course-name">Business Agility</div>
+          <span class="course-badge">BAPC™</span>
+        </div>
+      </div>
+      <div class="course-body">
+        <p class="course-desc">La agilidad que trasciende equipos y llega a toda la organización. Entiende los 12 dominios de la agilidad empresarial articulados en torno al cliente, y aprende a desarrollarlos para que tu organización prospere en mercados impredecibles.</p>
+        <div class="course-audience"><strong>Para quién:</strong> Empresarios, directivos, ejecutivos y líderes que toman decisiones estratégicas en sus organizaciones.</div>
+        <div class="course-learns">
+          <div class="course-learns-title">Lo que aprenderás</div>
+          <div class="learn-item">Los 12 dominios de Business Agility: relaciones, liderazgo, operaciones e individuos con el cliente al centro</div>
+          <div class="learn-item">Cómo construir una fuerza laboral ágil: seguridad psicológica, atracción de talento y gobernanza ágil</div>
+          <div class="learn-item">Agilidad estratégica: visión clara del mercado, estrategia emergente e innovación creadora de mercado</div>
+          <div class="learn-item">Mentalidad de crecimiento, excelencia artesanal y sentido de propiedad como pilares individuales</div>
+          <div class="learn-item">Agilidad estructural y de procesos: equipos de entrega de valor y portafolios adaptables</div>
+        </div>
+        <div class="course-exam">
+          <div class="exam-chip">📝 <span>20</span> preguntas</div>
+          <div class="exam-chip">⏱ <span>60</span> min</div>
+          <div class="exam-chip">✅ <span>60%</span> aprobación</div>
+          <div class="exam-chip">🌐 En línea</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCRUM MASTER -->
+    <div class="course-card reveal">
+      <div class="course-header">
+        <div class="course-icon">⚙️</div>
+        <div class="course-meta">
+          <div class="course-name">Scrum Master</div>
+          <span class="course-badge">SMPC®</span>
+        </div>
+      </div>
+      <div class="course-body">
+        <p class="course-desc">Domina el marco ágil más utilizado en el mundo. El Scrum Master es el facilitador que protege al equipo, elimina impedimentos y garantiza que Scrum se practique con rigor para multiplicar la productividad y la calidad de entrega.</p>
+        <div class="course-audience"><strong>Para quién:</strong> Profesionales de tecnología, consultores, líderes de equipos y gestores de proyectos que trabajan en entornos ágiles o quieren migrar a ellos.</div>
+        <div class="course-learns">
+          <div class="course-learns-title">Lo que aprenderás</div>
+          <div class="learn-item">Teoría de Scrum: empirismo, los 3 pilares (transparencia, inspección y adaptación) y los 5 valores</div>
+          <div class="learn-item">Roles del Scrum Team: Scrum Master, Product Owner y Developers con sus responsabilidades reales</div>
+          <div class="learn-item">Todos los eventos de Scrum: Sprint Planning, Daily Scrum, Sprint Review y Sprint Retrospective</div>
+          <div class="learn-item">Artefactos: Product Backlog, Sprint Backlog e Incremento con sus compromisos asociados</div>
+          <div class="learn-item">Prácticas ágiles clave: User Stories, Planning Póker, Kanban, Velocidad y Scrum de Scrums</div>
+        </div>
+        <div class="course-exam">
+          <div class="exam-chip">📝 <span>40</span> preguntas</div>
+          <div class="exam-chip">⏱ <span>60</span> min</div>
+          <div class="exam-chip">✅ <span>80%</span> aprobación</div>
+          <div class="exam-chip">🌐 En línea</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCALED SCRUM -->
+    <div class="course-card reveal">
+      <div class="course-header">
+        <div class="course-icon">📡</div>
+        <div class="course-meta">
+          <div class="course-name">Scaled Scrum</div>
+          <span class="course-badge">SSPC™</span>
+        </div>
+      </div>
+      <div class="course-body">
+        <p class="course-desc">Lleva Scrum más allá de un equipo. Aprende a coordinar múltiples equipos Scrum trabajando hacia un mismo producto, con roles, artefactos y eventos rediseñados para escalar la agilidad a nivel organizacional sin perder velocidad ni calidad.</p>
+        <div class="course-audience"><strong>Para quién:</strong> Scrum Masters, Product Owners, coaches ágiles y líderes ejecutivos que buscan implementar agilidad a escala en su organización.</div>
+        <div class="course-learns">
+          <div class="course-learns-title">Lo que aprenderás</div>
+          <div class="learn-item">Necesidades y desafíos que llevan a escalar Scrum: cuándo y por qué hacerlo</div>
+          <div class="learn-item">Roles ampliados: Scrum Master a escala, Product Owner de múltiples backlogs y equipo ejecutivo</div>
+          <div class="learn-item">Eventos escalados: Scrum de Scrums, lanzamientos estratégicos y coordinación entre equipos</div>
+          <div class="learn-item">Métricas y mejora continua: ciclos de inspección y adaptación en entornos complejos</div>
+          <div class="learn-item">Implementación práctica y agile coaching para liderar la transformación escalada</div>
+        </div>
+        <div class="course-exam">
+          <div class="exam-chip">📝 <span>40</span> preguntas</div>
+          <div class="exam-chip">⏱ <span>60</span> min</div>
+          <div class="exam-chip">✅ <span>80%</span> aprobación</div>
+          <div class="exam-chip">🌐 En línea</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     ECOSISTEMA 2 — PRODUCT & FLOW
+════════════════════════════════════════════════════════ -->
+<section class="eco-section" id="eco-product">
+  <div class="eco-header reveal">
+    <div class="eco-eyebrow">Ecosistema 02</div>
+    <h2 class="eco-title">Product & Flow</h2>
+    <p class="eco-desc">Gestiona productos y flujos de trabajo con precisión y visibilidad. Aprende a representar al cliente, priorizar lo que realmente importa y hacer que el trabajo fluya sin cuellos de botella.</p>
+  </div>
+  <div class="courses-grid">
+
+    <!-- SCRUM PRODUCT OWNER -->
+    <div class="course-card reveal">
+      <div class="course-header">
+        <div class="course-icon">🎯</div>
+        <div class="course-meta">
+          <div class="course-name">Scrum Product Owner</div>
+          <span class="course-badge">SPOPC®</span>
+        </div>
+      </div>
+      <div class="course-body">
+        <p class="course-desc">El Product Owner es la voz del cliente dentro del equipo Scrum. Aprende a construir y priorizar el backlog, escribir historias de usuario efectivas, gestionar la visión del producto y maximizar el valor entregado en cada sprint.</p>
+        <div class="course-audience"><strong>Para quién:</strong> Profesionales de producto, dueños de negocio, gestores de proyectos y cualquier persona involucrada en la definición de requerimientos y priorización de entregables.</div>
+        <div class="course-learns">
+          <div class="course-learns-title">Lo que aprenderás</div>
+          <div class="learn-item">Rol del Product Owner: responsabilidades, características y cómo definir la visión del producto</div>
+          <div class="learn-item">Product Backlog: construcción, refinamiento progresivo, priorización y criterio DEEP</div>
+          <div class="learn-item">Historias de usuario: estructura, modelo INVEST, criterios de aceptación y task board</div>
+          <div class="learn-item">Product Management ágil: Product Market Fit, MVP, Lean, Modelo Kano y roadmaps ágiles</div>
+          <div class="learn-item">Participación activa en todos los eventos Scrum como representante del cliente</div>
+        </div>
+        <div class="course-exam">
+          <div class="exam-chip">📝 <span>40</span> preguntas</div>
+          <div class="exam-chip">⏱ <span>60</span> min</div>
+          <div class="exam-chip">✅ <span>80%</span> aprobación</div>
+          <div class="exam-chip">🌐 En línea</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KANBAN ESSENTIALS -->
+    <div class="course-card reveal">
+      <div class="course-header">
+        <div class="course-icon">🔲</div>
+        <div class="course-meta">
+          <div class="course-name">Kanban Essentials</div>
+          <span class="course-badge">KEPC™</span>
+        </div>
+      </div>
+      <div class="course-body">
+        <p class="course-desc">Visualiza, gestiona y optimiza el flujo de trabajo en cualquier tipo de equipo u organización. Kanban no reemplaza tu proceso: lo hace visible, predecible y continuamente mejorable. Una herramienta tan poderosa como simple de entender.</p>
+        <div class="course-audience"><strong>Para quién:</strong> Profesionales de cualquier industria que quieran gestionar mejor el trabajo en progreso, reducir cuellos de botella y mejorar la predictibilidad de sus entregas.</div>
+        <div class="course-learns">
+          <div class="course-learns-title">Lo que aprenderás</div>
+          <div class="learn-item">Fundamentos de Kanban: historia, tablero, valores, principios de gestión del cambio y agendas organizacionales</div>
+          <div class="learn-item">Sistemas Pull vs Push, Teoría de Flujo y la Ley de Little como base científica de Kanban</div>
+          <div class="learn-item">Las 6 prácticas Kanban: visualizar, limitar WIP, gestionar el flujo, políticas explícitas, feedback y mejora colaborativa</div>
+          <div class="learn-item">Diseño del tablero, tarjetas Kanban, clases de servicio y cadencias de retroalimentación</div>
+          <div class="learn-item">Métricas, Diagrama de Flujo Acumulado, predictibilidad y análisis Montecarlo</div>
+        </div>
+        <div class="course-exam">
+          <div class="exam-chip">📝 <span>40</span> preguntas</div>
+          <div class="exam-chip">⏱ <span>60</span> min</div>
+          <div class="exam-chip">✅ <span>80%</span> aprobación</div>
+          <div class="exam-chip">🌐 En línea</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     ECOSISTEMA 3 — INNOVACIÓN & DISEÑO
+════════════════════════════════════════════════════════ -->
+<section class="eco-section" id="eco-innovacion">
+  <div class="eco-header reveal">
+    <div class="eco-eyebrow">Ecosistema 03</div>
+    <h2 class="eco-title">Innovación & Diseño</h2>
+    <p class="eco-desc">Piensa diferente para crear diferente. Estos programas te equipan con metodologías centradas en las personas para resolver problemas reales, generar ideas de alto impacto y convertirlas en soluciones tangibles en tiempo récord.</p>
+  </div>
+  <div class="courses-grid">
+
+    <!-- DESIGN THINKING -->
+    <div class="course-card reveal">
+      <div class="course-header">
+        <div class="course-icon">🎨</div>
+        <div class="course-meta">
+          <div class="course-name">Design Thinking</div>
+          <span class="course-badge">DTPC®</span>
+        </div>
+      </div>
+      <div class="course-body">
+        <p class="course-desc">Una metodología que pone a las personas en el centro de cualquier solución. Aprende a empatizar con usuarios reales, definir el problema correcto, generar ideas creativas, prototipar rápido y evaluar con usuarios antes de invertir en desarrollo.</p>
+        <div class="course-audience"><strong>Para quién:</strong> Profesionales que quieren incorporar el pensamiento creativo y el diseño centrado en el usuario a sus proyectos, productos y servicios.</div>
+        <div class="course-learns">
+          <div class="course-learns-title">Lo que aprenderás</div>
+          <div class="learn-item">Las 5 fases de Design Thinking: Empatizar, Definir, Idear, Prototipar y Evaluar</div>
+          <div class="learn-item">Herramientas de empatía: Mapa de Empatía, Método Persona, Journey Maps y técnicas de observación</div>
+          <div class="learn-item">Técnicas de ideación: Brainstorming, SCAMPER, Reverse Brainstorming y Affinity Diagram</div>
+          <div class="learn-item">Prototipado rápido con Storyboard y evaluación con Focus Groups y pruebas de usabilidad</div>
+          <div class="learn-item">Conexión de Design Thinking con Lean y Agile para máxima efectividad</div>
+        </div>
+        <div class="course-exam">
+          <div class="exam-chip">📝 <span>40</span> preguntas</div>
+          <div class="exam-chip">⏱ <span>60</span> min</div>
+          <div class="exam-chip">✅ <span>80%</span> aprobación</div>
+          <div class="exam-chip">🌐 En línea</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DESIGN SPRINT -->
+    <div class="course-card reveal">
+      <div class="course-header">
+        <div class="course-icon">⚡</div>
+        <div class="course-meta">
+          <div class="course-name">Design Sprint</div>
+          <span class="course-badge">DSPC™</span>
+        </div>
+      </div>
+      <div class="course-body">
+        <p class="course-desc">Del problema a la solución validada en 4 días. El Design Sprint 2.0 —creado en Google Ventures— es el método para resolver grandes retos de negocio a través de prototipado y testeo acelerado, sin arriesgar meses de desarrollo.</p>
+        <div class="course-audience"><strong>Para quién:</strong> Innovadores, gestores de proyectos, agilistas, dueños de startups y equipos que necesitan tomar decisiones rápidas con validación real de usuarios.</div>
+        <div class="course-learns">
+          <div class="course-learns-title">Lo que aprenderás</div>
+          <div class="learn-item">Fundamentos del Design Sprint 2.0: qué es, cuándo usarlo y cuándo NO es la herramienta adecuada</div>
+          <div class="learn-item">Agenda de los 4 días: roles, sala de guerra y dinámicas de cada jornada</div>
+          <div class="learn-item">Flujo de prueba de usuario y construcción del Storyboard como base del prototipo</div>
+          <div class="learn-item">Combinación de Design Thinking, Lean Startup y Agile en un método integrado</div>
+          <div class="learn-item">Cómo moderar y facilitar un sprint: herramientas, técnicas y consejos prácticos</div>
+        </div>
+        <div class="course-exam">
+          <div class="exam-chip">📝 <span>20</span> preguntas</div>
+          <div class="exam-chip">⏱ <span>60</span> min</div>
+          <div class="exam-chip">✅ <span>60%</span> aprobación</div>
+          <div class="exam-chip">🌐 En línea</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INNOVATION MANAGEMENT -->
+    <div class="course-card reveal">
+      <div class="course-header">
+        <div class="course-icon">💡</div>
+        <div class="course-meta">
+          <div class="course-name">Innovation Management</div>
+          <span class="course-badge">IMPC™</span>
+        </div>
+      </div>
+      <div class="course-body">
+        <p class="course-desc">La innovación no es un accidente: se gestiona. Aprende a desarrollar inteligencias múltiples del innovador, aplicar metodologías de innovación probadas y construir una cultura organizacional que genere ideas disruptivas de forma sistemática.</p>
+        <div class="course-audience"><strong>Para quién:</strong> Profesionales que quieren incorporar la innovación como competencia profesional y líderes que buscan transformar la cultura de sus organizaciones.</div>
+        <div class="course-learns">
+          <div class="course-learns-title">Lo que aprenderás</div>
+          <div class="learn-item">Los 10 tipos de innovación y cómo combinarlos para generar mayor impacto competitivo</div>
+          <div class="learn-item">Metodologías de innovación: Design Thinking, Lean Startup, Océano Azul, TRIZ y Forth Innovation Method</div>
+          <div class="learn-item">Visual Thinking como herramienta para convertir ideas complejas en imágenes accionables</div>
+          <div class="learn-item">Generación de Modelos de Negocio: Business Model Canvas, Value Proposition Canvas y Lean Canvas</div>
+          <div class="learn-item">Customer Experience, Management vs Leadership y Lean Software Development aplicados a la innovación</div>
+        </div>
+        <div class="course-exam">
+          <div class="exam-chip">📝 <span>40</span> preguntas</div>
+          <div class="exam-chip">⏱ <span>60</span> min</div>
+          <div class="exam-chip">✅ <span>60%</span> aprobación</div>
+          <div class="exam-chip">🌐 En línea</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BUSINESS MODEL CANVAS -->
+    <div class="course-card reveal">
+      <div class="course-header">
+        <div class="course-icon">🗺️</div>
+        <div class="course-meta">
+          <div class="course-name">Business Model Canvas</div>
+          <span class="course-badge">BMCEPC™</span>
+        </div>
+      </div>
+      <div class="course-body">
+        <p class="course-desc">La herramienta más utilizada en el mundo para diseñar, analizar e iterar modelos de negocio en una sola página. Domina los 9 bloques del Canvas, aprende Lean Canvas para startups y entiende cómo innovar en el modelo de negocio de cualquier empresa.</p>
+        <div class="course-audience"><strong>Para quién:</strong> Emprendedores, fundadores, consultores, directores de producto, analistas de negocio y cualquier profesional involucrado en estrategia y desarrollo de negocios.</div>
+        <div class="course-learns">
+          <div class="course-learns-title">Lo que aprenderás</div>
+          <div class="learn-item">Los 9 bloques del Business Model Canvas y cómo construir cada uno estratégicamente</div>
+          <div class="learn-item">Cómo usar el BMC para comunicar una idea, analizar un modelo existente e iterar hacia uno mejor</div>
+          <div class="learn-item">Lean Canvas: qué lo diferencia del BMC y cuándo es la herramienta correcta para startups</div>
+          <div class="learn-item">Casos reales de modelos de negocio de compañías globales y sus patrones de innovación</div>
+          <div class="learn-item">Técnicas de diseño para crear modelos más innovadores y posicionarlos en mercados competitivos</div>
+        </div>
+        <div class="course-exam">
+          <div class="exam-chip">📝 <span>20</span> preguntas</div>
+          <div class="exam-chip">⏱ <span>60</span> min</div>
+          <div class="exam-chip">✅ <span>60%</span> aprobación</div>
+          <div class="exam-chip">🌐 En línea</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     ECOSISTEMA 4 — GESTIÓN & MARKETING
+════════════════════════════════════════════════════════ -->
+<section class="eco-section" id="eco-gestion">
+  <div class="eco-header reveal">
+    <div class="eco-eyebrow">Ecosistema 04</div>
+    <h2 class="eco-title">Gestión & Marketing</h2>
+    <p class="eco-desc">Alinea tu organización hacia resultados medibles y construye presencia digital que convierta. Programas para quienes quieren unir estrategia con ejecución, y métricas con impacto real.</p>
+  </div>
+  <div class="courses-grid">
+
+    <!-- OKR MASTER -->
+    <div class="course-card reveal">
+      <div class="course-header">
+        <div class="course-icon">🏹</div>
+        <div class="course-meta">
+          <div class="course-name">OKR Master</div>
+          <span class="course-badge">OKRMCP™</span>
+        </div>
+      </div>
+      <div class="course-body">
+        <p class="course-desc">Conviértete en el referente de OKR en tu organización. Este programa de 2 días forma a los profesionales capaces de implementar, facilitar y hacer coaching del ciclo completo de Objetivos y Resultados Clave, desde la alineación estratégica hasta las revisiones trimestrales.</p>
+        <div class="course-audience"><strong>Para quién:</strong> Directivos, líderes de cambio, consultores, coaches ágiles y profesionales que liderarán la implementación de OKR en sus organizaciones.</div>
+        <div class="course-learns">
+          <div class="course-learns-title">Lo que aprenderás</div>
+          <div class="learn-item">Cómo escribir Objetivos aspiracionales y Resultados Clave que midan verdadero impacto de negocio</div>
+          <div class="learn-item">El ciclo OKR completo: planificación, check-ins semanales, revisiones trimestrales y calificación</div>
+          <div class="learn-item">Alineación vertical y horizontal de OKR en todos los niveles de la organización</div>
+          <div class="learn-item">Roles OKR Master y OKR Champion: responsabilidades, coaching y gestión del cambio cultural</div>
+          <div class="learn-item">Integración de OKR con Kanban, CFR (Conversaciones-Feedback-Reconocimiento) y herramientas digitales</div>
+        </div>
+        <div class="course-exam">
+          <div class="exam-chip">📝 <span>40</span> preguntas</div>
+          <div class="exam-chip">⏱ <span>60</span> min</div>
+          <div class="exam-chip">✅ <span>80%</span> aprobación</div>
+          <div class="exam-chip">🌐 En línea</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OKR PROFESSIONAL -->
+    <div class="course-card reveal">
+      <div class="course-header">
+        <div class="course-icon">🎯</div>
+        <div class="course-meta">
+          <div class="course-name">OKR Professional</div>
+          <span class="course-badge">OKRCP™</span>
+        </div>
+      </div>
+      <div class="course-body">
+        <p class="course-desc">El programa avanzado para dominar OKR desde sus fundamentos hasta su nivel más sofisticado. Aprende a facilitar todos los niveles del ciclo de vida de OKR, gestionar objetivos estratégicos, tácticos y operativos, y hacer que la cultura OKR sea accesible para toda la organización.</p>
+        <div class="course-audience"><strong>Para quién:</strong> Gerentes, líderes de RRHH, Product Owners, project managers y profesionales que ya usan sistemas de gestión de objetivos y quieren dar el salto al siguiente nivel.</div>
+        <div class="course-learns">
+          <div class="course-learns-title">Lo que aprenderás</div>
+          <div class="learn-item">OKR vs KPI, BSC, MBO y SMART: diferencias, ventajas y cuándo usar cada sistema</div>
+          <div class="learn-item">Ciclo de vida completo: cadencias anidadas de desarrollo, chequeo y resultados trimestrales</div>
+          <div class="learn-item">Roles y artefactos OKR: Coach, Owner, gestión visual y herramientas de software</div>
+          <div class="learn-item">OKR avanzado: estrategias de adopción, OKRs para Product Owners y transformación cultural</div>
+          <div class="learn-item">Casos de estudio reales de startups y grandes empresas con implementación exitosa de OKR</div>
+        </div>
+        <div class="course-exam">
+          <div class="exam-chip">📝 <span>40</span> preguntas</div>
+          <div class="exam-chip">⏱ <span>60</span> min</div>
+          <div class="exam-chip">✅ <span>60%</span> aprobación</div>
+          <div class="exam-chip">🌐 En línea</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIGITAL MARKETING -->
+    <div class="course-card reveal">
+      <div class="course-header">
+        <div class="course-icon">📣</div>
+        <div class="course-meta">
+          <div class="course-name">Digital Marketing</div>
+          <span class="course-badge">DMPC™</span>
+        </div>
+      </div>
+      <div class="course-body">
+        <p class="course-desc">Domina el ecosistema completo del marketing digital: desde la atracción hasta la conversión. Aprende a construir una estrategia que integre SEO, SEM, email marketing, redes sociales y retargeting, conectando cada canal con resultados de negocio medibles.</p>
+        <div class="course-audience"><strong>Para quién:</strong> Profesionales de marketing, emprendedores, dueños de negocio y cualquier persona que quiera maximizar la visibilidad y conversión de su presencia digital.</div>
+        <div class="course-learns">
+          <div class="course-learns-title">Lo que aprenderás</div>
+          <div class="learn-item">Marketing de contenidos, Inbound Marketing, Buyer Persona y Customer Journey en el entorno digital</div>
+          <div class="learn-item">SEO y SEM: principios fundamentales, Google Crawler, White Hat vs Black Hat y optimización web</div>
+          <div class="learn-item">Email marketing: segmentación, automatización, marketing de goteo y cumplimiento legal</div>
+          <div class="learn-item">Marketing en redes sociales: gestión, conversión de fans en compradores y herramientas de supervisión</div>
+          <div class="learn-item">Retargeting, generación de leads, landing pages y seguimiento con KPIs de negocio</div>
+        </div>
+        <div class="course-exam">
+          <div class="exam-chip">📝 <span>20</span> preguntas</div>
+          <div class="exam-chip">⏱ <span>60</span> min</div>
+          <div class="exam-chip">✅ <span>60%</span> aprobación</div>
+          <div class="exam-chip">🌐 En línea</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CTA FINAL ── -->
+<section id="acad-cta">
+  <div class="cta-inner">
+    <div class="cta-text">
+      <h2>¿Listo para dar el siguiente paso?</h2>
+      <p>Habla con un asesor de Etrazia Academy y encuentra el programa que mejor se adapta a tu momento profesional o al de tu equipo. Sin fórmulas. Sin presiones.</p>
+    </div>
+    <div class="cta-btns">
+      <a href="https://wa.me/51922339690?text=Hola%20Etrazia%20Academy%2C%20quiero%20conocer%20m%C3%A1s%20sobre%20sus%20programas" class="btn-primary" target="_blank" rel="noopener">Consultar por WhatsApp →</a>
+      <a href="https://wa.me/51922339690?text=Hola%2C%20me%20interesa%20llevar%20un%20programa%20In-Company%20para%20mi%20equipo" class="incorp-link" target="_blank" rel="noopener">📋 Programa In-Company para mi empresa</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div style="margin-bottom:16px">
+          <svg width="40" height="40" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 22 C16 15.37 21.37 10 28 10 C34.63 10 40 15.37 40 22 C40 28.63 34.63 34 28 34" stroke="#1B2B4B" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <path d="M28 22 C28 28.63 22.63 34 16 34 C9.37 34 4 28.63 4 22 C4 15.37 9.37 10 16 10" stroke="url(#logoGradF)" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <rect x="17.5" y="17.5" width="9" height="9" rx="1.5" fill="#D97706" transform="rotate(45 22 22)"/>
+            <defs><linearGradient id="logoGradF" x1="28" y1="10" x2="4" y2="34" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#B87333"/><stop offset="100%" stop-color="#D97706"/></linearGradient></defs>
+          </svg>
+          <span style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:16px;letter-spacing:0.15em;color:#F8FAFC;display:block;margin-top:8px">ETRAZIA</span>
+        </div>
+        <p class="footer-tagline">Ecosistema de crecimiento para personas, emprendedores y organizaciones.<br><br>Lima, Perú · 2026</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Ecosistema</div>
+        <ul class="footer-links">
+          <li><a href="https://etrazia.com#verticals">Consulting</a></li>
+          <li><a href="https://etrazia.com#verticals">Talent</a></li>
+          <li><a href="https://etrazia.com/academy">Academy</a></li>
+          <li><a href="https://etrazia.com#verticals">Ventures</a></li>
+          <li><a href="https://etraziapp.com">Apps</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">EtraziApp</div>
+        <ul class="footer-links">
+          <li><a href="https://etraziapp.com">Plataforma</a></li>
+          <li><a href="https://etraziapp.com/#precios">Precios</a></li>
+          <li><a href="https://etraziapp.com">Vcontrol</a></li>
+          <li><a href="https://etraziapp.com">Vruta</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contacto</div>
+        <ul class="footer-links">
+          <li><a href="mailto:academy@etrazia.com">academy@etrazia.com</a></li>
+          <li><a href="https://wa.me/51922339690" target="_blank" rel="noopener">WhatsApp +51 922 339 690</a></li>
+          <li><a href="https://etrazia.com">etrazia.com</a></li>
+        </ul>
+        <div style="margin-top:24px">
+          <a href="https://wa.me/51922339690" class="btn-primary" style="font-size:11px;padding:12px 20px" target="_blank" rel="noopener">Consultar programa →</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 <span>ETRAZIA</span> · Todos los derechos reservados</div>
+      <div class="footer-legal">
+        <a href="#">Términos</a>
+        <a href="#">Privacidad</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── Hamburger ──
+(function(){
+  const btn = document.getElementById('nav-hamburger');
+  const overlay = document.getElementById('nav-mobile');
+  const links = document.querySelectorAll('.nav-mobile-link');
+  if(!btn||!overlay) return;
+  function openMenu(){btn.classList.add('open');overlay.classList.add('open');btn.setAttribute('aria-expanded','true');overlay.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}
+  function closeMenu(){btn.classList.remove('open');overlay.classList.remove('open');btn.setAttribute('aria-expanded','false');overlay.setAttribute('aria-hidden','true');document.body.style.overflow=''}
+  btn.addEventListener('click',()=>btn.classList.contains('open')?closeMenu():openMenu());
+  links.forEach(l=>l.addEventListener('click',closeMenu));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
+})();
+
+// ── Scroll reveal ──
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// ── Eco nav active on scroll ──
+const sections = ['eco-agilidad','eco-product','eco-innovacion','eco-gestion'];
+const navBtns = document.querySelectorAll('.eco-nav-btn');
+const scrollObserver = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const id = e.target.id;
+      const idx = sections.indexOf(id);
+      navBtns.forEach((b,i)=>b.classList.toggle('active',i===idx));
+    }
+  });
+},{threshold:0.35,rootMargin:'-80px 0px -40% 0px'});
+sections.forEach(id=>{const el=document.getElementById(id);if(el)scrollObserver.observe(el)});
+
+// ── Scroll to section ──
+function scrollToSection(id,btn){
+  const el=document.getElementById(id);
+  if(!el) return;
+  const offset=140;
+  const top=el.getBoundingClientRect().top+window.scrollY-offset;
+  window.scrollTo({top,behavior:'smooth'});
+  navBtns.forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+// ── Nav scroll effect ──
+window.addEventListener('scroll',()=>{
+  const nav=document.getElementById('navbar');
+  nav.style.borderBottomColor=window.scrollY>60?'rgba(184,115,51,0.2)':'rgba(184,115,51,0.1)';
+});
+</script>
+</body>
+</html>
