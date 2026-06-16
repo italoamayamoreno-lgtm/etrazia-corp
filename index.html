@@ -1072,11 +1072,15 @@ section{
 }
 
 .what-top{
-  max-width:720px;
+  width:100%;
   margin-bottom:72px;
 }
 .what-title{margin-bottom:0}
-.what-intro{max-width:640px}
+.what-intro{
+  max-width:100%;
+  text-align:justify;
+  text-align-last:left;
+}
 
 /* Fila inferior: diagrama + pilares */
 .what-bottom{
@@ -1155,12 +1159,12 @@ section{
 /* Número decorativo de fondo */
 .pillar-num-bg{
   position:absolute;
-  top:-10px;right:12px;
+  top:8px;right:16px;
   font-family:'Montserrat',sans-serif;
-  font-size:72px;
+  font-size:64px;
   font-weight:900;
   color:var(--copper);
-  opacity:0.045;
+  opacity:0.055;
   line-height:1;
   pointer-events:none;
   user-select:none;
@@ -2763,108 +2767,106 @@ footer{
       <svg id="eco-svg" viewBox="0 0 440 440" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <radialGradient id="coreGrad" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#B87333" stop-opacity="0.35"/>
-            <stop offset="100%" stop-color="#B87333" stop-opacity="0.04"/>
+            <stop offset="0%" stop-color="#B87333" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#B87333" stop-opacity="0.03"/>
           </radialGradient>
-          <radialGradient id="nodeGrad" cx="50%" cy="50%" r="50%">
+          <radialGradient id="nodeGrad" cx="30%" cy="30%" r="70%">
             <stop offset="0%" stop-color="#1a2438"/>
             <stop offset="100%" stop-color="#0d1525"/>
           </radialGradient>
-          <filter id="glow">
-            <feGaussianBlur stdDeviation="3" result="blur"/>
-            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-          </filter>
-          <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#B87333" stop-opacity="0"/>
-            <stop offset="50%" stop-color="#B87333" stop-opacity="0.5"/>
-            <stop offset="100%" stop-color="#B87333" stop-opacity="0"/>
+          <linearGradient id="coreLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#B87333"/>
+            <stop offset="100%" stop-color="#D97706"/>
           </linearGradient>
         </defs>
 
-        <!-- Orbit ring -->
-        <circle cx="220" cy="220" r="155" fill="none" stroke="rgba(184,115,51,0.08)" stroke-width="1" stroke-dasharray="4 6"/>
-        <circle cx="220" cy="220" r="105" fill="none" stroke="rgba(184,115,51,0.05)" stroke-width="1"/>
+        <!-- Orbit rings -->
+        <circle cx="220" cy="220" r="155" fill="none" stroke="rgba(184,115,51,0.1)" stroke-width="1" stroke-dasharray="4 6"/>
+        <circle cx="220" cy="220" r="95"  fill="none" stroke="rgba(184,115,51,0.06)" stroke-width="1"/>
 
-        <!-- Líneas de conexión entre nodos (ocultas, JS las activa) -->
-        <!-- Consulting(220,65) Talent(375,155) Academy(375,285) Ventures(220,375) Apps(65,220) -->
-        <g class="eco-lines" opacity="0.3">
-          <line x1="220" y1="65"  x2="375" y2="155" stroke="#B87333" stroke-width="1" stroke-dasharray="3 5" class="eco-line"/>
-          <line x1="375" y1="155" x2="375" y2="285" stroke="#B87333" stroke-width="1" stroke-dasharray="3 5" class="eco-line"/>
-          <line x1="375" y1="285" x2="220" y2="375" stroke="#B87333" stroke-width="1" stroke-dasharray="3 5" class="eco-line"/>
-          <line x1="220" y1="375" x2="65"  y2="220" stroke="#B87333" stroke-width="1" stroke-dasharray="3 5" class="eco-line"/>
-          <line x1="65"  y1="220" x2="220" y2="65"  stroke="#B87333" stroke-width="1" stroke-dasharray="3 5" class="eco-line"/>
-          <!-- Diagonales -->
-          <line x1="220" y1="65"  x2="375" y2="285" stroke="#D97706" stroke-width="0.5" stroke-dasharray="2 8" opacity="0.4" class="eco-line"/>
-          <line x1="375" y1="155" x2="220" y2="375" stroke="#D97706" stroke-width="0.5" stroke-dasharray="2 8" opacity="0.4" class="eco-line"/>
-          <line x1="375" y1="155" x2="65"  y2="220" stroke="#D97706" stroke-width="0.5" stroke-dasharray="2 8" opacity="0.4" class="eco-line"/>
-          <line x1="375" y1="285" x2="220" y2="65"  stroke="#D97706" stroke-width="0.5" stroke-dasharray="2 8" opacity="0.4" class="eco-line"/>
-          <line x1="220" y1="375" x2="375" y2="155" stroke="#D97706" stroke-width="0.5" stroke-dasharray="2 8" opacity="0.4" class="eco-line"/>
+        <!-- Líneas al core desde cada nodo -->
+        <g opacity="0.18">
+          <line x1="220.0" y1="65.0"  x2="220" y2="220" stroke="#B87333" stroke-width="1"/>
+          <line x1="367.4" y1="172.1" x2="220" y2="220" stroke="#B87333" stroke-width="1"/>
+          <line x1="311.1" y1="345.4" x2="220" y2="220" stroke="#B87333" stroke-width="1"/>
+          <line x1="128.9" y1="345.4" x2="220" y2="220" stroke="#B87333" stroke-width="1"/>
+          <line x1="72.6"  y1="172.1" x2="220" y2="220" stroke="#B87333" stroke-width="1"/>
         </g>
 
-        <!-- Líneas al core -->
-        <g opacity="0.2">
-          <line x1="220" y1="65"  x2="220" y2="220" stroke="#B87333" stroke-width="1"/>
-          <line x1="375" y1="155" x2="220" y2="220" stroke="#B87333" stroke-width="1"/>
-          <line x1="375" y1="285" x2="220" y2="220" stroke="#B87333" stroke-width="1"/>
-          <line x1="220" y1="375" x2="220" y2="220" stroke="#B87333" stroke-width="1"/>
-          <line x1="65"  y1="220" x2="220" y2="220" stroke="#B87333" stroke-width="1"/>
+        <!-- Líneas entre nodos consecutivos (pentágono) -->
+        <g class="eco-lines" opacity="0.28">
+          <line x1="220.0" y1="65.0"  x2="367.4" y2="172.1" stroke="#B87333" stroke-width="1" stroke-dasharray="3 5" class="eco-line"/>
+          <line x1="367.4" y1="172.1" x2="311.1" y2="345.4" stroke="#B87333" stroke-width="1" stroke-dasharray="3 5" class="eco-line"/>
+          <line x1="311.1" y1="345.4" x2="128.9" y2="345.4" stroke="#B87333" stroke-width="1" stroke-dasharray="3 5" class="eco-line"/>
+          <line x1="128.9" y1="345.4" x2="72.6"  y2="172.1" stroke="#B87333" stroke-width="1" stroke-dasharray="3 5" class="eco-line"/>
+          <line x1="72.6"  y1="172.1" x2="220.0" y2="65.0"  stroke="#B87333" stroke-width="1" stroke-dasharray="3 5" class="eco-line"/>
+        </g>
+        <!-- Diagonales internas (estrella) -->
+        <g opacity="0.12">
+          <line x1="220.0" y1="65.0"  x2="311.1" y2="345.4" stroke="#D97706" stroke-width="0.8" stroke-dasharray="2 7"/>
+          <line x1="220.0" y1="65.0"  x2="128.9" y2="345.4" stroke="#D97706" stroke-width="0.8" stroke-dasharray="2 7"/>
+          <line x1="367.4" y1="172.1" x2="128.9" y2="345.4" stroke="#D97706" stroke-width="0.8" stroke-dasharray="2 7"/>
+          <line x1="367.4" y1="172.1" x2="72.6"  y2="172.1" stroke="#D97706" stroke-width="0.8" stroke-dasharray="2 7"/>
+          <line x1="311.1" y1="345.4" x2="72.6"  y2="172.1" stroke="#D97706" stroke-width="0.8" stroke-dasharray="2 7"/>
         </g>
 
-        <!-- Core -->
-        <circle cx="220" cy="220" r="52" fill="url(#coreGrad)" stroke="rgba(184,115,51,0.35)" stroke-width="1.5"/>
-        <circle cx="220" cy="220" r="38" fill="rgba(11,17,32,0.9)" stroke="rgba(184,115,51,0.2)" stroke-width="1"/>
-        <!-- Logo mark dentro del core -->
-        <g transform="translate(202,202)">
-          <path d="M8 18 C8 11.37 13.37 6 20 6 C26.63 6 32 11.37 32 18 C32 24.63 26.63 30 20 30" stroke="rgba(27,43,75,0.8)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-          <path d="M20 18 C20 24.63 14.63 30 8 30 C1.37 30 -4 24.63 -4 18 C-4 11.37 1.37 6 8 6" stroke="url(#coreLineGrad)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-          <rect x="8.5" y="13.5" width="7" height="7" rx="1" fill="#D97706" transform="rotate(45 12 17)"/>
-          <defs>
-            <linearGradient id="coreLineGrad" x1="20" y1="6" x2="-4" y2="30" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#B87333"/>
-              <stop offset="100%" stop-color="#D97706"/>
-            </linearGradient>
-          </defs>
+        <!-- ── CORE ── -->
+        <circle cx="220" cy="220" r="56" fill="url(#coreGrad)" stroke="rgba(184,115,51,0.3)" stroke-width="1.5"/>
+        <circle cx="220" cy="220" r="42" fill="rgba(11,17,32,0.95)" stroke="rgba(184,115,51,0.18)" stroke-width="1"/>
+        <!-- Isotipo Etrazia: doble anillo entrelazado, centrado en (220,212) -->
+        <g transform="translate(207,208)">
+          <!-- anillo izquierdo (oscuro) -->
+          <path d="M9 12 C9 6.48 13.48 2 19 2 C24.52 2 29 6.48 29 12 C29 17.52 24.52 22 19 22" 
+                stroke="rgba(27,43,75,0.7)" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+          <!-- anillo derecho (copper) -->
+          <path d="M19 12 C19 17.52 14.52 22 9 22 C3.48 22 -1 17.52 -1 12 C-1 6.48 3.48 2 9 2" 
+                stroke="url(#coreLogoGrad)" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+          <!-- diamante central -->
+          <rect x="10" y="8" width="6" height="6" rx="0.8" fill="#D97706" transform="rotate(45 13 11)"/>
         </g>
-        <text x="220" y="234" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="7" font-weight="800" fill="#B87333" letter-spacing="2" opacity="0.7">ETRAZIA</text>
+        <!-- Texto ETRAZIA bajo el isotipo -->
+        <text x="220" y="238" text-anchor="middle" 
+              font-family="Montserrat,sans-serif" font-size="6.5" font-weight="800" 
+              fill="#B87333" letter-spacing="2.5" opacity="0.85">ETRAZIA</text>
 
-        <!-- Nodo 01 — CONSULTING (top center) -->
+        <!-- ── NODO 01 — CONSULTING (top, 220, 65) ── -->
         <g class="eco-node" data-node="consulting" data-tooltip="Estrategia &amp; Transformación" style="cursor:pointer">
-          <circle cx="220" cy="65" r="38" fill="url(#nodeGrad)" stroke="rgba(184,115,51,0.25)" stroke-width="1.5" class="eco-node-ring"/>
-          <circle cx="220" cy="65" r="28" fill="rgba(184,115,51,0.08)" class="eco-node-fill"/>
-          <text x="220" y="60" text-anchor="middle" font-size="18" class="eco-node-emoji">📊</text>
-          <text x="220" y="80" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="7.5" font-weight="700" fill="#F8FAFC" letter-spacing="0.5">CONSULTING</text>
+          <circle cx="220.0" cy="65.0" r="36" fill="url(#nodeGrad)" stroke="rgba(184,115,51,0.25)" stroke-width="1.5" class="eco-node-ring"/>
+          <circle cx="220.0" cy="65.0" r="26" fill="rgba(184,115,51,0.07)" class="eco-node-fill"/>
+          <text x="220.0" y="60.0" text-anchor="middle" font-size="16">📊</text>
+          <text x="220.0" y="79.0" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="7" font-weight="700" fill="#F8FAFC" letter-spacing="0.3">CONSULTING</text>
         </g>
 
-        <!-- Nodo 02 — TALENT (right top) -->
+        <!-- ── NODO 02 — TALENT (367.4, 172.1) ── -->
         <g class="eco-node" data-node="talent" data-tooltip="Capital Humano" style="cursor:pointer">
-          <circle cx="375" cy="155" r="38" fill="url(#nodeGrad)" stroke="rgba(184,115,51,0.25)" stroke-width="1.5" class="eco-node-ring"/>
-          <circle cx="375" cy="155" r="28" fill="rgba(184,115,51,0.08)" class="eco-node-fill"/>
-          <text x="375" y="150" text-anchor="middle" font-size="18" class="eco-node-emoji">🎯</text>
-          <text x="375" y="170" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="7.5" font-weight="700" fill="#F8FAFC" letter-spacing="0.5">TALENT</text>
+          <circle cx="367.4" cy="172.1" r="36" fill="url(#nodeGrad)" stroke="rgba(184,115,51,0.25)" stroke-width="1.5" class="eco-node-ring"/>
+          <circle cx="367.4" cy="172.1" r="26" fill="rgba(184,115,51,0.07)" class="eco-node-fill"/>
+          <text x="367.4" y="167.1" text-anchor="middle" font-size="16">🎯</text>
+          <text x="367.4" y="186.1" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="7" font-weight="700" fill="#F8FAFC" letter-spacing="0.3">TALENT</text>
         </g>
 
-        <!-- Nodo 03 — ACADEMY (right bottom) -->
+        <!-- ── NODO 03 — ACADEMY (311.1, 345.4) ── -->
         <g class="eco-node" data-node="academy" data-tooltip="Formación &amp; Certificación" style="cursor:pointer">
-          <circle cx="375" cy="285" r="38" fill="url(#nodeGrad)" stroke="rgba(184,115,51,0.25)" stroke-width="1.5" class="eco-node-ring"/>
-          <circle cx="375" cy="285" r="28" fill="rgba(184,115,51,0.08)" class="eco-node-fill"/>
-          <text x="375" y="280" text-anchor="middle" font-size="18" class="eco-node-emoji">🎓</text>
-          <text x="375" y="300" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="7.5" font-weight="700" fill="#F8FAFC" letter-spacing="0.5">ACADEMY</text>
+          <circle cx="311.1" cy="345.4" r="36" fill="url(#nodeGrad)" stroke="rgba(184,115,51,0.25)" stroke-width="1.5" class="eco-node-ring"/>
+          <circle cx="311.1" cy="345.4" r="26" fill="rgba(184,115,51,0.07)" class="eco-node-fill"/>
+          <text x="311.1" y="340.4" text-anchor="middle" font-size="16">🎓</text>
+          <text x="311.1" y="359.4" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="7" font-weight="700" fill="#F8FAFC" letter-spacing="0.3">ACADEMY</text>
         </g>
 
-        <!-- Nodo 04 — VENTURES (bottom center) -->
+        <!-- ── NODO 04 — VENTURES (128.9, 345.4) ── -->
         <g class="eco-node" data-node="ventures" data-tooltip="Aceleración de Emprendimientos" style="cursor:pointer">
-          <circle cx="220" cy="375" r="38" fill="url(#nodeGrad)" stroke="rgba(184,115,51,0.25)" stroke-width="1.5" class="eco-node-ring"/>
-          <circle cx="220" cy="375" r="28" fill="rgba(184,115,51,0.08)" class="eco-node-fill"/>
-          <text x="220" y="370" text-anchor="middle" font-size="18" class="eco-node-emoji">🚀</text>
-          <text x="220" y="390" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="7.5" font-weight="700" fill="#F8FAFC" letter-spacing="0.5">VENTURES</text>
+          <circle cx="128.9" cy="345.4" r="36" fill="url(#nodeGrad)" stroke="rgba(184,115,51,0.25)" stroke-width="1.5" class="eco-node-ring"/>
+          <circle cx="128.9" cy="345.4" r="26" fill="rgba(184,115,51,0.07)" class="eco-node-fill"/>
+          <text x="128.9" y="340.4" text-anchor="middle" font-size="16">🚀</text>
+          <text x="128.9" y="359.4" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="7" font-weight="700" fill="#F8FAFC" letter-spacing="0.3">VENTURES</text>
         </g>
 
-        <!-- Nodo 05 — APPS (left center) -->
+        <!-- ── NODO 05 — APPS (72.6, 172.1) ── -->
         <g class="eco-node" data-node="apps" data-tooltip="SaaS para pequeños negocios" style="cursor:pointer">
-          <circle cx="65" cy="220" r="38" fill="url(#nodeGrad)" stroke="rgba(184,115,51,0.25)" stroke-width="1.5" class="eco-node-ring"/>
-          <circle cx="65" cy="220" r="28" fill="rgba(184,115,51,0.08)" class="eco-node-fill"/>
-          <text x="65" y="215" text-anchor="middle" font-size="18" class="eco-node-emoji">⚙️</text>
-          <text x="65" y="235" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="7.5" font-weight="700" fill="#F8FAFC" letter-spacing="0.5">APPS</text>
+          <circle cx="72.6" cy="172.1" r="36" fill="url(#nodeGrad)" stroke="rgba(184,115,51,0.25)" stroke-width="1.5" class="eco-node-ring"/>
+          <circle cx="72.6" cy="172.1" r="26" fill="rgba(184,115,51,0.07)" class="eco-node-fill"/>
+          <text x="72.6" y="167.1" text-anchor="middle" font-size="16">⚙️</text>
+          <text x="72.6" y="186.1" text-anchor="middle" font-family="Montserrat,sans-serif" font-size="7" font-weight="700" fill="#F8FAFC" letter-spacing="0.3">APPS</text>
         </g>
       </svg>
 
