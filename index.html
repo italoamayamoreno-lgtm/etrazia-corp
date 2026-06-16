@@ -423,19 +423,19 @@
   background:linear-gradient(90deg,rgba(184,115,51,0.3),transparent);
 }
 
-/* Grid 4 columnas */
+/* Grid 3 columnas */
 .acad-courses-row{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:8px;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
 }
 
 /* Cards */
 .course-card{
   display:flex;
   align-items:center;
-  gap:10px;
-  padding:11px 14px;
+  gap:12px;
+  padding:14px 18px;
   background:rgba(255,255,255,0.025);
   border:1px solid rgba(184,115,51,0.09);
   border-radius:8px;
@@ -471,8 +471,8 @@
 .course-card-body{flex:1;min-width:0}
 .course-card-name{
   font-family:'Montserrat',sans-serif;
-  font-size:11px;
-  font-weight:600;
+  font-size:12px;
+  font-weight:700;
   color:var(--ice);
   line-height:1.3;
   margin-bottom:2px;
@@ -559,7 +559,7 @@
 .academy-modalities,.academy-cta-bottom{display:none!important}
 
 @media(max-width:1100px){
-  .acad-courses-row{grid-template-columns:repeat(3,1fr)}
+  .acad-courses-row{grid-template-columns:repeat(2,1fr)}
   .acad-panel-header{padding:22px 28px 18px}
   .acad-catalog{padding:20px 28px 0}
   .acad-panel-footer{padding:16px 28px 20px}
@@ -803,16 +803,35 @@ nav{
 .nav-dropdown-menu a span.dd-label{flex:1}
 .nav-dropdown-divider{height:1px;background:rgba(184,115,51,0.1);margin:4px 0}
 
+/* ── HERO 2-COL ── */
+#hero{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:auto auto;
+  gap:0 60px;
+  align-items:center;
+}
+.hero-content{grid-column:1;grid-row:1}
+.hero-stats{grid-column:1;grid-row:2}
+.hero-visual{grid-column:2;grid-row:1/3;display:flex;align-items:center;justify-content:center;position:relative}
+
 /* ── HERO ── */
 #hero{
   min-height:100vh;
-  display:flex;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-areas:"content visual" "stats visual";
+  grid-template-rows:1fr auto;
+  gap:0 60px;
   align-items:center;
-  padding-top:80px;
   position:relative;
   padding:140px 60px 80px;
   overflow:hidden;
 }
+#hero .hero-content{grid-area:content;max-width:100%}
+#hero .hero-stats{grid-area:stats;position:static;bottom:auto;right:auto;justify-content:flex-start;text-align:left;padding-top:40px}
+#hero .hero-stats .stat-item{text-align:left}
+#hero .hero-visual{grid-area:visual;display:flex;align-items:center;justify-content:center;position:relative;z-index:1}
 
 .hero-bg{
   position:absolute;
@@ -964,13 +983,11 @@ nav{
 }
 
 .hero-stats{
-  position:absolute;
-  bottom:60px;
-  right:60px;
   display:flex;
   gap:48px;
   opacity:0;
   animation:fadeUp .8s ease forwards 1s;
+  flex-wrap:wrap;
 }
 
 .stat-item{
@@ -1061,40 +1078,66 @@ section{
 .what-pillars{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:1px;
-  background:rgba(184,115,51,0.1);
-  border:1px solid rgba(184,115,51,0.1);
-  border-radius:8px;
-  overflow:hidden;
+  gap:16px;
   margin-top:48px;
 }
 
 .pillar-item{
-  background:var(--navy);
-  padding:28px;
-  transition:background .2s;
+  background:rgba(17,24,39,0.7);
+  border:1px solid rgba(184,115,51,0.12);
+  border-radius:12px;
+  padding:28px 24px;
+  transition:all .25s;
+  position:relative;
+  overflow:hidden;
+}
+.pillar-item::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:2px;
+  background:linear-gradient(90deg,var(--copper),var(--amber));
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .28s;
+}
+.pillar-item:hover{
+  background:rgba(184,115,51,0.06);
+  border-color:rgba(184,115,51,0.28);
+  transform:translateY(-3px);
+  box-shadow:0 12px 40px rgba(0,0,0,0.3);
+}
+.pillar-item:hover::before{transform:scaleX(1)}
+
+.pillar-num{
+  font-family:'Montserrat',sans-serif;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:0.2em;
+  color:var(--copper);
+  opacity:.6;
+  margin-bottom:12px;
 }
 
-.pillar-item:hover{background:rgba(184,115,51,0.05)}
-
 .pillar-icon{
-  font-size:20px;
-  margin-bottom:12px;
+  font-size:28px;
+  margin-bottom:14px;
+  display:block;
 }
 
 .pillar-name{
   font-family:'Montserrat',sans-serif;
-  font-size:13px;
-  font-weight:700;
-  letter-spacing:0.05em;
+  font-size:15px;
+  font-weight:800;
+  letter-spacing:0.02em;
   color:var(--ice);
-  margin-bottom:6px;
+  margin-bottom:10px;
 }
 
 .pillar-desc{
-  font-size:12px;
+  font-size:12.5px;
   color:var(--graphite);
-  line-height:1.6;
+  line-height:1.7;
 }
 
 .what-right{
@@ -2002,6 +2045,26 @@ section{
 .cf-btn-wa:hover{background:linear-gradient(135deg,rgba(37,211,102,0.28),rgba(37,211,102,0.18));transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,0.12)}
 .cf-btn-mail{display:none}
 
+
+/* ── CHECKBOX LEGAL ── */
+.cf-checkbox-wrap{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  cursor:pointer;
+}
+.cf-checkbox-wrap input[type="checkbox"]{
+  width:16px;height:16px;
+  flex-shrink:0;
+  margin-top:2px;
+  accent-color:var(--copper);
+  cursor:pointer;
+}
+.cf-checkbox-label{
+  font-size:11.5px;
+  color:var(--graphite);
+  line-height:1.65;
+}
 .cf-note{
   font-size:10px;
   color:var(--graphite-dim);
@@ -2284,6 +2347,193 @@ footer{
   /* Footer */
   .footer-top{grid-template-columns:1fr}
 }
+
+/* ══════════════════════════════════════════════════
+   HERO VISUAL — Mockup + Verticales flotantes
+══════════════════════════════════════════════════ */
+.hv-wrap{
+  position:relative;
+  width:100%;
+  max-width:500px;
+  animation:fadeUp .9s ease forwards 0.6s;
+  opacity:0;
+}
+.hv-glow{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:380px;height:380px;
+  background:radial-gradient(ellipse,rgba(184,115,51,0.18) 0%,transparent 70%);
+  pointer-events:none;
+  z-index:0;
+}
+.hv-mockup{
+  position:relative;
+  z-index:2;
+  background:rgba(17,24,39,0.92);
+  border:1px solid rgba(184,115,51,0.25);
+  border-radius:14px;
+  overflow:hidden;
+  backdrop-filter:blur(12px);
+  box-shadow:0 24px 80px rgba(0,0,0,0.5),0 0 0 1px rgba(184,115,51,0.1);
+}
+.hv-topbar{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  padding:10px 16px;
+  background:rgba(11,17,32,0.8);
+  border-bottom:1px solid rgba(184,115,51,0.1);
+}
+.hv-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.hv-dot-r{background:#FF5F57}
+.hv-dot-y{background:#FFBD2E}
+.hv-dot-g{background:#28C840}
+.hv-url{
+  flex:1;
+  margin-left:8px;
+  font-size:10px;
+  color:var(--graphite-dim);
+  font-family:'Inter',sans-serif;
+  letter-spacing:0.03em;
+}
+.hv-kpi-row{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:rgba(184,115,51,0.08);
+  border-bottom:1px solid rgba(184,115,51,0.08);
+}
+.hv-kpi{
+  background:rgba(11,17,32,0.6);
+  padding:16px;
+  text-align:center;
+}
+.hv-kpi-val{
+  font-family:'Montserrat',sans-serif;
+  font-size:18px;
+  font-weight:800;
+  color:var(--ice);
+  line-height:1;
+}
+.hv-kpi-lbl{
+  font-size:9px;
+  color:var(--graphite);
+  margin-top:4px;
+  letter-spacing:0.05em;
+}
+.hv-chart-wrap{padding:16px 20px 8px}
+.hv-chart-label{
+  font-size:9.5px;
+  color:var(--graphite);
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+.hv-bars{
+  display:flex;
+  align-items:flex-end;
+  gap:8px;
+  height:72px;
+}
+.hv-bar-col{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
+  height:100%;
+  justify-content:flex-end;
+}
+.hv-bar-col span{
+  font-size:8px;
+  color:var(--graphite-dim);
+}
+.hv-bar-fill{
+  width:100%;
+  background:linear-gradient(180deg,rgba(184,115,51,0.5),rgba(184,115,51,0.15));
+  border-radius:3px 3px 0 0;
+  border-top:1px solid rgba(184,115,51,0.4);
+}
+.hv-bar-fill-active{
+  background:linear-gradient(180deg,var(--amber),rgba(217,119,6,0.4));
+  border-top-color:var(--amber);
+}
+.hv-modules-row{
+  display:flex;
+  gap:6px;
+  padding:12px 20px 16px;
+  flex-wrap:wrap;
+}
+.hv-module{
+  font-size:9.5px;
+  color:var(--graphite);
+  background:rgba(184,115,51,0.06);
+  border:1px solid rgba(184,115,51,0.12);
+  padding:5px 10px;
+  border-radius:20px;
+  white-space:nowrap;
+}
+
+/* Pills flotantes de verticales */
+.hv-pill{
+  position:absolute;
+  font-size:11px;
+  font-weight:600;
+  font-family:'Montserrat',sans-serif;
+  color:var(--ice);
+  background:rgba(17,24,39,0.92);
+  border:1px solid rgba(184,115,51,0.22);
+  padding:7px 14px;
+  border-radius:24px;
+  backdrop-filter:blur(8px);
+  white-space:nowrap;
+  box-shadow:0 4px 20px rgba(0,0,0,0.3);
+  z-index:3;
+}
+.hv-pill-1{top:-20px;left:-60px;animation:floatPill 4s ease-in-out infinite}
+.hv-pill-2{top:30px;right:-55px;animation:floatPill 4s ease-in-out infinite .8s}
+.hv-pill-3{bottom:120px;left:-65px;animation:floatPill 4s ease-in-out infinite 1.6s}
+.hv-pill-4{bottom:60px;right:-60px;animation:floatPill 4s ease-in-out infinite 0.4s}
+.hv-pill-5{bottom:-18px;left:50%;transform:translateX(-50%);animation:floatPill 4s ease-in-out infinite 1.2s}
+@keyframes floatPill{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-6px)}
+}
+.hv-pill-5{animation:floatPill5 4s ease-in-out infinite 1.2s}
+@keyframes floatPill5{
+  0%,100%{transform:translateX(-50%) translateY(0)}
+  50%{transform:translateX(-50%) translateY(-6px)}
+}
+
+/* Hero responsive */
+@media(max-width:1100px){
+  #hero{grid-template-columns:1fr 1fr;gap:0 40px}
+  .hv-wrap{max-width:420px}
+  .hv-pill-1{left:-30px}
+  .hv-pill-2{right:-30px}
+  .hv-pill-3{left:-30px}
+  .hv-pill-4{right:-30px}
+}
+@media(max-width:900px){
+  #hero{
+    grid-template-columns:1fr;
+    grid-template-areas:"content" "visual" "stats";
+    grid-template-rows:auto auto auto;
+    padding:120px 24px 60px;
+    gap:40px 0;
+  }
+  #hero .hero-visual{width:100%;max-width:420px;margin:0 auto}
+  #hero .hero-stats{padding-top:0}
+  .hv-pill-1{left:-10px;top:-14px}
+  .hv-pill-3{left:-10px}
+  .hv-pill-2{right:-10px}
+  .hv-pill-4{right:-10px}
+}
+@media(max-width:480px){
+  .hv-pill{display:none}
+}
+
 </style>
 </head>
 <body>
@@ -2388,12 +2638,60 @@ footer{
       <div class="stat-label">Verticales</div>
     </div>
     <div class="stat-item">
-      <div class="stat-num">1<span>K+</span></div>
-      <div class="stat-label">Empresas</div>
-    </div>
-    <div class="stat-item">
       <div class="stat-num">PE</div>
       <div class="stat-label">Lima, Perú</div>
+    </div>
+  </div>
+
+  <!-- HERO VISUAL — Mockup EtraziApp + 5 verticales -->
+  <div class="hero-visual" aria-hidden="true">
+    <div class="hv-wrap">
+      <!-- Glow ambiental -->
+      <div class="hv-glow"></div>
+      <!-- Mockup ventana -->
+      <div class="hv-mockup">
+        <div class="hv-topbar">
+          <span class="hv-dot hv-dot-r"></span>
+          <span class="hv-dot hv-dot-y"></span>
+          <span class="hv-dot hv-dot-g"></span>
+          <span class="hv-url">demo.etraziapp.com/vcontrol</span>
+        </div>
+        <div class="hv-kpi-row">
+          <div class="hv-kpi">
+            <div class="hv-kpi-val">S/ 18.4K</div>
+            <div class="hv-kpi-lbl">Ventas del mes</div>
+          </div>
+          <div class="hv-kpi">
+            <div class="hv-kpi-val">64</div>
+            <div class="hv-kpi-lbl">Productos activos</div>
+          </div>
+          <div class="hv-kpi">
+            <div class="hv-kpi-val">212</div>
+            <div class="hv-kpi-lbl">Clientes CRM</div>
+          </div>
+        </div>
+        <div class="hv-chart-wrap">
+          <div class="hv-chart-label">Ventas por semana</div>
+          <div class="hv-bars">
+            <div class="hv-bar-col"><div class="hv-bar-fill" style="height:45%"></div><span>S1</span></div>
+            <div class="hv-bar-col"><div class="hv-bar-fill" style="height:62%"></div><span>S2</span></div>
+            <div class="hv-bar-col"><div class="hv-bar-fill" style="height:38%"></div><span>S3</span></div>
+            <div class="hv-bar-col hv-bar-active"><div class="hv-bar-fill hv-bar-fill-active" style="height:78%"></div><span>S4</span></div>
+          </div>
+        </div>
+        <div class="hv-modules-row">
+          <div class="hv-module">📦 Inventario</div>
+          <div class="hv-module">💰 Finanzas</div>
+          <div class="hv-module">👥 CRM</div>
+          <div class="hv-module">📱 Pagos QR</div>
+        </div>
+      </div>
+      <!-- Verticales flotantes -->
+      <div class="hv-pill hv-pill-1">📊 Consulting</div>
+      <div class="hv-pill hv-pill-2">🎯 Talent</div>
+      <div class="hv-pill hv-pill-3">🎓 Academy</div>
+      <div class="hv-pill hv-pill-4">🚀 Ventures</div>
+      <div class="hv-pill hv-pill-5">⚙️ Apps</div>
     </div>
   </div>
 </section>
@@ -2439,24 +2737,28 @@ footer{
 
       <div class="what-pillars reveal">
         <div class="pillar-item">
+          <div class="pillar-num">01</div>
           <div class="pillar-icon">🎯</div>
           <div class="pillar-name">Estratégica</div>
-          <div class="pillar-desc">Decisiones basadas en datos y visión de largo plazo</div>
+          <div class="pillar-desc">Decisiones basadas en datos y visión de largo plazo. No trabajamos por intuición; construimos caminos claros y medibles.</div>
         </div>
         <div class="pillar-item">
+          <div class="pillar-num">02</div>
           <div class="pillar-icon">🤝</div>
           <div class="pillar-name">Confiable</div>
-          <div class="pillar-desc">Tu aliado en cada etapa del crecimiento</div>
+          <div class="pillar-desc">Tu aliado en cada etapa del crecimiento. Estamos cuando más se necesita, con criterio y sin vender humo.</div>
         </div>
         <div class="pillar-item">
+          <div class="pillar-num">03</div>
           <div class="pillar-icon">⚡</div>
           <div class="pillar-name">Moderna</div>
-          <div class="pillar-desc">Tecnología e innovación en cada solución</div>
+          <div class="pillar-desc">Tecnología e innovación en cada solución. Porque el mundo no espera, y las herramientas que usamos tampoco.</div>
         </div>
         <div class="pillar-item">
+          <div class="pillar-num">04</div>
           <div class="pillar-icon">🌱</div>
           <div class="pillar-name">Humana</div>
-          <div class="pillar-desc">Porque nadie construye algo grande solo</div>
+          <div class="pillar-desc">Porque nadie construye algo grande solo. Nos importan las personas detrás de cada negocio, no solo los números.</div>
         </div>
       </div>
     </div>
@@ -3074,82 +3376,7 @@ footer{
   </div>
 </section>
 
-<!-- ETRAZIAPP CTA -->
-<section id="apps-cta" class="section-pad">
-  <div class="apps-cta-inner">
-    <div class="apps-cta-left reveal">
-      <div class="section-tag">EtraziApp</div>
-      <h2 class="section-title">
-        Tu negocio,<br>
-        digitalizado sin<br>
-        <em>complicaciones.</em>
-      </h2>
-      <div class="copper-divider"></div>
-      <p class="section-desc">
-        Centraliza tus operaciones, automatiza procesos y toma mejores decisiones desde una sola plataforma diseñada para pequeños negocios y marcas personales.
-      </p>
 
-      <div class="apps-features">
-        <div class="app-feature">
-          <div class="af-icon">🏪</div>
-          <div class="af-text">
-            <div class="af-name">Vcontrol</div>
-            <div class="af-desc">Ventas, inventario, clientes y finanzas en un solo lugar</div>
-          </div>
-        </div>
-        <div class="app-feature">
-          <div class="af-icon">🚚</div>
-          <div class="af-text">
-            <div class="af-name">Vruta</div>
-            <div class="af-desc">Rutas optimizadas, flota y despachos para marcas con entrega propia</div>
-          </div>
-        </div>
-      </div>
-
-      <div style="margin-top:40px;display:flex;gap:16px;flex-wrap:wrap">
-        <a href="https://etraziapp.com" class="btn-primary">Ver EtraziApp</a>
-        <a href="https://etraziapp.com/#precios" class="btn-secondary">Ver planes →</a>
-      </div>
-    </div>
-
-    <div class="apps-cta-right reveal">
-      <div class="app-mockup">
-        <div class="mockup-topbar">
-          <div class="mockup-dot"></div>
-          <div class="mockup-dot"></div>
-          <div class="mockup-dot"></div>
-          <div class="mockup-url">clientex.etraziapp.com/vcontrol</div>
-        </div>
-        <div class="mockup-kpis">
-          <div class="mockup-kpi">
-            <div class="mkpi-val">S/ 12.4K</div>
-            <div class="mkpi-lbl">Ventas mes</div>
-          </div>
-          <div class="mockup-kpi">
-            <div class="mkpi-val">48</div>
-            <div class="mkpi-lbl">Productos</div>
-          </div>
-          <div class="mockup-kpi">
-            <div class="mkpi-val">127</div>
-            <div class="mkpi-lbl">Clientes</div>
-          </div>
-        </div>
-        <div class="mockup-bar">
-          <div class="mockup-bar-fill"></div>
-          <div style="position:relative;z-index:1;font-size:10px;color:var(--graphite);padding:4px">Ventas por categoría</div>
-        </div>
-        <div style="margin-top:12px;display:flex;gap:8px">
-          <div style="flex:1;height:32px;background:rgba(184,115,51,0.08);border:1px solid rgba(184,115,51,0.1);border-radius:4px;display:flex;align-items:center;padding:0 10px">
-            <span style="font-size:9px;color:var(--graphite)">Catálogo · Ventas · CRM · Finanzas</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Glow -->
-      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:300px;height:300px;background:radial-gradient(circle,rgba(184,115,51,0.08),transparent);pointer-events:none;z-index:-1"></div>
-    </div>
-  </div>
-</section>
 
 
 
@@ -3263,16 +3490,6 @@ footer{
         Respondemos en menos de <strong style="color:var(--ice)">24 horas hábiles.</strong>
       </p>
 
-      <div class="contact-channels">
-        <a href="https://wa.me/51922339690?text=Hola%20Etrazia%20%F0%9F%91%8B%2C%20me%20gustar%C3%ADa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios." class="contact-channel" target="_blank" rel="noopener noreferrer" aria-label="Contactar a Etrazia por WhatsApp al +51 922 339 690">
-          <div class="cc-icon wa">💬</div>
-          <div class="cc-body">
-            <div class="cc-label">WhatsApp — Respuesta rápida</div>
-            <div class="cc-value">+51 922 339 690</div>
-          </div>
-          <div class="cc-arrow">→</div>
-        </a>
-      </div>
     </div>
 
     <!-- Formulario derecha -->
@@ -3318,6 +3535,16 @@ footer{
       <div class="cf-field full">
         <label class="cf-label" for="cf-mensaje">¿Qué estás buscando lograr? *</label>
         <textarea class="cf-textarea" id="cf-mensaje" placeholder="Cuéntanos brevemente tu situación y qué resultado estás buscando..." required></textarea>
+      </div>
+
+      <!-- Checkbox legal Ley 29733 -->
+      <div class="cf-field full" style="margin-bottom:20px">
+        <label class="cf-checkbox-wrap">
+          <input type="checkbox" id="cf-legal" required>
+          <span class="cf-checkbox-label">
+            He leído y acepto la <strong style="color:var(--ice)">Política de Protección de Datos Personales</strong> de Etrazia (Ley N° 29733 — Perú) y autorizo el uso de mis datos para el envío de información y comunicaciones comerciales sobre los servicios de <strong style="color:var(--ice)">Etrazia</strong> y <strong style="color:var(--ice)">EtraziApp</strong>. *
+          </span>
+        </label>
       </div>
 
       <div class="cf-btns">
@@ -3454,6 +3681,8 @@ function validarForm(){
   if(!d.email || !d.email.includes('@')){alert('Por favor ingresa un correo válido.');document.getElementById('cf-email').focus();return false;}
   if(!d.vertical){alert('Por favor selecciona el servicio de tu interés.');document.getElementById('cf-vertical').focus();return false;}
   if(!d.mensaje){alert('Por favor cuéntanos qué estás buscando.');document.getElementById('cf-mensaje').focus();return false;}
+  const legal = document.getElementById('cf-legal');
+  if(legal && !legal.checked){alert('Por favor acepta la Política de Protección de Datos Personales para continuar.');legal.focus();return false;}
   return d;
 }
 
