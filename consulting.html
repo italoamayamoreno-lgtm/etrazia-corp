@@ -132,9 +132,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 60px;display:fl
 
 /* HOW WE WORK */
 .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:48px;position:relative}
-.process-grid::before{content:'';position:absolute;top:28px;left:12.5%;right:12.5%;height:1px;background:linear-gradient(90deg,transparent,rgba(184,115,51,0.3),rgba(184,115,51,0.3),transparent)}
-.process-step{text-align:center;padding:0 16px}
-.step-num{width:56px;height:56px;border-radius:50%;background:rgba(184,115,51,0.1);border:1px solid rgba(184,115,51,0.25);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-family:'Montserrat',sans-serif;font-size:16px;font-weight:800;color:var(--copper)}
+.process-grid::before{content:'';position:absolute;top:28px;left:12.5%;right:12.5%;height:1px;background:linear-gradient(90deg,transparent,rgba(184,115,51,0.3),rgba(184,115,51,0.3),transparent);z-index:0}
+.process-step{text-align:center;padding:0 16px;position:relative;z-index:1}
+.step-num{width:56px;height:56px;border-radius:50%;background:var(--midnight);border:1px solid rgba(184,115,51,0.35);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-family:'Montserrat',sans-serif;font-size:16px;font-weight:800;color:var(--copper);position:relative;z-index:2}
 .step-title{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;color:var(--ice);margin-bottom:8px}
 .step-desc{font-size:13px;color:var(--graphite);line-height:1.6}
 
@@ -202,16 +202,16 @@ footer{background:var(--navy);border-top:1px solid rgba(184,115,51,0.1);padding:
 .ic-label{font-size:11px;color:var(--ice);font-weight:600;letter-spacing:0.03em;line-height:1.3}
 
 /* Animaciones */
-@keyframes growBar1a{from{width:0}to{width:57px}}
-@keyframes growBar2a{from{width:0}to{width:76px}}
-@keyframes growBar3a{from{width:0}to{width:38px}}
-@keyframes growBar1b{from{width:0}to{width:171px}}
-@keyframes growBar2b{from{width:0}to{width:161px}}
-@keyframes growBar3b{from{width:0}to{width:180px}}
-@keyframes drawChaos{from{stroke-dashoffset:260}to{stroke-dashoffset:0}}
+@keyframes gB1a{from{width:0}to{width:51px}}
+@keyframes gB2a{from{width:0}to{width:68px}}
+@keyframes gB3a{from{width:0}to{width:34px}}
+@keyframes gB1b{from{width:0}to{width:153px}}
+@keyframes gB2b{from{width:0}to{width:144px}}
+@keyframes gB3b{from{width:0}to{width:161px}}
+@keyframes drawChaos{from{stroke-dashoffset:280}to{stroke-dashoffset:0}}
 @keyframes drawUp{from{stroke-dashoffset:300}to{stroke-dashoffset:0}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-@keyframes fadeScaleIn{from{opacity:0;transform:scale(0.7)}to{opacity:1;transform:scale(1)}}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
 /* Responsive hero */
 @media(max-width:1100px){
@@ -283,130 +283,159 @@ footer{background:var(--navy);border-top:1px solid rgba(184,115,51,0.1);padding:
 
   <!-- GRÁFICO DE IMPACTO -->
   <div class="hero-visual" aria-hidden="true">
-    <svg id="impact-chart" viewBox="0 0 520 400" xmlns="http://www.w3.org/2000/svg">
+    <svg id="impact-chart" viewBox="0 0 680 400" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="barGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#B87333"/>
-      <stop offset="100%" stop-color="#D97706"/>
+      <stop offset="0%" stop-color="#B87333"/><stop offset="100%" stop-color="#D97706"/>
     </linearGradient>
     <linearGradient id="areaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#D97706" stop-opacity="0.22"/>
       <stop offset="100%" stop-color="#D97706" stop-opacity="0"/>
     </linearGradient>
     <linearGradient id="lineUpGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#B87333" stop-opacity="0.7"/>
+      <stop offset="0%" stop-color="#B87333" stop-opacity="0.6"/>
       <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+    <linearGradient id="phaseGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#B87333" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#B87333" stop-opacity="0.05"/>
     </linearGradient>
   </defs>
 
   <!-- Contenedor principal -->
-  <rect x="4" y="4" width="512" height="392" rx="14" fill="rgba(17,24,39,0.9)" stroke="rgba(184,115,51,0.18)" stroke-width="1.5"/>
+  <rect x="4" y="4" width="672" height="392" rx="14" fill="rgba(17,24,39,0.92)" stroke="rgba(184,115,51,0.18)" stroke-width="1.5"/>
 
   <!-- Header -->
-  <rect x="4" y="4" width="512" height="44" rx="14" fill="rgba(11,17,32,0.95)"/>
-  <rect x="4" y="30" width="512" height="18" fill="rgba(11,17,32,0.95)"/>
-  <line x1="4" y1="48" x2="516" y2="48" stroke="rgba(184,115,51,0.14)" stroke-width="1"/>
-  <text x="24" y="32" font-family="Montserrat,sans-serif" font-size="10" font-weight="800" fill="#B87333" letter-spacing="2.5">DIAGNÓSTICO ESTRATÉGICO — ETRAZIA CONSULTING</text>
-  <circle cx="496" cy="26" r="5" fill="rgba(184,115,51,0.4)"/>
-  <circle cx="480" cy="26" r="5" fill="rgba(184,115,51,0.2)"/>
-  <circle cx="464" cy="26" r="5" fill="rgba(184,115,51,0.1)"/>
+  <rect x="4" y="4" width="672" height="44" rx="14" fill="rgba(11,17,32,0.98)"/>
+  <rect x="4" y="30" width="672" height="18" fill="rgba(11,17,32,0.98)"/>
+  <line x1="4" y1="48" x2="676" y2="48" stroke="rgba(184,115,51,0.14)" stroke-width="1"/>
+  <text x="24" y="32" font-family="Montserrat,sans-serif" font-size="9.5" font-weight="800" fill="#B87333" letter-spacing="2">DIAGNÓSTICO ESTRATÉGICO — ETRAZIA CONSULTING</text>
+  <circle cx="656" cy="26" r="5" fill="rgba(184,115,51,0.4)"/>
+  <circle cx="640" cy="26" r="5" fill="rgba(184,115,51,0.2)"/>
+  <circle cx="624" cy="26" r="5" fill="rgba(184,115,51,0.1)"/>
 
-  <!-- ══ ZONA SUPERIOR: KPIs lado a lado ══ -->
+  <!-- ══ COLUMNA IZQUIERDA: Situación Actual (x: 16–230) ══ -->
+  <text x="24" y="70" font-family="Montserrat,sans-serif" font-size="8" font-weight="700" fill="#94A3B8" letter-spacing="3">SITUACIÓN ACTUAL</text>
+  <line x1="24" y1="75" x2="222" y2="75" stroke="rgba(148,163,184,0.18)" stroke-width="1"/>
 
-  <!-- Columna ANTES — header -->
-  <text x="24" y="74" font-family="Montserrat,sans-serif" font-size="8.5" font-weight="700" fill="#94A3B8" letter-spacing="3">SITUACIÓN ACTUAL</text>
-  <line x1="24" y1="79" x2="240" y2="79" stroke="rgba(148,163,184,0.18)" stroke-width="1"/>
+  <!-- KPI 1 -->
+  <text x="24" y="96" font-family="Montserrat,sans-serif" font-size="7" fill="#4B5563" letter-spacing="1">ALINEACIÓN DE EQUIPO</text>
+  <rect x="24" y="102" width="170" height="5" rx="2.5" fill="rgba(148,163,184,0.08)"/>
+  <rect x="24" y="102" width="51" height="5" rx="2.5" fill="rgba(148,163,184,0.28)" style="animation:gB1a .8s ease forwards .6s;width:0"/>
+  <text x="200" y="109" font-family="Montserrat,sans-serif" font-size="10" font-weight="700" fill="#94A3B8" text-anchor="end">30%</text>
 
-  <!-- KPI 1 ANTES -->
-  <text x="24" y="100" font-family="Montserrat,sans-serif" font-size="7.5" fill="#4B5563" letter-spacing="1.2">ALINEACIÓN DE EQUIPO</text>
-  <rect x="24" y="106" width="190" height="6" rx="3" fill="rgba(148,163,184,0.08)"/>
-  <rect x="24" y="106" width="57" height="6" rx="3" fill="rgba(148,163,184,0.3)"
-        style="stroke-dasharray:0; animation: growBar1a .8s ease forwards .6s; width:0"/>
-  <text x="220" y="114" font-family="Montserrat,sans-serif" font-size="10" font-weight="700" fill="#94A3B8" text-anchor="end">30%</text>
+  <!-- KPI 2 -->
+  <text x="24" y="128" font-family="Montserrat,sans-serif" font-size="7" fill="#4B5563" letter-spacing="1">EFICIENCIA OPERATIVA</text>
+  <rect x="24" y="134" width="170" height="5" rx="2.5" fill="rgba(148,163,184,0.08)"/>
+  <rect x="24" y="134" width="68" height="5" rx="2.5" fill="rgba(148,163,184,0.28)" style="animation:gB2a .8s ease forwards .75s;width:0"/>
+  <text x="200" y="141" font-family="Montserrat,sans-serif" font-size="10" font-weight="700" fill="#94A3B8" text-anchor="end">40%</text>
 
-  <!-- KPI 2 ANTES -->
-  <text x="24" y="132" font-family="Montserrat,sans-serif" font-size="7.5" fill="#4B5563" letter-spacing="1.2">EFICIENCIA OPERATIVA</text>
-  <rect x="24" y="138" width="190" height="6" rx="3" fill="rgba(148,163,184,0.08)"/>
-  <rect x="24" y="138" width="76" height="6" rx="3" fill="rgba(148,163,184,0.3)"
-        style="animation: growBar2a .8s ease forwards .75s; width:0"/>
-  <text x="220" y="146" font-family="Montserrat,sans-serif" font-size="10" font-weight="700" fill="#94A3B8" text-anchor="end">40%</text>
+  <!-- KPI 3 -->
+  <text x="24" y="160" font-family="Montserrat,sans-serif" font-size="7" fill="#4B5563" letter-spacing="1">CLARIDAD ESTRATÉGICA</text>
+  <rect x="24" y="166" width="170" height="5" rx="2.5" fill="rgba(148,163,184,0.08)"/>
+  <rect x="24" y="166" width="34" height="5" rx="2.5" fill="rgba(148,163,184,0.28)" style="animation:gB3a .8s ease forwards .9s;width:0"/>
+  <text x="200" y="173" font-family="Montserrat,sans-serif" font-size="10" font-weight="700" fill="#94A3B8" text-anchor="end">20%</text>
 
-  <!-- KPI 3 ANTES -->
-  <text x="24" y="164" font-family="Montserrat,sans-serif" font-size="7.5" fill="#4B5563" letter-spacing="1.2">CLARIDAD ESTRATÉGICA</text>
-  <rect x="24" y="170" width="190" height="6" rx="3" fill="rgba(148,163,184,0.08)"/>
-  <rect x="24" y="170" width="38" height="6" rx="3" fill="rgba(148,163,184,0.3)"
-        style="animation: growBar3a .8s ease forwards .9s; width:0"/>
-  <text x="220" y="178" font-family="Montserrat,sans-serif" font-size="10" font-weight="700" fill="#94A3B8" text-anchor="end">20%</text>
+  <!-- Sparkline caótica ANTES — zona inferior izquierda -->
+  <text x="24" y="210" font-family="Montserrat,sans-serif" font-size="7" fill="#4B5563" letter-spacing="1.2">RENDIMIENTO SIN DIRECCIÓN</text>
+  <polyline points="24,370 55,340 74,375 102,325 126,360 152,330 178,368 204,342 222,355"
+    fill="none" stroke="rgba(148,163,184,0.35)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+    style="animation:drawChaos 1s ease forwards .5s;stroke-dasharray:280;stroke-dashoffset:280"/>
+  <line x1="24" y1="378" x2="222" y2="378" stroke="rgba(148,163,184,0.06)" stroke-width="1"/>
 
-  <!-- ── ETRAZIA — separador central prominente ── -->
-  <line x1="262" y1="58" x2="262" y2="290" stroke="rgba(184,115,51,0.12)" stroke-width="1" stroke-dasharray="3 4"/>
-  <g style="animation: fadeScaleIn .6s cubic-bezier(0.34,1.56,0.64,1) forwards 1.3s; opacity:0; transform-origin:262px 130px">
-    <!-- Cápsula ETRAZIA -->
-    <rect x="228" y="115" width="68" height="28" rx="14" fill="rgba(11,17,32,0.95)" stroke="#D97706" stroke-width="1.5"/>
-    <text x="262" y="133" font-family="Montserrat,sans-serif" font-size="9" font-weight="800" fill="#D97706" text-anchor="middle" letter-spacing="1.5">ETRAZIA</text>
-    <!-- Flechas -->
-    <line x1="248" y1="129" x2="236" y2="129" stroke="#D97706" stroke-width="1.2"/>
-    <polygon points="236,129 242,126 242,132" fill="#D97706" transform="rotate(180 239 129)"/>
-    <line x1="276" y1="129" x2="288" y2="129" stroke="#D97706" stroke-width="1.2"/>
-    <polygon points="288,129 282,126 282,132" fill="#D97706"/>
+  <!-- ══ COLUMNA CENTRAL: Framework Etrazia (x: 240–448) ══ -->
+  <rect x="234" y="52" width="216" height="340" rx="8" fill="url(#phaseGrad)" stroke="rgba(184,115,51,0.12)" stroke-width="1"/>
+
+  <!-- Encabezado ETRAZIA -->
+  <rect x="268" y="62" width="148" height="26" rx="13" fill="rgba(11,17,32,0.9)" stroke="#D97706" stroke-width="1.5"/>
+  <text x="342" y="79" font-family="Montserrat,sans-serif" font-size="9" font-weight="800" fill="#D97706" text-anchor="middle" letter-spacing="2">ETRAZIA</text>
+
+  <!-- Línea vertical conectora (detrás de los nodos) -->
+  <line x1="342" y1="100" x2="342" y2="358" stroke="rgba(184,115,51,0.2)" stroke-width="1.5" stroke-dasharray="3 4"/>
+
+  <!-- Fase 01 — Diagnóstico -->
+  <g style="animation:fadeSlide .5s ease forwards .7s;opacity:0">
+    <circle cx="342" cy="118" r="18" fill="rgba(11,17,32,0.95)" stroke="rgba(184,115,51,0.4)" stroke-width="1.5"/>
+    <text x="342" y="115" font-family="Montserrat,sans-serif" font-size="7" fill="#B87333" text-anchor="middle" letter-spacing="1" font-weight="700">01</text>
+    <text x="342" y="125" font-family="Montserrat,sans-serif" font-size="6" fill="#94A3B8" text-anchor="middle">DIAG.</text>
+    <text x="342" y="143" font-family="Montserrat,sans-serif" font-size="8.5" font-weight="700" fill="#F8FAFC" text-anchor="middle">Diagnóstico</text>
+    <text x="342" y="155" font-family="Montserrat,sans-serif" font-size="7" fill="#94A3B8" text-anchor="middle">Escuchamos y analizamos</text>
+    <text x="342" y="165" font-family="Montserrat,sans-serif" font-size="7" fill="#94A3B8" text-anchor="middle">dónde estás realmente.</text>
   </g>
 
-  <!-- Columna DESPUÉS — header -->
-  <text x="286" y="74" font-family="Montserrat,sans-serif" font-size="8.5" font-weight="700" fill="#D97706" letter-spacing="3">RESULTADO</text>
-  <line x1="286" y1="79" x2="500" y2="79" stroke="rgba(217,119,6,0.28)" stroke-width="1"/>
+  <!-- Fase 02 — Diseño -->
+  <g style="animation:fadeSlide .5s ease forwards .95s;opacity:0">
+    <circle cx="342" cy="194" r="18" fill="rgba(11,17,32,0.95)" stroke="rgba(184,115,51,0.4)" stroke-width="1.5"/>
+    <text x="342" y="191" font-family="Montserrat,sans-serif" font-size="7" fill="#B87333" text-anchor="middle" letter-spacing="1" font-weight="700">02</text>
+    <text x="342" y="201" font-family="Montserrat,sans-serif" font-size="6" fill="#94A3B8" text-anchor="middle">DISEÑO</text>
+    <text x="342" y="219" font-family="Montserrat,sans-serif" font-size="8.5" font-weight="700" fill="#F8FAFC" text-anchor="middle">Diseño</text>
+    <text x="342" y="231" font-family="Montserrat,sans-serif" font-size="7" fill="#94A3B8" text-anchor="middle">Co-construimos la hoja</text>
+    <text x="342" y="241" font-family="Montserrat,sans-serif" font-size="7" fill="#94A3B8" text-anchor="middle">de ruta con tu equipo.</text>
+  </g>
 
-  <!-- KPI 1 DESPUÉS -->
-  <text x="286" y="100" font-family="Montserrat,sans-serif" font-size="7.5" fill="#D97706" letter-spacing="1.2" opacity="0.85">ALINEACIÓN DE EQUIPO</text>
-  <rect x="286" y="106" width="190" height="6" rx="3" fill="rgba(217,119,6,0.1)"/>
-  <rect x="286" y="106" width="171" height="6" rx="3" fill="url(#barGrad)"
-        style="animation: growBar1b 1s ease forwards 1.0s; width:0"/>
-  <text x="482" y="114" font-family="Montserrat,sans-serif" font-size="10" font-weight="800" fill="#D97706" text-anchor="end">90%</text>
+  <!-- Fase 03 — Acompañamiento -->
+  <g style="animation:fadeSlide .5s ease forwards 1.2s;opacity:0">
+    <circle cx="342" cy="270" r="18" fill="rgba(11,17,32,0.95)" stroke="rgba(184,115,51,0.5)" stroke-width="1.5"/>
+    <text x="342" y="267" font-family="Montserrat,sans-serif" font-size="7" fill="#B87333" text-anchor="middle" letter-spacing="1" font-weight="700">03</text>
+    <text x="342" y="277" font-family="Montserrat,sans-serif" font-size="6" fill="#94A3B8" text-anchor="middle">EJEC.</text>
+    <text x="342" y="295" font-family="Montserrat,sans-serif" font-size="8.5" font-weight="700" fill="#F8FAFC" text-anchor="middle">Acompañamiento</text>
+    <text x="342" y="307" font-family="Montserrat,sans-serif" font-size="7" fill="#94A3B8" text-anchor="middle">Contigo en la ejecución,</text>
+    <text x="342" y="317" font-family="Montserrat,sans-serif" font-size="7" fill="#94A3B8" text-anchor="middle">ajustando el rumbo.</text>
+  </g>
 
-  <!-- KPI 2 DESPUÉS -->
-  <text x="286" y="132" font-family="Montserrat,sans-serif" font-size="7.5" fill="#D97706" letter-spacing="1.2" opacity="0.85">EFICIENCIA OPERATIVA</text>
-  <rect x="286" y="138" width="190" height="6" rx="3" fill="rgba(217,119,6,0.1)"/>
-  <rect x="286" y="138" width="161" height="6" rx="3" fill="url(#barGrad)"
-        style="animation: growBar2b 1s ease forwards 1.15s; width:0"/>
-  <text x="482" y="146" font-family="Montserrat,sans-serif" font-size="10" font-weight="800" fill="#D97706" text-anchor="end">85%</text>
+  <!-- Fase 04 — Medición -->
+  <g style="animation:fadeSlide .5s ease forwards 1.45s;opacity:0">
+    <circle cx="342" cy="346" r="18" fill="rgba(11,17,32,0.95)" stroke="#D97706" stroke-width="2"/>
+    <text x="342" y="343" font-family="Montserrat,sans-serif" font-size="7" fill="#D97706" text-anchor="middle" letter-spacing="1" font-weight="700">04</text>
+    <text x="342" y="353" font-family="Montserrat,sans-serif" font-size="6" fill="#D97706" text-anchor="middle">MED.</text>
+    <text x="342" y="371" font-family="Montserrat,sans-serif" font-size="8.5" font-weight="700" fill="#D97706" text-anchor="middle">Medición</text>
+    <text x="342" y="383" font-family="Montserrat,sans-serif" font-size="7" fill="#B87333" text-anchor="middle">Métricas reales, antes</text>
+  </g>
 
-  <!-- KPI 3 DESPUÉS -->
-  <text x="286" y="164" font-family="Montserrat,sans-serif" font-size="7.5" fill="#D97706" letter-spacing="1.2" opacity="0.85">CLARIDAD ESTRATÉGICA</text>
-  <rect x="286" y="170" width="190" height="6" rx="3" fill="rgba(217,119,6,0.1)"/>
-  <rect x="286" y="170" width="180" height="6" rx="3" fill="url(#barGrad)"
-        style="animation: growBar3b 1s ease forwards 1.3s; width:0"/>
-  <text x="482" y="178" font-family="Montserrat,sans-serif" font-size="10" font-weight="800" fill="#D97706" text-anchor="end">95%</text>
+  <!-- Flechas laterales desde columna central -->
+  <g style="animation:fadeIn .4s ease forwards 1.7s;opacity:0">
+    <!-- Flecha hacia izquierda (entrada) -->
+    <line x1="234" y1="200" x2="210" y2="200" stroke="rgba(184,115,51,0.3)" stroke-width="1" stroke-dasharray="3 3"/>
+    <polygon points="234,200 240,197 240,203" fill="rgba(184,115,51,0.4)"/>
+    <!-- Flecha hacia derecha (salida resultado) -->
+    <line x1="450" y1="200" x2="468" y2="200" stroke="#D97706" stroke-width="1.5"/>
+    <polygon points="468,200 462,197 462,203" fill="#D97706"/>
+  </g>
 
-  <!-- ══ ZONA INFERIOR: Sparklines separadas ══ -->
-  <line x1="24" y1="210" x2="496" y2="210" stroke="rgba(184,115,51,0.08)" stroke-width="1"/>
+  <!-- ══ COLUMNA DERECHA: Resultado (x: 458–668) ══ -->
+  <text x="476" y="70" font-family="Montserrat,sans-serif" font-size="8" font-weight="700" fill="#D97706" letter-spacing="3">RESULTADO</text>
+  <line x1="476" y1="75" x2="660" y2="75" stroke="rgba(217,119,6,0.28)" stroke-width="1"/>
 
-  <!-- Label ANTES sparkline -->
-  <text x="24" y="228" font-family="Montserrat,sans-serif" font-size="7" fill="#4B5563" letter-spacing="1.5">RENDIMIENTO — SIN DIRECCIÓN</text>
-  <!-- Sparkline caótica ANTES — zona propia 230-310 -->
-  <polyline
-    points="24,300 55,275 72,310 98,265 118,295 142,270 165,305 188,278 214,288"
-    fill="none" stroke="rgba(148,163,184,0.35)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-    style="animation: drawChaos 1s ease forwards .5s; stroke-dasharray:260; stroke-dashoffset:260"/>
+  <!-- KPI 1 -->
+  <text x="476" y="96" font-family="Montserrat,sans-serif" font-size="7" fill="#D97706" letter-spacing="1" opacity="0.85">ALINEACIÓN DE EQUIPO</text>
+  <rect x="476" y="102" width="170" height="5" rx="2.5" fill="rgba(217,119,6,0.1)"/>
+  <rect x="476" y="102" width="153" height="5" rx="2.5" fill="url(#barGrad)" style="animation:gB1b 1s ease forwards 1.1s;width:0"/>
+  <text x="652" y="109" font-family="Montserrat,sans-serif" font-size="10" font-weight="800" fill="#D97706" text-anchor="end">90%</text>
 
-  <!-- Línea divisoria vertical entre las dos sparklines -->
-  <line x1="262" y1="210" x2="262" y2="380" stroke="rgba(184,115,51,0.08)" stroke-width="1" stroke-dasharray="3 4"/>
+  <!-- KPI 2 -->
+  <text x="476" y="128" font-family="Montserrat,sans-serif" font-size="7" fill="#D97706" letter-spacing="1" opacity="0.85">EFICIENCIA OPERATIVA</text>
+  <rect x="476" y="134" width="170" height="5" rx="2.5" fill="rgba(217,119,6,0.1)"/>
+  <rect x="476" y="134" width="144" height="5" rx="2.5" fill="url(#barGrad)" style="animation:gB2b 1s ease forwards 1.25s;width:0"/>
+  <text x="652" y="141" font-family="Montserrat,sans-serif" font-size="10" font-weight="800" fill="#D97706" text-anchor="end">85%</text>
 
-  <!-- Label DESPUÉS sparkline -->
-  <text x="286" y="228" font-family="Montserrat,sans-serif" font-size="7" fill="#B87333" letter-spacing="1.5">RENDIMIENTO — CON ESTRATEGIA</text>
-  <!-- Sparkline ascendente DESPUÉS — zona propia 230-310 -->
-  <path d="M 286 310 Q 320 295 350 270 T 400 230 T 496 192"
+  <!-- KPI 3 -->
+  <text x="476" y="160" font-family="Montserrat,sans-serif" font-size="7" fill="#D97706" letter-spacing="1" opacity="0.85">CLARIDAD ESTRATÉGICA</text>
+  <rect x="476" y="166" width="170" height="5" rx="2.5" fill="rgba(217,119,6,0.1)"/>
+  <rect x="476" y="166" width="161" height="5" rx="2.5" fill="url(#barGrad)" style="animation:gB3b 1s ease forwards 1.4s;width:0"/>
+  <text x="652" y="173" font-family="Montserrat,sans-serif" font-size="10" font-weight="800" fill="#D97706" text-anchor="end">95%</text>
+
+  <!-- Sparkline ascendente DESPUÉS — zona inferior derecha -->
+  <text x="476" y="210" font-family="Montserrat,sans-serif" font-size="7" fill="#B87333" letter-spacing="1.2">RENDIMIENTO CON ESTRATEGIA</text>
+  <path d="M 476 375 Q 510 360 540 335 T 590 290 T 650 230"
     fill="none" stroke="url(#lineUpGrad)" stroke-width="2.5" stroke-linecap="round"
-    style="animation: drawUp 1.3s ease-out forwards 1.1s; stroke-dasharray:300; stroke-dashoffset:300"/>
-  <!-- Área bajo la curva -->
-  <path d="M 286 330 L 286 310 Q 320 295 350 270 T 400 230 T 496 192 L 496 330 Z"
+    style="animation:drawUp 1.3s ease-out forwards 1.2s;stroke-dasharray:300;stroke-dashoffset:300"/>
+  <path d="M 476 378 L 476 375 Q 510 360 540 335 T 590 290 T 650 230 L 650 378 Z"
     fill="url(#areaGrad)"
-    style="animation: fadeIn .8s ease forwards 1.5s; opacity:0"/>
-  <!-- Punto final -->
-  <circle cx="496" cy="192" r="5" fill="#D97706" style="animation: fadeIn .4s ease forwards 2.2s; opacity:0"/>
-  <circle cx="496" cy="192" r="10" fill="#D97706" fill-opacity="0.12" style="animation: fadeIn .4s ease forwards 2.2s; opacity:0"/>
-
-  <!-- Baseline reference lines sutiles -->
-  <line x1="24" y1="330" x2="238" y2="330" stroke="rgba(184,115,51,0.08)" stroke-width="1"/>
-  <line x1="286" y1="330" x2="500" y2="330" stroke="rgba(184,115,51,0.08)" stroke-width="1"/>
+    style="animation:fadeIn .8s ease forwards 1.7s;opacity:0"/>
+  <line x1="476" y1="378" x2="660" y2="378" stroke="rgba(217,119,6,0.08)" stroke-width="1"/>
+  <!-- Punto final destacado -->
+  <circle cx="650" cy="230" r="5" fill="#D97706" style="animation:fadeIn .4s ease forwards 2.3s;opacity:0"/>
+  <circle cx="650" cy="230" r="10" fill="#D97706" fill-opacity="0.15" style="animation:fadeIn .4s ease forwards 2.3s;opacity:0"/>
 </svg>
 
     <!-- Cards de impacto flotantes -->
