@@ -208,16 +208,16 @@ footer{background:var(--navy);border-top:1px solid rgba(184,115,51,0.1);padding:
 @keyframes gB1b{from{width:0}to{width:151px}}
 @keyframes gB2b{from{width:0}to{width:143px}}
 @keyframes gB3b{from{width:0}to{width:160px}}
-@keyframes drawChaos{from{stroke-dashoffset:280}to{stroke-dashoffset:0}}
+@keyframes drawChaos{from{stroke-dashoffset:300}to{stroke-dashoffset:0}}
 @keyframes drawUp{from{stroke-dashoffset:280}to{stroke-dashoffset:0}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes fadeSlide{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-@keyframes gaugeA1{from{stroke-dashoffset:119.4}to{stroke-dashoffset:86}}
-@keyframes gaugeA2{from{stroke-dashoffset:119.4}to{stroke-dashoffset:95}}
-@keyframes gaugeA3{from{stroke-dashoffset:119.4}to{stroke-dashoffset:90}}
-@keyframes gaugeB1{from{stroke-dashoffset:119.4}to{stroke-dashoffset:24}}
-@keyframes gaugeB2{from{stroke-dashoffset:119.4}to{stroke-dashoffset:12}}
-@keyframes gaugeB3{from{stroke-dashoffset:119.4}to{stroke-dashoffset:18}}
+@keyframes gA1{from{stroke-dashoffset:88}to{stroke-dashoffset:63.3}}
+@keyframes gA2{from{stroke-dashoffset:88}to{stroke-dashoffset:70.4}}
+@keyframes gA3{from{stroke-dashoffset:88}to{stroke-dashoffset:66}}
+@keyframes gB1g{from{stroke-dashoffset:88}to{stroke-dashoffset:17.6}}
+@keyframes gB2g{from{stroke-dashoffset:88}to{stroke-dashoffset:8.8}}
+@keyframes gB3g{from{stroke-dashoffset:88}to{stroke-dashoffset:13.2}}
 
 /* Responsive hero */
 @media(max-width:1100px){
@@ -295,16 +295,12 @@ footer{background:var(--navy);border-top:1px solid rgba(184,115,51,0.1);padding:
       <stop offset="0%" stop-color="#B87333"/><stop offset="100%" stop-color="#D97706"/>
     </linearGradient>
     <linearGradient id="areaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#D97706" stop-opacity="0.22"/>
+      <stop offset="0%" stop-color="#D97706" stop-opacity="0.2"/>
       <stop offset="100%" stop-color="#D97706" stop-opacity="0"/>
     </linearGradient>
     <linearGradient id="lineUpGrad" x1="0%" y1="100%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#B87333" stop-opacity="0.6"/>
       <stop offset="100%" stop-color="#D97706"/>
-    </linearGradient>
-    <linearGradient id="phaseGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#B87333" stop-opacity="0.18"/>
-      <stop offset="100%" stop-color="#B87333" stop-opacity="0.03"/>
     </linearGradient>
   </defs>
 
@@ -320,198 +316,176 @@ footer{background:var(--navy);border-top:1px solid rgba(184,115,51,0.1);padding:
   <circle cx="680" cy="26" r="5" fill="rgba(184,115,51,0.2)"/>
   <circle cx="664" cy="26" r="5" fill="rgba(184,115,51,0.1)"/>
 
-  <!-- ══ DIVISORES VERTICALES ══ -->
+  <!-- Divisores verticales -->
   <line x1="244" y1="48" x2="244" y2="516" stroke="rgba(184,115,51,0.08)" stroke-width="1"/>
   <line x1="476" y1="48" x2="476" y2="516" stroke="rgba(184,115,51,0.08)" stroke-width="1"/>
-
-  <!-- Fondo columna central -->
   <rect x="244" y="48" width="232" height="468" fill="rgba(184,115,51,0.04)"/>
 
-  <!-- ══════════════════════════════
-       COL IZQUIERDA — SITUACIÓN ACTUAL
-       x: 24 → 224, ancho útil: 200px
-  ══════════════════════════════ -->
-  <text x="24" y="70" font-family="Montserrat,sans-serif" font-size="8" font-weight="700" fill="#94A3B8" letter-spacing="3">SITUACIÓN ACTUAL</text>
-  <line x1="24" y1="75" x2="224" y2="75" stroke="rgba(148,163,184,0.18)" stroke-width="1"/>
+  <!-- ══ COL IZQUIERDA (x: 20-228) ══ -->
+  <text x="20" y="70" font-family="Montserrat,sans-serif" font-size="8" font-weight="700" fill="#94A3B8" letter-spacing="3">SITUACIÓN ACTUAL</text>
+  <line x1="20" y1="76" x2="228" y2="76" stroke="rgba(148,163,184,0.18)" stroke-width="1"/>
 
-  <!-- KPI 1 -->
-  <text x="24" y="96" font-family="Montserrat,sans-serif" font-size="7" fill="#4B5563" letter-spacing="1">ALINEACIÓN DE EQUIPO</text>
-  <rect x="24" y="102" width="168" height="5" rx="2.5" fill="rgba(148,163,184,0.08)"/>
-  <rect x="24" y="102" width="50" height="5" rx="2.5" fill="rgba(148,163,184,0.28)" style="animation:gB1a .8s ease forwards .6s;width:0"/>
-  <text x="196" y="109" font-family="Montserrat,sans-serif" font-size="10" font-weight="700" fill="#94A3B8" text-anchor="end">30%</text>
+  <!-- KPIs ANTES -->
+  <text x="20" y="96" font-family="Montserrat,sans-serif" font-size="7" fill="#4B5563" letter-spacing="1">ALINEACIÓN DE EQUIPO</text>
+  <rect x="20" y="102" width="168" height="5" rx="2.5" fill="rgba(148,163,184,0.08)"/>
+  <rect x="20" y="102" width="50" height="5" rx="2.5" fill="rgba(148,163,184,0.3)" style="animation:gB1a .8s ease forwards .6s;width:0"/>
+  <text x="194" y="109" font-family="Montserrat,sans-serif" font-size="10" font-weight="700" fill="#94A3B8" text-anchor="end">30%</text>
 
-  <!-- KPI 2 -->
-  <text x="24" y="126" font-family="Montserrat,sans-serif" font-size="7" fill="#4B5563" letter-spacing="1">EFICIENCIA OPERATIVA</text>
-  <rect x="24" y="132" width="168" height="5" rx="2.5" fill="rgba(148,163,184,0.08)"/>
-  <rect x="24" y="132" width="67" height="5" rx="2.5" fill="rgba(148,163,184,0.28)" style="animation:gB2a .8s ease forwards .75s;width:0"/>
-  <text x="196" y="139" font-family="Montserrat,sans-serif" font-size="10" font-weight="700" fill="#94A3B8" text-anchor="end">40%</text>
+  <text x="20" y="126" font-family="Montserrat,sans-serif" font-size="7" fill="#4B5563" letter-spacing="1">EFICIENCIA OPERATIVA</text>
+  <rect x="20" y="132" width="168" height="5" rx="2.5" fill="rgba(148,163,184,0.08)"/>
+  <rect x="20" y="132" width="67" height="5" rx="2.5" fill="rgba(148,163,184,0.3)" style="animation:gB2a .8s ease forwards .75s;width:0"/>
+  <text x="194" y="139" font-family="Montserrat,sans-serif" font-size="10" font-weight="700" fill="#94A3B8" text-anchor="end">40%</text>
 
-  <!-- KPI 3 -->
-  <text x="24" y="156" font-family="Montserrat,sans-serif" font-size="7" fill="#4B5563" letter-spacing="1">CLARIDAD ESTRATÉGICA</text>
-  <rect x="24" y="162" width="168" height="5" rx="2.5" fill="rgba(148,163,184,0.08)"/>
-  <rect x="24" y="162" width="34" height="5" rx="2.5" fill="rgba(148,163,184,0.28)" style="animation:gB3a .8s ease forwards .9s;width:0"/>
-  <text x="196" y="169" font-family="Montserrat,sans-serif" font-size="10" font-weight="700" fill="#94A3B8" text-anchor="end">20%</text>
+  <text x="20" y="156" font-family="Montserrat,sans-serif" font-size="7" fill="#4B5563" letter-spacing="1">CLARIDAD ESTRATÉGICA</text>
+  <rect x="20" y="162" width="168" height="5" rx="2.5" fill="rgba(148,163,184,0.08)"/>
+  <rect x="20" y="162" width="34" height="5" rx="2.5" fill="rgba(148,163,184,0.3)" style="animation:gB3a .8s ease forwards .9s;width:0"/>
+  <text x="194" y="169" font-family="Montserrat,sans-serif" font-size="10" font-weight="700" fill="#94A3B8" text-anchor="end">20%</text>
 
-  <!-- Divider -->
-  <line x1="24" y1="185" x2="224" y2="185" stroke="rgba(148,163,184,0.06)" stroke-width="1"/>
+  <line x1="20" y1="184" x2="228" y2="184" stroke="rgba(148,163,184,0.06)" stroke-width="1"/>
 
   <!-- Sparkline caótica -->
-  <text x="24" y="200" font-family="Montserrat,sans-serif" font-size="7" fill="#4B5563" letter-spacing="1.2">RENDIMIENTO SIN DIRECCIÓN</text>
-  <polyline points="24,290 50,262 68,300 94,228 118,272 144,244 168,294 194,264 220,278"
-    fill="none" stroke="rgba(148,163,184,0.4)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-    style="animation:drawChaos 1s ease forwards .5s;stroke-dasharray:280;stroke-dashoffset:280"/>
-  <line x1="24" y1="308" x2="224" y2="308" stroke="rgba(148,163,184,0.06)" stroke-width="1"/>
+  <text x="20" y="200" font-family="Montserrat,sans-serif" font-size="7" fill="#4B5563" letter-spacing="1.5">RENDIMIENTO SIN DIRECCIÓN</text>
+  <polyline points="20,300 44,272 62,310 86,240 108,278 132,252 156,298 180,268 224,282"
+    fill="none" stroke="rgba(148,163,184,0.45)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+    style="animation:drawChaos 1s ease forwards .5s;stroke-dasharray:300;stroke-dashoffset:300"/>
+  <line x1="20" y1="315" x2="228" y2="315" stroke="rgba(148,163,184,0.06)" stroke-width="1"/>
 
-  <!-- Divider -->
-  <line x1="24" y1="325" x2="224" y2="325" stroke="rgba(148,163,184,0.06)" stroke-width="1"/>
+  <line x1="20" y1="330" x2="228" y2="330" stroke="rgba(148,163,184,0.06)" stroke-width="1"/>
 
-  <!-- Gauges ANTES — Time to Market -->
-  <!-- Gauge 1: x=55, Gauge 2: x=124, Gauge 3: x=193 -->
-  <!-- Time to Market ANTES 28% -->
-  <path d="M 32 430 A 38 38 0 0 1 108 430" fill="none" stroke="rgba(148,163,184,0.1)" stroke-width="9" stroke-linecap="round"/>
-  <path d="M 32 430 A 38 38 0 0 1 108 430" fill="none" stroke="rgba(148,163,184,0.28)" stroke-width="9" stroke-linecap="round"
-        stroke-dasharray="119.4" stroke-dashoffset="86" style="animation:gaugeA1 1s ease forwards .8s;stroke-dashoffset:119.4"/>
-  <text x="70" y="425" font-family="Montserrat,sans-serif" font-size="13" font-weight="700" fill="#94A3B8" text-anchor="middle">28%</text>
-  <text x="70" y="455" font-family="Montserrat,sans-serif" font-size="8" fill="#4B5563" text-anchor="middle" letter-spacing="0.5">TIME TO MARKET</text>
+  <!-- Gauges ANTES: centros x=54, x=124, x=194 · y_arco=415 · r=28 -->
+  <!-- Gauge 1 — Time to Market 28% → offset=63.3 de 88 -->
+  <path d="M 26 415 A 28 28 0 0 1 82 415" fill="none" stroke="rgba(148,163,184,0.1)" stroke-width="8" stroke-linecap="round"/>
+  <path d="M 26 415 A 28 28 0 0 1 82 415" fill="none" stroke="rgba(148,163,184,0.32)" stroke-width="8" stroke-linecap="round"
+        stroke-dasharray="88" stroke-dashoffset="88" style="animation:gA1 1s ease forwards .8s"/>
+  <text x="54" y="411" font-family="Montserrat,sans-serif" font-size="11" font-weight="700" fill="#94A3B8" text-anchor="middle">28%</text>
+  <text x="54" y="432" font-family="Montserrat,sans-serif" font-size="7.5" fill="#4B5563" text-anchor="middle">Time to Market</text>
 
-  <!-- NPS ANTES 20% -->
-  <path d="M 108 430 A 38 38 0 0 1 184 430" fill="none" stroke="rgba(148,163,184,0.1)" stroke-width="9" stroke-linecap="round"/>
-  <path d="M 108 430 A 38 38 0 0 1 184 430" fill="none" stroke="rgba(148,163,184,0.28)" stroke-width="9" stroke-linecap="round"
-        stroke-dasharray="119.4" stroke-dashoffset="95" style="animation:gaugeA2 1s ease forwards .95s;stroke-dashoffset:119.4"/>
-  <text x="146" y="425" font-family="Montserrat,sans-serif" font-size="13" font-weight="700" fill="#94A3B8" text-anchor="middle">20%</text>
-  <text x="146" y="455" font-family="Montserrat,sans-serif" font-size="8" fill="#4B5563" text-anchor="middle" letter-spacing="0.5">NPS</text>
+  <!-- Gauge 2 — NPS 20% → offset=70.4 de 88 -->
+  <path d="M 96 415 A 28 28 0 0 1 152 415" fill="none" stroke="rgba(148,163,184,0.1)" stroke-width="8" stroke-linecap="round"/>
+  <path d="M 96 415 A 28 28 0 0 1 152 415" fill="none" stroke="rgba(148,163,184,0.32)" stroke-width="8" stroke-linecap="round"
+        stroke-dasharray="88" stroke-dashoffset="88" style="animation:gA2 1s ease forwards .95s"/>
+  <text x="124" y="411" font-family="Montserrat,sans-serif" font-size="11" font-weight="700" fill="#94A3B8" text-anchor="middle">20%</text>
+  <text x="124" y="432" font-family="Montserrat,sans-serif" font-size="7.5" fill="#4B5563" text-anchor="middle">NPS</text>
 
-  <!-- ROI ANTES 25% -->
-  <path d="M 184 430 A 38 38 0 0 1 260 430" fill="none" stroke="rgba(148,163,184,0.1)" stroke-width="9" stroke-linecap="round"/>
-  <path d="M 184 430 A 38 38 0 0 1 260 430" fill="none" stroke="rgba(148,163,184,0.28)" stroke-width="9" stroke-linecap="round"
-        stroke-dasharray="119.4" stroke-dashoffset="90" style="animation:gaugeA3 1s ease forwards 1.1s;stroke-dashoffset:119.4"/>
-  <text x="222" y="425" font-family="Montserrat,sans-serif" font-size="13" font-weight="700" fill="#94A3B8" text-anchor="middle">25%</text>
-  <text x="222" y="455" font-family="Montserrat,sans-serif" font-size="8" fill="#4B5563" text-anchor="middle" letter-spacing="0.5">ROI</text>
+  <!-- Gauge 3 — ROI 25% → offset=66 de 88 -->
+  <path d="M 166 415 A 28 28 0 0 1 222 415" fill="none" stroke="rgba(148,163,184,0.1)" stroke-width="8" stroke-linecap="round"/>
+  <path d="M 166 415 A 28 28 0 0 1 222 415" fill="none" stroke="rgba(148,163,184,0.32)" stroke-width="8" stroke-linecap="round"
+        stroke-dasharray="88" stroke-dashoffset="88" style="animation:gA3 1s ease forwards 1.1s"/>
+  <text x="194" y="411" font-family="Montserrat,sans-serif" font-size="11" font-weight="700" fill="#94A3B8" text-anchor="middle">25%</text>
+  <text x="194" y="432" font-family="Montserrat,sans-serif" font-size="7.5" fill="#4B5563" text-anchor="middle">ROI</text>
 
-  <!-- Label gauges -->
-  <text x="124" y="480" font-family="Montserrat,sans-serif" font-size="7" fill="#4B5563" text-anchor="middle" letter-spacing="1.5">INDICADORES CLAVE</text>
+  <text x="124" y="458" font-family="Montserrat,sans-serif" font-size="7" fill="#4B5563" text-anchor="middle" letter-spacing="1.5">INDICADORES CLAVE</text>
 
-  <!-- ══════════════════════════════
-       COL CENTRAL — FRAMEWORK ETRAZIA
-       x: 244 → 476
-  ══════════════════════════════ -->
+  <!-- ══ COL CENTRAL (x: 244-476, centro=360) ══ -->
   <!-- Cápsula ETRAZIA -->
-  <rect x="296" y="62" width="128" height="26" rx="13" fill="rgba(11,17,32,0.95)" stroke="#D97706" stroke-width="1.5"/>
-  <text x="360" y="79" font-family="Montserrat,sans-serif" font-size="9" font-weight="800" fill="#D97706" text-anchor="middle" letter-spacing="2">ETRAZIA</text>
+  <rect x="302" y="60" width="116" height="26" rx="13" fill="rgba(11,17,32,0.95)" stroke="#D97706" stroke-width="1.5"/>
+  <text x="360" y="77" font-family="Montserrat,sans-serif" font-size="9" font-weight="800" fill="#D97706" text-anchor="middle" letter-spacing="2">ETRAZIA</text>
 
-  <!-- Línea vertical conectora DETRÁS -->
-  <line x1="360" y1="100" x2="360" y2="466" stroke="rgba(184,115,51,0.18)" stroke-width="1.5" stroke-dasharray="3 4"/>
+  <!-- Línea vertical DETRÁS de los círculos -->
+  <line x1="360" y1="98" x2="360" y2="460" stroke="rgba(184,115,51,0.18)" stroke-width="1.5" stroke-dasharray="3 4"/>
 
-  <!-- Fase 01 -->
+  <!-- Fase 01 · cy=110 -->
   <g style="animation:fadeSlide .5s ease forwards .7s;opacity:0">
-    <circle cx="360" cy="118" r="20" fill="rgba(11,17,32,0.95)" stroke="rgba(184,115,51,0.45)" stroke-width="1.5"/>
-    <text x="360" y="123" font-family="Montserrat,sans-serif" font-size="11" font-weight="700" fill="#B87333" text-anchor="middle">01</text>
-    <text x="360" y="148" font-family="Montserrat,sans-serif" font-size="12" font-weight="700" fill="#F8FAFC" text-anchor="middle">Diagnóstico</text>
-    <text x="360" y="163" font-family="Montserrat,sans-serif" font-size="9.5" fill="#94A3B8" text-anchor="middle">Escuchamos y analizamos</text>
-    <text x="360" y="175" font-family="Montserrat,sans-serif" font-size="9.5" fill="#94A3B8" text-anchor="middle">dónde estás realmente.</text>
+    <circle cx="360" cy="110" r="18" fill="#0B1120" stroke="rgba(184,115,51,0.45)" stroke-width="1.5"/>
+    <text x="360" y="115" font-family="Montserrat,sans-serif" font-size="10" font-weight="700" fill="#B87333" text-anchor="middle">01</text>
+    <text x="360" y="140" font-family="Montserrat,sans-serif" font-size="11" font-weight="700" fill="#F8FAFC" text-anchor="middle">Diagnóstico</text>
+    <text x="360" y="154" font-family="Montserrat,sans-serif" font-size="9" fill="#94A3B8" text-anchor="middle">Escuchamos y analizamos</text>
+    <text x="360" y="165" font-family="Montserrat,sans-serif" font-size="9" fill="#94A3B8" text-anchor="middle">dónde estás realmente.</text>
   </g>
 
-  <!-- Fase 02 -->
+  <!-- Fase 02 · cy=195 -->
   <g style="animation:fadeSlide .5s ease forwards .95s;opacity:0">
-    <circle cx="360" cy="210" r="20" fill="rgba(11,17,32,0.95)" stroke="rgba(184,115,51,0.45)" stroke-width="1.5"/>
-    <text x="360" y="215" font-family="Montserrat,sans-serif" font-size="11" font-weight="700" fill="#B87333" text-anchor="middle">02</text>
-    <text x="360" y="240" font-family="Montserrat,sans-serif" font-size="12" font-weight="700" fill="#F8FAFC" text-anchor="middle">Diseño</text>
-    <text x="360" y="255" font-family="Montserrat,sans-serif" font-size="9.5" fill="#94A3B8" text-anchor="middle">Co-construimos la hoja</text>
-    <text x="360" y="267" font-family="Montserrat,sans-serif" font-size="9.5" fill="#94A3B8" text-anchor="middle">de ruta con tu equipo.</text>
+    <circle cx="360" cy="195" r="18" fill="#0B1120" stroke="rgba(184,115,51,0.45)" stroke-width="1.5"/>
+    <text x="360" y="200" font-family="Montserrat,sans-serif" font-size="10" font-weight="700" fill="#B87333" text-anchor="middle">02</text>
+    <text x="360" y="225" font-family="Montserrat,sans-serif" font-size="11" font-weight="700" fill="#F8FAFC" text-anchor="middle">Diseño</text>
+    <text x="360" y="239" font-family="Montserrat,sans-serif" font-size="9" fill="#94A3B8" text-anchor="middle">Co-construimos la hoja</text>
+    <text x="360" y="250" font-family="Montserrat,sans-serif" font-size="9" fill="#94A3B8" text-anchor="middle">de ruta con tu equipo.</text>
   </g>
 
-  <!-- Fase 03 -->
+  <!-- Fase 03 · cy=280 -->
   <g style="animation:fadeSlide .5s ease forwards 1.2s;opacity:0">
-    <circle cx="360" cy="302" r="20" fill="rgba(11,17,32,0.95)" stroke="rgba(184,115,51,0.45)" stroke-width="1.5"/>
-    <text x="360" y="307" font-family="Montserrat,sans-serif" font-size="11" font-weight="700" fill="#B87333" text-anchor="middle">03</text>
-    <text x="360" y="332" font-family="Montserrat,sans-serif" font-size="12" font-weight="700" fill="#F8FAFC" text-anchor="middle">Acompañamiento</text>
-    <text x="360" y="347" font-family="Montserrat,sans-serif" font-size="9.5" fill="#94A3B8" text-anchor="middle">Contigo en la ejecución,</text>
-    <text x="360" y="359" font-family="Montserrat,sans-serif" font-size="9.5" fill="#94A3B8" text-anchor="middle">ajustando el rumbo.</text>
+    <circle cx="360" cy="280" r="18" fill="#0B1120" stroke="rgba(184,115,51,0.45)" stroke-width="1.5"/>
+    <text x="360" y="285" font-family="Montserrat,sans-serif" font-size="10" font-weight="700" fill="#B87333" text-anchor="middle">03</text>
+    <text x="360" y="310" font-family="Montserrat,sans-serif" font-size="11" font-weight="700" fill="#F8FAFC" text-anchor="middle">Acompañamiento</text>
+    <text x="360" y="324" font-family="Montserrat,sans-serif" font-size="9" fill="#94A3B8" text-anchor="middle">Contigo en la ejecución,</text>
+    <text x="360" y="335" font-family="Montserrat,sans-serif" font-size="9" fill="#94A3B8" text-anchor="middle">ajustando el rumbo.</text>
   </g>
 
-  <!-- Fase 04 -->
+  <!-- Fase 04 · cy=365 -->
   <g style="animation:fadeSlide .5s ease forwards 1.45s;opacity:0">
-    <circle cx="360" cy="394" r="20" fill="rgba(11,17,32,0.95)" stroke="rgba(184,115,51,0.45)" stroke-width="1.5"/>
-    <text x="360" y="399" font-family="Montserrat,sans-serif" font-size="11" font-weight="700" fill="#B87333" text-anchor="middle">04</text>
-    <text x="360" y="424" font-family="Montserrat,sans-serif" font-size="12" font-weight="700" fill="#F8FAFC" text-anchor="middle">Medición</text>
-    <text x="360" y="439" font-family="Montserrat,sans-serif" font-size="9.5" fill="#94A3B8" text-anchor="middle">Métricas reales. El antes</text>
-    <text x="360" y="451" font-family="Montserrat,sans-serif" font-size="9.5" fill="#94A3B8" text-anchor="middle">y el después.</text>
+    <circle cx="360" cy="365" r="18" fill="#0B1120" stroke="rgba(184,115,51,0.45)" stroke-width="1.5"/>
+    <text x="360" y="370" font-family="Montserrat,sans-serif" font-size="10" font-weight="700" fill="#B87333" text-anchor="middle">04</text>
+    <text x="360" y="395" font-family="Montserrat,sans-serif" font-size="11" font-weight="700" fill="#F8FAFC" text-anchor="middle">Medición</text>
+    <text x="360" y="409" font-family="Montserrat,sans-serif" font-size="9" fill="#94A3B8" text-anchor="middle">Métricas reales. El antes</text>
+    <text x="360" y="420" font-family="Montserrat,sans-serif" font-size="9" fill="#94A3B8" text-anchor="middle">y el después.</text>
   </g>
 
   <!-- Flechas laterales -->
   <g style="animation:fadeIn .4s ease forwards 1.7s;opacity:0">
-    <line x1="244" y1="260" x2="230" y2="260" stroke="rgba(184,115,51,0.3)" stroke-width="1.2" stroke-dasharray="3 3"/>
-    <polygon points="244,260 250,257 250,263" fill="rgba(184,115,51,0.4)" transform="rotate(180 247 260)"/>
-    <line x1="476" y1="260" x2="492" y2="260" stroke="#D97706" stroke-width="1.5"/>
-    <polygon points="492,260 486,257 486,263" fill="#D97706"/>
+    <line x1="230" y1="240" x2="244" y2="240" stroke="rgba(184,115,51,0.3)" stroke-width="1.2" stroke-dasharray="3 3"/>
+    <polygon points="244,240 238,237 238,243" fill="rgba(184,115,51,0.4)"/>
+    <line x1="476" y1="240" x2="490" y2="240" stroke="#D97706" stroke-width="1.5"/>
+    <polygon points="490,240 484,237 484,243" fill="#D97706"/>
   </g>
 
-  <!-- ══════════════════════════════
-       COL DERECHA — RESULTADO
-       x: 496 → 696
-  ══════════════════════════════ -->
+  <!-- ══ COL DERECHA (x: 496-708) ══ -->
   <text x="496" y="70" font-family="Montserrat,sans-serif" font-size="8" font-weight="700" fill="#D97706" letter-spacing="3">RESULTADO</text>
-  <line x1="496" y1="75" x2="696" y2="75" stroke="rgba(217,119,6,0.28)" stroke-width="1"/>
+  <line x1="496" y1="76" x2="708" y2="76" stroke="rgba(217,119,6,0.28)" stroke-width="1"/>
 
-  <!-- KPI 1 -->
+  <!-- KPIs DESPUÉS -->
   <text x="496" y="96" font-family="Montserrat,sans-serif" font-size="7" fill="rgba(217,119,6,0.7)" letter-spacing="1">ALINEACIÓN DE EQUIPO</text>
   <rect x="496" y="102" width="168" height="5" rx="2.5" fill="rgba(217,119,6,0.1)"/>
   <rect x="496" y="102" width="151" height="5" rx="2.5" fill="url(#barGrad)" style="animation:gB1b 1s ease forwards 1.1s;width:0"/>
-  <text x="668" y="109" font-family="Montserrat,sans-serif" font-size="10" font-weight="800" fill="#D97706" text-anchor="end">90%</text>
+  <text x="670" y="109" font-family="Montserrat,sans-serif" font-size="10" font-weight="800" fill="#D97706" text-anchor="end">90%</text>
 
-  <!-- KPI 2 -->
   <text x="496" y="126" font-family="Montserrat,sans-serif" font-size="7" fill="rgba(217,119,6,0.7)" letter-spacing="1">EFICIENCIA OPERATIVA</text>
   <rect x="496" y="132" width="168" height="5" rx="2.5" fill="rgba(217,119,6,0.1)"/>
   <rect x="496" y="132" width="143" height="5" rx="2.5" fill="url(#barGrad)" style="animation:gB2b 1s ease forwards 1.25s;width:0"/>
-  <text x="668" y="139" font-family="Montserrat,sans-serif" font-size="10" font-weight="800" fill="#D97706" text-anchor="end">85%</text>
+  <text x="670" y="139" font-family="Montserrat,sans-serif" font-size="10" font-weight="800" fill="#D97706" text-anchor="end">85%</text>
 
-  <!-- KPI 3 -->
   <text x="496" y="156" font-family="Montserrat,sans-serif" font-size="7" fill="rgba(217,119,6,0.7)" letter-spacing="1">CLARIDAD ESTRATÉGICA</text>
   <rect x="496" y="162" width="168" height="5" rx="2.5" fill="rgba(217,119,6,0.1)"/>
   <rect x="496" y="162" width="160" height="5" rx="2.5" fill="url(#barGrad)" style="animation:gB3b 1s ease forwards 1.4s;width:0"/>
-  <text x="668" y="169" font-family="Montserrat,sans-serif" font-size="10" font-weight="800" fill="#D97706" text-anchor="end">95%</text>
+  <text x="670" y="169" font-family="Montserrat,sans-serif" font-size="10" font-weight="800" fill="#D97706" text-anchor="end">95%</text>
 
-  <!-- Divider -->
-  <line x1="496" y1="185" x2="696" y2="185" stroke="rgba(217,119,6,0.06)" stroke-width="1"/>
+  <line x1="496" y1="184" x2="708" y2="184" stroke="rgba(217,119,6,0.06)" stroke-width="1"/>
 
   <!-- Sparkline ascendente -->
-  <text x="496" y="200" font-family="Montserrat,sans-serif" font-size="7" fill="#B87333" letter-spacing="1.2">RENDIMIENTO CON ESTRATEGIA</text>
-  <path d="M 496 298 Q 536 282 566 258 T 622 216 T 692 180"
+  <text x="496" y="200" font-family="Montserrat,sans-serif" font-size="7" fill="#B87333" letter-spacing="1.5">RENDIMIENTO CON ESTRATEGIA</text>
+  <path d="M 496 310 Q 540 295 572 270 T 630 228 T 704 188"
     fill="none" stroke="url(#lineUpGrad)" stroke-width="2.5" stroke-linecap="round"
     style="animation:drawUp 1.3s ease-out forwards 1.2s;stroke-dasharray:280;stroke-dashoffset:280"/>
-  <path d="M 496 308 L 496 298 Q 536 282 566 258 T 622 216 T 692 180 L 692 308 Z"
+  <path d="M 496 315 L 496 310 Q 540 295 572 270 T 630 228 T 704 188 L 704 315 Z"
     fill="url(#areaGrad)" style="animation:fadeIn .8s ease forwards 1.7s;opacity:0"/>
-  <circle cx="692" cy="180" r="5" fill="#D97706" style="animation:fadeIn .4s ease forwards 2.2s;opacity:0"/>
-  <circle cx="692" cy="180" r="10" fill="#D97706" fill-opacity="0.15" style="animation:fadeIn .4s ease forwards 2.2s;opacity:0"/>
-  <line x1="496" y1="308" x2="696" y2="308" stroke="rgba(217,119,6,0.06)" stroke-width="1"/>
+  <circle cx="704" cy="188" r="5" fill="#D97706" style="animation:fadeIn .4s ease forwards 2.2s;opacity:0"/>
+  <circle cx="704" cy="188" r="10" fill="#D97706" fill-opacity="0.15" style="animation:fadeIn .4s ease forwards 2.2s;opacity:0"/>
+  <line x1="496" y1="315" x2="708" y2="315" stroke="rgba(217,119,6,0.06)" stroke-width="1"/>
 
-  <!-- Divider -->
-  <line x1="496" y1="325" x2="696" y2="325" stroke="rgba(217,119,6,0.06)" stroke-width="1"/>
+  <line x1="496" y1="330" x2="708" y2="330" stroke="rgba(217,119,6,0.06)" stroke-width="1"/>
 
-  <!-- Gauges DESPUÉS -->
-  <!-- Time to Market 80% -->
-  <path d="M 504 430 A 38 38 0 0 1 580 430" fill="none" stroke="rgba(217,119,6,0.12)" stroke-width="9" stroke-linecap="round"/>
-  <path d="M 504 430 A 38 38 0 0 1 580 430" fill="none" stroke="#D97706" stroke-width="9" stroke-linecap="round"
-        stroke-dasharray="119.4" stroke-dashoffset="24" style="animation:gaugeB1 1s ease forwards 1.1s;stroke-dashoffset:119.4"/>
-  <text x="542" y="425" font-family="Montserrat,sans-serif" font-size="13" font-weight="700" fill="#D97706" text-anchor="middle">80%</text>
-  <text x="542" y="455" font-family="Montserrat,sans-serif" font-size="8" fill="#B87333" text-anchor="middle" letter-spacing="0.5">TIME TO MARKET</text>
+  <!-- Gauges DESPUÉS: centros x=530, x=600, x=670 · y_arco=415 · r=28 -->
+  <!-- Gauge 1 — Time to Market 80% → offset=17.6 de 88 -->
+  <path d="M 502 415 A 28 28 0 0 1 558 415" fill="none" stroke="rgba(217,119,6,0.12)" stroke-width="8" stroke-linecap="round"/>
+  <path d="M 502 415 A 28 28 0 0 1 558 415" fill="none" stroke="#D97706" stroke-width="8" stroke-linecap="round"
+        stroke-dasharray="88" stroke-dashoffset="88" style="animation:gB1g 1s ease forwards 1.1s"/>
+  <text x="530" y="411" font-family="Montserrat,sans-serif" font-size="11" font-weight="700" fill="#D97706" text-anchor="middle">80%</text>
+  <text x="530" y="432" font-family="Montserrat,sans-serif" font-size="7.5" fill="#B87333" text-anchor="middle">Time to Market</text>
 
-  <!-- NPS 90% -->
-  <path d="M 580 430 A 38 38 0 0 1 656 430" fill="none" stroke="rgba(217,119,6,0.12)" stroke-width="9" stroke-linecap="round"/>
-  <path d="M 580 430 A 38 38 0 0 1 656 430" fill="none" stroke="#D97706" stroke-width="9" stroke-linecap="round"
-        stroke-dasharray="119.4" stroke-dashoffset="12" style="animation:gaugeB2 1s ease forwards 1.25s;stroke-dashoffset:119.4"/>
-  <text x="618" y="425" font-family="Montserrat,sans-serif" font-size="13" font-weight="700" fill="#D97706" text-anchor="middle">90%</text>
-  <text x="618" y="455" font-family="Montserrat,sans-serif" font-size="8" fill="#B87333" text-anchor="middle" letter-spacing="0.5">NPS</text>
+  <!-- Gauge 2 — NPS 90% → offset=8.8 de 88 -->
+  <path d="M 572 415 A 28 28 0 0 1 628 415" fill="none" stroke="rgba(217,119,6,0.12)" stroke-width="8" stroke-linecap="round"/>
+  <path d="M 572 415 A 28 28 0 0 1 628 415" fill="none" stroke="#D97706" stroke-width="8" stroke-linecap="round"
+        stroke-dasharray="88" stroke-dashoffset="88" style="animation:gB2g 1s ease forwards 1.25s"/>
+  <text x="600" y="411" font-family="Montserrat,sans-serif" font-size="11" font-weight="700" fill="#D97706" text-anchor="middle">90%</text>
+  <text x="600" y="432" font-family="Montserrat,sans-serif" font-size="7.5" fill="#B87333" text-anchor="middle">NPS</text>
 
-  <!-- ROI 85% -->
-  <path d="M 618 430 A 38 38 0 0 1 694 430" fill="none" stroke="rgba(217,119,6,0.12)" stroke-width="9" stroke-linecap="round"/>
-  <path d="M 618 430 A 38 38 0 0 1 694 430" fill="none" stroke="#D97706" stroke-width="9" stroke-linecap="round"
-        stroke-dasharray="119.4" stroke-dashoffset="18" style="animation:gaugeB3 1s ease forwards 1.4s;stroke-dashoffset:119.4"/>
-  <text x="656" y="425" font-family="Montserrat,sans-serif" font-size="13" font-weight="700" fill="#D97706" text-anchor="middle">85%</text>
-  <text x="656" y="455" font-family="Montserrat,sans-serif" font-size="8" fill="#B87333" text-anchor="middle" letter-spacing="0.5">ROI</text>
+  <!-- Gauge 3 — ROI 85% → offset=13.2 de 88 -->
+  <path d="M 642 415 A 28 28 0 0 1 698 415" fill="none" stroke="rgba(217,119,6,0.12)" stroke-width="8" stroke-linecap="round"/>
+  <path d="M 642 415 A 28 28 0 0 1 698 415" fill="none" stroke="#D97706" stroke-width="8" stroke-linecap="round"
+        stroke-dasharray="88" stroke-dashoffset="88" style="animation:gB3g 1s ease forwards 1.4s"/>
+  <text x="670" y="411" font-family="Montserrat,sans-serif" font-size="11" font-weight="700" fill="#D97706" text-anchor="middle">85%</text>
+  <text x="670" y="432" font-family="Montserrat,sans-serif" font-size="7.5" fill="#B87333" text-anchor="middle">ROI</text>
 
-  <!-- Label gauges -->
-  <text x="596" y="480" font-family="Montserrat,sans-serif" font-size="7" fill="#B87333" text-anchor="middle" letter-spacing="1.5">INDICADORES CLAVE</text>
+  <text x="600" y="458" font-family="Montserrat,sans-serif" font-size="7" fill="#B87333" text-anchor="middle" letter-spacing="1.5">INDICADORES CLAVE</text>
 </svg>
 
     <!-- Cards de impacto flotantes -->
