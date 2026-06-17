@@ -180,7 +180,7 @@ footer{background:var(--navy);border-top:1px solid rgba(184,115,51,0.1);padding:
 
 /* ── HERO VISUAL — Impact Chart ── */
 .hero-visual{display:flex;align-items:center;justify-content:center;position:relative}
-#impact-chart{width:100%;height:auto;display:block;max-width:380px}
+#impact-chart{width:100%;height:auto;display:block}
 
 /* Impact Cards */
 .impact-cards{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
@@ -202,15 +202,16 @@ footer{background:var(--navy);border-top:1px solid rgba(184,115,51,0.1);padding:
 .ic-label{font-size:11px;color:var(--ice);font-weight:600;letter-spacing:0.03em;line-height:1.3}
 
 /* Animaciones */
-@keyframes growBar1{from{width:0}to{width:45px}}
-@keyframes growBar2{from{width:0}to{width:60px}}
-@keyframes growBar3{from{width:0}to{width:30px}}
-@keyframes growBarA{from{width:0}to{width:135px}}
-@keyframes growBarB{from{width:0}to{width:127px}}
-@keyframes growBarC{from{width:0}to{width:142px}}
-@keyframes drawLine{from{stroke-dashoffset:200}to{stroke-dashoffset:0}}
-@keyframes drawLineUp{from{stroke-dashoffset:250}to{stroke-dashoffset:0}}
+@keyframes growBar1a{from{width:0}to{width:57px}}
+@keyframes growBar2a{from{width:0}to{width:76px}}
+@keyframes growBar3a{from{width:0}to{width:38px}}
+@keyframes growBar1b{from{width:0}to{width:171px}}
+@keyframes growBar2b{from{width:0}to{width:161px}}
+@keyframes growBar3b{from{width:0}to{width:180px}}
+@keyframes drawChaos{from{stroke-dashoffset:260}to{stroke-dashoffset:0}}
+@keyframes drawUp{from{stroke-dashoffset:300}to{stroke-dashoffset:0}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes fadeScaleIn{from{opacity:0;transform:scale(0.7)}to{opacity:1;transform:scale(1)}}
 
 /* Responsive hero */
 @media(max-width:1100px){
@@ -282,118 +283,130 @@ footer{background:var(--navy);border-top:1px solid rgba(184,115,51,0.1);padding:
 
   <!-- GRÁFICO DE IMPACTO -->
   <div class="hero-visual" aria-hidden="true">
-    <svg id="impact-chart" viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+    <svg id="impact-chart" viewBox="0 0 520 400" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="barGrad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#B87333"/>
       <stop offset="100%" stop-color="#D97706"/>
     </linearGradient>
-    <linearGradient id="lineGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#B87333" stop-opacity="0.6"/>
-      <stop offset="100%" stop-color="#D97706"/>
-    </linearGradient>
     <linearGradient id="areaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#D97706" stop-opacity="0.18"/>
+      <stop offset="0%" stop-color="#D97706" stop-opacity="0.22"/>
       <stop offset="100%" stop-color="#D97706" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="lineUpGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#B87333" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#D97706"/>
     </linearGradient>
   </defs>
 
-  <!-- Fondo contenedor -->
-  <rect x="8" y="8" width="404" height="304" rx="12" fill="rgba(17,24,39,0.85)" stroke="rgba(184,115,51,0.15)" stroke-width="1"/>
+  <!-- Contenedor principal -->
+  <rect x="4" y="4" width="512" height="392" rx="14" fill="rgba(17,24,39,0.9)" stroke="rgba(184,115,51,0.18)" stroke-width="1.5"/>
 
-  <!-- Header del dashboard -->
-  <rect x="8" y="8" width="404" height="36" rx="12" fill="rgba(11,17,32,0.9)"/>
-  <rect x="8" y="32" width="404" height="12" fill="rgba(11,17,32,0.9)"/>
-  <text x="28" y="31" font-family="Montserrat,sans-serif" font-size="9" font-weight="700" fill="#B87333" letter-spacing="2">DIAGNÓSTICO ESTRATÉGICO</text>
-  <!-- Dots de ventana -->
-  <circle cx="390" cy="26" r="4" fill="rgba(184,115,51,0.4)"/>
-  <circle cx="376" cy="26" r="4" fill="rgba(184,115,51,0.2)"/>
-  <circle cx="362" cy="26" r="4" fill="rgba(184,115,51,0.1)"/>
+  <!-- Header -->
+  <rect x="4" y="4" width="512" height="44" rx="14" fill="rgba(11,17,32,0.95)"/>
+  <rect x="4" y="30" width="512" height="18" fill="rgba(11,17,32,0.95)"/>
+  <line x1="4" y1="48" x2="516" y2="48" stroke="rgba(184,115,51,0.14)" stroke-width="1"/>
+  <text x="24" y="32" font-family="Montserrat,sans-serif" font-size="10" font-weight="800" fill="#B87333" letter-spacing="2.5">DIAGNÓSTICO ESTRATÉGICO — ETRAZIA CONSULTING</text>
+  <circle cx="496" cy="26" r="5" fill="rgba(184,115,51,0.4)"/>
+  <circle cx="480" cy="26" r="5" fill="rgba(184,115,51,0.2)"/>
+  <circle cx="464" cy="26" r="5" fill="rgba(184,115,51,0.1)"/>
 
-  <!-- Divisor header -->
-  <line x1="8" y1="44" x2="412" y2="44" stroke="rgba(184,115,51,0.12)" stroke-width="1"/>
+  <!-- ══ ZONA SUPERIOR: KPIs lado a lado ══ -->
 
-  <!-- ── COLUMNA IZQUIERDA: Antes ── -->
-  <!-- Label -->
-  <text x="28" y="64" font-family="Montserrat,sans-serif" font-size="8" font-weight="700" fill="#94A3B8" letter-spacing="3">SITUACIÓN ACTUAL</text>
-  <line x1="28" y1="68" x2="185" y2="68" stroke="rgba(148,163,184,0.2)" stroke-width="1"/>
+  <!-- Columna ANTES — header -->
+  <text x="24" y="74" font-family="Montserrat,sans-serif" font-size="8.5" font-weight="700" fill="#94A3B8" letter-spacing="3">SITUACIÓN ACTUAL</text>
+  <line x1="24" y1="79" x2="240" y2="79" stroke="rgba(148,163,184,0.18)" stroke-width="1"/>
 
-  <!-- Métricas bajas ANTES — 3 KPIs -->
-  <!-- KPI 1 -->
-  <text x="28" y="90" font-family="Montserrat,sans-serif" font-size="8" fill="#94A3B8" letter-spacing="1">ALINEACIÓN DE EQUIPO</text>
-  <rect x="28" y="95" width="150" height="5" rx="2" fill="rgba(148,163,184,0.1)"/>
-  <rect x="28" y="95" width="45" height="5" rx="2" fill="rgba(148,163,184,0.35)"
-        style="animation: growBar1 .8s ease forwards .5s; width:0"/>
-  <text x="182" y="101" font-family="Montserrat,sans-serif" font-size="9" font-weight="700" fill="#94A3B8" text-anchor="end">30%</text>
+  <!-- KPI 1 ANTES -->
+  <text x="24" y="100" font-family="Montserrat,sans-serif" font-size="7.5" fill="#4B5563" letter-spacing="1.2">ALINEACIÓN DE EQUIPO</text>
+  <rect x="24" y="106" width="190" height="6" rx="3" fill="rgba(148,163,184,0.08)"/>
+  <rect x="24" y="106" width="57" height="6" rx="3" fill="rgba(148,163,184,0.3)"
+        style="stroke-dasharray:0; animation: growBar1a .8s ease forwards .6s; width:0"/>
+  <text x="220" y="114" font-family="Montserrat,sans-serif" font-size="10" font-weight="700" fill="#94A3B8" text-anchor="end">30%</text>
 
-  <!-- KPI 2 -->
-  <text x="28" y="120" font-family="Montserrat,sans-serif" font-size="8" fill="#94A3B8" letter-spacing="1">EFICIENCIA OPERATIVA</text>
-  <rect x="28" y="125" width="150" height="5" rx="2" fill="rgba(148,163,184,0.1)"/>
-  <rect x="28" y="125" width="60" height="5" rx="2" fill="rgba(148,163,184,0.35)"
-        style="animation: growBar2 .8s ease forwards .65s; width:0"/>
-  <text x="182" y="131" font-family="Montserrat,sans-serif" font-size="9" font-weight="700" fill="#94A3B8" text-anchor="end">40%</text>
+  <!-- KPI 2 ANTES -->
+  <text x="24" y="132" font-family="Montserrat,sans-serif" font-size="7.5" fill="#4B5563" letter-spacing="1.2">EFICIENCIA OPERATIVA</text>
+  <rect x="24" y="138" width="190" height="6" rx="3" fill="rgba(148,163,184,0.08)"/>
+  <rect x="24" y="138" width="76" height="6" rx="3" fill="rgba(148,163,184,0.3)"
+        style="animation: growBar2a .8s ease forwards .75s; width:0"/>
+  <text x="220" y="146" font-family="Montserrat,sans-serif" font-size="10" font-weight="700" fill="#94A3B8" text-anchor="end">40%</text>
 
-  <!-- KPI 3 -->
-  <text x="28" y="150" font-family="Montserrat,sans-serif" font-size="8" fill="#94A3B8" letter-spacing="1">CLARIDAD ESTRATÉGICA</text>
-  <rect x="28" y="155" width="150" height="5" rx="2" fill="rgba(148,163,184,0.1)"/>
-  <rect x="28" y="155" width="30" height="5" rx="2" fill="rgba(148,163,184,0.35)"
-        style="animation: growBar3 .8s ease forwards .8s; width:0"/>
-  <text x="182" y="161" font-family="Montserrat,sans-serif" font-size="9" font-weight="700" fill="#94A3B8" text-anchor="end">20%</text>
+  <!-- KPI 3 ANTES -->
+  <text x="24" y="164" font-family="Montserrat,sans-serif" font-size="7.5" fill="#4B5563" letter-spacing="1.2">CLARIDAD ESTRATÉGICA</text>
+  <rect x="24" y="170" width="190" height="6" rx="3" fill="rgba(148,163,184,0.08)"/>
+  <rect x="24" y="170" width="38" height="6" rx="3" fill="rgba(148,163,184,0.3)"
+        style="animation: growBar3a .8s ease forwards .9s; width:0"/>
+  <text x="220" y="178" font-family="Montserrat,sans-serif" font-size="10" font-weight="700" fill="#94A3B8" text-anchor="end">20%</text>
 
-  <!-- Mini sparkline caótica ANTES -->
-  <polyline points="28,230 48,210 60,240 78,200 95,225 115,205 135,235 155,215 178,220"
-    fill="none" stroke="rgba(148,163,184,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-    style="animation: drawLine 1s ease forwards .4s; stroke-dasharray:200; stroke-dashoffset:200"/>
-  <text x="28" y="252" font-family="Montserrat,sans-serif" font-size="7" fill="#4B5563" letter-spacing="1">RENDIMIENTO — SIN DIRECCIÓN</text>
-
-  <!-- Línea divisora central -->
-  <line x1="210" y1="52" x2="210" y2="300" stroke="rgba(184,115,51,0.12)" stroke-width="1" stroke-dasharray="3 4"/>
-  <!-- Flecha central -->
-  <g style="animation: fadeIn .5s ease forwards 1.2s; opacity:0">
-    <line x1="196" y1="160" x2="222" y2="160" stroke="#D97706" stroke-width="1.5"/>
-    <polygon points="222,160 216,156 216,164" fill="#D97706"/>
-    <text x="209" y="153" font-family="Montserrat,sans-serif" font-size="6.5" fill="#D97706" font-weight="700" text-anchor="middle" letter-spacing="0.5">ETRAZIA</text>
+  <!-- ── ETRAZIA — separador central prominente ── -->
+  <line x1="262" y1="58" x2="262" y2="290" stroke="rgba(184,115,51,0.12)" stroke-width="1" stroke-dasharray="3 4"/>
+  <g style="animation: fadeScaleIn .6s cubic-bezier(0.34,1.56,0.64,1) forwards 1.3s; opacity:0; transform-origin:262px 130px">
+    <!-- Cápsula ETRAZIA -->
+    <rect x="228" y="115" width="68" height="28" rx="14" fill="rgba(11,17,32,0.95)" stroke="#D97706" stroke-width="1.5"/>
+    <text x="262" y="133" font-family="Montserrat,sans-serif" font-size="9" font-weight="800" fill="#D97706" text-anchor="middle" letter-spacing="1.5">ETRAZIA</text>
+    <!-- Flechas -->
+    <line x1="248" y1="129" x2="236" y2="129" stroke="#D97706" stroke-width="1.2"/>
+    <polygon points="236,129 242,126 242,132" fill="#D97706" transform="rotate(180 239 129)"/>
+    <line x1="276" y1="129" x2="288" y2="129" stroke="#D97706" stroke-width="1.2"/>
+    <polygon points="288,129 282,126 282,132" fill="#D97706"/>
   </g>
 
-  <!-- ── COLUMNA DERECHA: Después ── -->
-  <!-- Label -->
-  <text x="228" y="64" font-family="Montserrat,sans-serif" font-size="8" font-weight="700" fill="#D97706" letter-spacing="3">RESULTADO</text>
-  <line x1="228" y1="68" x2="395" y2="68" stroke="rgba(217,119,6,0.25)" stroke-width="1"/>
+  <!-- Columna DESPUÉS — header -->
+  <text x="286" y="74" font-family="Montserrat,sans-serif" font-size="8.5" font-weight="700" fill="#D97706" letter-spacing="3">RESULTADO</text>
+  <line x1="286" y1="79" x2="500" y2="79" stroke="rgba(217,119,6,0.28)" stroke-width="1"/>
 
-  <!-- Métricas altas DESPUÉS -->
-  <!-- KPI 1 -->
-  <text x="228" y="90" font-family="Montserrat,sans-serif" font-size="8" fill="#D97706" letter-spacing="1">ALINEACIÓN DE EQUIPO</text>
-  <rect x="228" y="95" width="150" height="5" rx="2" fill="rgba(217,119,6,0.1)"/>
-  <rect x="228" y="95" width="135" height="5" rx="2" fill="url(#barGrad)"
-        style="animation: growBarA 1s ease forwards 1.0s; width:0"/>
-  <text x="386" y="101" font-family="Montserrat,sans-serif" font-size="9" font-weight="800" fill="#D97706" text-anchor="end">90%</text>
+  <!-- KPI 1 DESPUÉS -->
+  <text x="286" y="100" font-family="Montserrat,sans-serif" font-size="7.5" fill="#D97706" letter-spacing="1.2" opacity="0.85">ALINEACIÓN DE EQUIPO</text>
+  <rect x="286" y="106" width="190" height="6" rx="3" fill="rgba(217,119,6,0.1)"/>
+  <rect x="286" y="106" width="171" height="6" rx="3" fill="url(#barGrad)"
+        style="animation: growBar1b 1s ease forwards 1.0s; width:0"/>
+  <text x="482" y="114" font-family="Montserrat,sans-serif" font-size="10" font-weight="800" fill="#D97706" text-anchor="end">90%</text>
 
-  <!-- KPI 2 -->
-  <text x="228" y="120" font-family="Montserrat,sans-serif" font-size="8" fill="#D97706" letter-spacing="1">EFICIENCIA OPERATIVA</text>
-  <rect x="228" y="125" width="150" height="5" rx="2" fill="rgba(217,119,6,0.1)"/>
-  <rect x="228" y="125" width="127" height="5" rx="2" fill="url(#barGrad)"
-        style="animation: growBarB 1s ease forwards 1.15s; width:0"/>
-  <text x="386" y="131" font-family="Montserrat,sans-serif" font-size="9" font-weight="800" fill="#D97706" text-anchor="end">85%</text>
+  <!-- KPI 2 DESPUÉS -->
+  <text x="286" y="132" font-family="Montserrat,sans-serif" font-size="7.5" fill="#D97706" letter-spacing="1.2" opacity="0.85">EFICIENCIA OPERATIVA</text>
+  <rect x="286" y="138" width="190" height="6" rx="3" fill="rgba(217,119,6,0.1)"/>
+  <rect x="286" y="138" width="161" height="6" rx="3" fill="url(#barGrad)"
+        style="animation: growBar2b 1s ease forwards 1.15s; width:0"/>
+  <text x="482" y="146" font-family="Montserrat,sans-serif" font-size="10" font-weight="800" fill="#D97706" text-anchor="end">85%</text>
 
-  <!-- KPI 3 -->
-  <text x="228" y="150" font-family="Montserrat,sans-serif" font-size="8" fill="#D97706" letter-spacing="1">CLARIDAD ESTRATÉGICA</text>
-  <rect x="228" y="155" width="150" height="5" rx="2" fill="rgba(217,119,6,0.1)"/>
-  <rect x="228" y="155" width="142" height="5" rx="2" fill="url(#barGrad)"
-        style="animation: growBarC 1s ease forwards 1.3s; width:0"/>
-  <text x="386" y="161" font-family="Montserrat,sans-serif" font-size="9" font-weight="800" fill="#D97706" text-anchor="end">95%</text>
+  <!-- KPI 3 DESPUÉS -->
+  <text x="286" y="164" font-family="Montserrat,sans-serif" font-size="7.5" fill="#D97706" letter-spacing="1.2" opacity="0.85">CLARIDAD ESTRATÉGICA</text>
+  <rect x="286" y="170" width="190" height="6" rx="3" fill="rgba(217,119,6,0.1)"/>
+  <rect x="286" y="170" width="180" height="6" rx="3" fill="url(#barGrad)"
+        style="animation: growBar3b 1s ease forwards 1.3s; width:0"/>
+  <text x="482" y="178" font-family="Montserrat,sans-serif" font-size="10" font-weight="800" fill="#D97706" text-anchor="end">95%</text>
 
-  <!-- Sparkline ascendente DESPUÉS -->
-  <path d="M 228 240 L 248 228 L 268 215 L 288 200 L 310 180 L 330 162 L 352 148 L 375 132 L 395 118"
-    fill="none" stroke="url(#lineGrad)" stroke-width="2" stroke-linecap="round"
-    style="animation: drawLineUp 1.2s ease-out forwards 1s; stroke-dasharray:250; stroke-dashoffset:250"/>
+  <!-- ══ ZONA INFERIOR: Sparklines separadas ══ -->
+  <line x1="24" y1="210" x2="496" y2="210" stroke="rgba(184,115,51,0.08)" stroke-width="1"/>
+
+  <!-- Label ANTES sparkline -->
+  <text x="24" y="228" font-family="Montserrat,sans-serif" font-size="7" fill="#4B5563" letter-spacing="1.5">RENDIMIENTO — SIN DIRECCIÓN</text>
+  <!-- Sparkline caótica ANTES — zona propia 230-310 -->
+  <polyline
+    points="24,300 55,275 72,310 98,265 118,295 142,270 165,305 188,278 214,288"
+    fill="none" stroke="rgba(148,163,184,0.35)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+    style="animation: drawChaos 1s ease forwards .5s; stroke-dasharray:260; stroke-dashoffset:260"/>
+
+  <!-- Línea divisoria vertical entre las dos sparklines -->
+  <line x1="262" y1="210" x2="262" y2="380" stroke="rgba(184,115,51,0.08)" stroke-width="1" stroke-dasharray="3 4"/>
+
+  <!-- Label DESPUÉS sparkline -->
+  <text x="286" y="228" font-family="Montserrat,sans-serif" font-size="7" fill="#B87333" letter-spacing="1.5">RENDIMIENTO — CON ESTRATEGIA</text>
+  <!-- Sparkline ascendente DESPUÉS — zona propia 230-310 -->
+  <path d="M 286 310 Q 320 295 350 270 T 400 230 T 496 192"
+    fill="none" stroke="url(#lineUpGrad)" stroke-width="2.5" stroke-linecap="round"
+    style="animation: drawUp 1.3s ease-out forwards 1.1s; stroke-dasharray:300; stroke-dashoffset:300"/>
   <!-- Área bajo la curva -->
-  <path d="M 228 260 L 228 240 L 248 228 L 268 215 L 288 200 L 310 180 L 330 162 L 352 148 L 375 132 L 395 118 L 395 260 Z"
-    fill="url(#areaGrad)" style="animation: fadeIn .8s ease forwards 1.2s; opacity:0"/>
-  <text x="228" y="278" font-family="Montserrat,sans-serif" font-size="7" fill="#B87333" letter-spacing="1">RENDIMIENTO — CON ESTRATEGIA</text>
+  <path d="M 286 330 L 286 310 Q 320 295 350 270 T 400 230 T 496 192 L 496 330 Z"
+    fill="url(#areaGrad)"
+    style="animation: fadeIn .8s ease forwards 1.5s; opacity:0"/>
+  <!-- Punto final -->
+  <circle cx="496" cy="192" r="5" fill="#D97706" style="animation: fadeIn .4s ease forwards 2.2s; opacity:0"/>
+  <circle cx="496" cy="192" r="10" fill="#D97706" fill-opacity="0.12" style="animation: fadeIn .4s ease forwards 2.2s; opacity:0"/>
 
-  <!-- Punto final destacado -->
-  <circle cx="395" cy="118" r="4" fill="#D97706" style="animation: fadeIn .4s ease forwards 2s; opacity:0"/>
-  <circle cx="395" cy="118" r="8" fill="#D97706" fill-opacity="0.15" style="animation: fadeIn .4s ease forwards 2s; opacity:0"/>
+  <!-- Baseline reference lines sutiles -->
+  <line x1="24" y1="330" x2="238" y2="330" stroke="rgba(184,115,51,0.08)" stroke-width="1"/>
+  <line x1="286" y1="330" x2="500" y2="330" stroke="rgba(184,115,51,0.08)" stroke-width="1"/>
 </svg>
 
     <!-- Cards de impacto flotantes -->
