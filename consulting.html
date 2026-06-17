@@ -202,15 +202,15 @@ footer{background:var(--navy);border-top:1px solid rgba(184,115,51,0.1);padding:
 .ic-label{font-size:11px;color:var(--ice);font-weight:600;letter-spacing:0.03em;line-height:1.3}
 
 /* Animaciones */
-@keyframes drawSuccessLine{from{stroke-dashoffset:200}to{stroke-dashoffset:0}}
-@keyframes popIn{from{opacity:0;transform:scale(0)}to{opacity:1;transform:scale(1)}}
-@keyframes fillBar{from{width:0}to{width:100%}}
-@keyframes slideArrow{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
-@keyframes fadeInPath{from{opacity:0}to{opacity:1}}
-@keyframes slideTopLeft{from{opacity:0;transform:translate(-20px,-20px)}to{opacity:1;transform:translate(0,0)}}
-@keyframes slideTopRight{from{opacity:0;transform:translate(20px,-20px)}to{opacity:1;transform:translate(0,0)}}
-@keyframes slideBottomLeft{from{opacity:0;transform:translate(-20px,20px)}to{opacity:1;transform:translate(0,0)}}
-@keyframes slideBottomRight{from{opacity:0;transform:translate(20px,20px)}to{opacity:1;transform:translate(0,0)}}
+@keyframes growBar1{from{width:0}to{width:45px}}
+@keyframes growBar2{from{width:0}to{width:60px}}
+@keyframes growBar3{from{width:0}to{width:30px}}
+@keyframes growBarA{from{width:0}to{width:135px}}
+@keyframes growBarB{from{width:0}to{width:127px}}
+@keyframes growBarC{from{width:0}to{width:142px}}
+@keyframes drawLine{from{stroke-dashoffset:200}to{stroke-dashoffset:0}}
+@keyframes drawLineUp{from{stroke-dashoffset:250}to{stroke-dashoffset:0}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
 /* Responsive hero */
 @media(max-width:1100px){
@@ -239,7 +239,7 @@ footer{background:var(--navy);border-top:1px solid rgba(184,115,51,0.1);padding:
       <button class="nav-dropdown-toggle">Servicios Etrazia <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       <div class="nav-dropdown-menu">
         <a href="https://etrazia.com/consulting" class="dd-active">📊 Consulting</a>
-        <a href="https://etrazia.com/talent">🎯 Talent</a>
+        <a href="https://etrazia.com/talent">Talent</a>
         <a href="https://etrazia.com/academy">🎓 Academy</a>
         <a href="https://etrazia.com/ventures">🚀 Ventures</a>
         <div class="nav-dropdown-divider"></div>
@@ -282,104 +282,122 @@ footer{background:var(--navy);border-top:1px solid rgba(184,115,51,0.1);padding:
 
   <!-- GRÁFICO DE IMPACTO -->
   <div class="hero-visual" aria-hidden="true">
-    <svg id="impact-chart" viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="afterGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#D97706"/>
-            <stop offset="100%" stop-color="#B87333"/>
-          </linearGradient>
-        </defs>
+    <svg id="impact-chart" viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="barGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#B87333"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+    <linearGradient id="lineGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#B87333" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+    <linearGradient id="areaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D97706" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#D97706" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
 
-        <!-- ANTES (Izquierda) -->
-        <!-- Fondo antes -->
-        <rect x="20" y="40" width="160" height="200" rx="8" fill="rgba(184,115,51,0.05)" stroke="rgba(184,115,51,0.15)" stroke-width="1"/>
-        
-        <!-- Etiqueta ANTES -->
-        <text x="100" y="30" font-family="Montserrat,sans-serif" font-size="13" font-weight="800" fill="#B87333" text-anchor="middle">ANTES</text>
-        
-        <!-- Línea caótica/desordenada -->
-        <path d="M 35 120 Q 50 100 65 140 T 95 110 T 125 160 T 155 130 T 175 150" 
-              stroke="#B87333" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.5"
-              style="animation: fadeInPath .8s ease forwards 0.3s; opacity:0"/>
-        
-        <!-- Iconos problemas -->
-        <text x="55" y="80" font-size="24">❓</text>
-        <text x="120" y="75" font-size="24">📉</text>
-        <text x="85" y="180" font-size="24">⚠️</text>
-        
-        <!-- Barras bajas ANTES -->
-        <g style="animation: fadeInPath .6s ease forwards 0.6s; opacity:0">
-          <text x="45" y="220" font-family="Montserrat,sans-serif" font-size="9" fill="#94A3B8">Claridad</text>
-          <rect x="45" y="227" width="50" height="4" rx="2" fill="rgba(184,115,51,0.2)"/>
-          <rect x="45" y="227" width="15" height="4" rx="2" fill="#B87333"/>
-        </g>
-        
-        <g style="animation: fadeInPath .6s ease forwards 0.75s; opacity:0">
-          <text x="130" y="220" font-family="Montserrat,sans-serif" font-size="9" fill="#94A3B8">Crecimiento</text>
-          <rect x="120" y="227" width="50" height="4" rx="2" fill="rgba(184,115,51,0.2)"/>
-          <rect x="120" y="227" width="12" height="4" rx="2" fill="#B87333"/>
-        </g>
+  <!-- Fondo contenedor -->
+  <rect x="8" y="8" width="404" height="304" rx="12" fill="rgba(17,24,39,0.85)" stroke="rgba(184,115,51,0.15)" stroke-width="1"/>
 
-        <!-- Línea divisoria -->
-        <line x1="210" y1="20" x2="210" y2="270" stroke="rgba(184,115,51,0.2)" stroke-width="1" stroke-dasharray="4 4"/>
+  <!-- Header del dashboard -->
+  <rect x="8" y="8" width="404" height="36" rx="12" fill="rgba(11,17,32,0.9)"/>
+  <rect x="8" y="32" width="404" height="12" fill="rgba(11,17,32,0.9)"/>
+  <text x="28" y="31" font-family="Montserrat,sans-serif" font-size="9" font-weight="700" fill="#B87333" letter-spacing="2">DIAGNÓSTICO ESTRATÉGICO</text>
+  <!-- Dots de ventana -->
+  <circle cx="390" cy="26" r="4" fill="rgba(184,115,51,0.4)"/>
+  <circle cx="376" cy="26" r="4" fill="rgba(184,115,51,0.2)"/>
+  <circle cx="362" cy="26" r="4" fill="rgba(184,115,51,0.1)"/>
 
-        <!-- DESPUÉS (Derecha) -->
-        <!-- Fondo después -->
-        <rect x="240" y="40" width="160" height="200" rx="8" fill="rgba(217,119,6,0.08)" stroke="rgba(184,115,51,0.3)" stroke-width="1.5"/>
-        
-        <!-- Etiqueta DESPUÉS -->
-        <text x="320" y="30" font-family="Montserrat,sans-serif" font-size="13" font-weight="800" fill="#D97706" text-anchor="middle">DESPUÉS</text>
-        
-        <!-- Línea clara creciente -->
-        <path d="M 255 160 L 270 140 L 285 125 L 300 105 L 315 85 L 330 65 L 345 50 L 360 40 L 375 35" 
-              stroke="url(#afterGrad)" stroke-width="3" fill="none" stroke-linecap="round"
-              style="animation: drawSuccessLine 1.2s ease-out forwards 0.5s; stroke-dasharray: 200; stroke-dashoffset: 200"/>
-        
-        <!-- Iconos éxito -->
-        <text x="275" y="80" font-size="24" style="animation: popIn .5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards 1s; opacity:0">✅</text>
-        <text x="340" y="75" font-size="24" style="animation: popIn .5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards 1.2s; opacity:0">📈</text>
-        <text x="305" y="180" font-size="24" style="animation: popIn .5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards 1.4s; opacity:0">🎯</text>
-        
-        <!-- Barras altas DESPUÉS -->
-        <g style="animation: fadeInPath .6s ease forwards 0.8s; opacity:0">
-          <text x="265" y="220" font-family="Montserrat,sans-serif" font-size="9" fill="#D97706" font-weight="600">Claridad</text>
-          <rect x="265" y="227" width="50" height="4" rx="2" fill="rgba(217,119,6,0.2)"/>
-          <rect x="265" y="227" width="48" height="4" rx="2" fill="#D97706" style="animation: fillBar .8s ease forwards 1s; width:0"/>
-        </g>
-        
-        <g style="animation: fadeInPath .6s ease forwards 0.95s; opacity:0">
-          <text x="340" y="220" font-family="Montserrat,sans-serif" font-size="9" fill="#D97706" font-weight="600">Crecimiento</text>
-          <rect x="330" y="227" width="50" height="4" rx="2" fill="rgba(217,119,6,0.2)"/>
-          <rect x="330" y="227" width="45" height="4" rx="2" fill="#D97706" style="animation: fillBar .8s ease forwards 1.15s; width:0"/>
-        </g>
+  <!-- Divisor header -->
+  <line x1="8" y1="44" x2="412" y2="44" stroke="rgba(184,115,51,0.12)" stroke-width="1"/>
 
-        <!-- Flecha transformación -->
-        <g style="animation: slideArrow 1s ease-out forwards 0.6s; opacity:0">
-          <line x1="190" y1="140" x2="230" y2="140" stroke="#D97706" stroke-width="2"/>
-          <polygon points="230,140 220,135 220,145" fill="#D97706"/>
-          <text x="210" y="135" font-family="Montserrat,sans-serif" font-size="9" fill="#D97706" font-weight="600" text-anchor="middle">Etrazia</text>
-        </g>
-      </svg>
+  <!-- ── COLUMNA IZQUIERDA: Antes ── -->
+  <!-- Label -->
+  <text x="28" y="64" font-family="Montserrat,sans-serif" font-size="8" font-weight="700" fill="#94A3B8" letter-spacing="3">SITUACIÓN ACTUAL</text>
+  <line x1="28" y1="68" x2="185" y2="68" stroke="rgba(148,163,184,0.2)" stroke-width="1"/>
+
+  <!-- Métricas bajas ANTES — 3 KPIs -->
+  <!-- KPI 1 -->
+  <text x="28" y="90" font-family="Montserrat,sans-serif" font-size="8" fill="#94A3B8" letter-spacing="1">ALINEACIÓN DE EQUIPO</text>
+  <rect x="28" y="95" width="150" height="5" rx="2" fill="rgba(148,163,184,0.1)"/>
+  <rect x="28" y="95" width="45" height="5" rx="2" fill="rgba(148,163,184,0.35)"
+        style="animation: growBar1 .8s ease forwards .5s; width:0"/>
+  <text x="182" y="101" font-family="Montserrat,sans-serif" font-size="9" font-weight="700" fill="#94A3B8" text-anchor="end">30%</text>
+
+  <!-- KPI 2 -->
+  <text x="28" y="120" font-family="Montserrat,sans-serif" font-size="8" fill="#94A3B8" letter-spacing="1">EFICIENCIA OPERATIVA</text>
+  <rect x="28" y="125" width="150" height="5" rx="2" fill="rgba(148,163,184,0.1)"/>
+  <rect x="28" y="125" width="60" height="5" rx="2" fill="rgba(148,163,184,0.35)"
+        style="animation: growBar2 .8s ease forwards .65s; width:0"/>
+  <text x="182" y="131" font-family="Montserrat,sans-serif" font-size="9" font-weight="700" fill="#94A3B8" text-anchor="end">40%</text>
+
+  <!-- KPI 3 -->
+  <text x="28" y="150" font-family="Montserrat,sans-serif" font-size="8" fill="#94A3B8" letter-spacing="1">CLARIDAD ESTRATÉGICA</text>
+  <rect x="28" y="155" width="150" height="5" rx="2" fill="rgba(148,163,184,0.1)"/>
+  <rect x="28" y="155" width="30" height="5" rx="2" fill="rgba(148,163,184,0.35)"
+        style="animation: growBar3 .8s ease forwards .8s; width:0"/>
+  <text x="182" y="161" font-family="Montserrat,sans-serif" font-size="9" font-weight="700" fill="#94A3B8" text-anchor="end">20%</text>
+
+  <!-- Mini sparkline caótica ANTES -->
+  <polyline points="28,230 48,210 60,240 78,200 95,225 115,205 135,235 155,215 178,220"
+    fill="none" stroke="rgba(148,163,184,0.4)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+    style="animation: drawLine 1s ease forwards .4s; stroke-dasharray:200; stroke-dashoffset:200"/>
+  <text x="28" y="252" font-family="Montserrat,sans-serif" font-size="7" fill="#4B5563" letter-spacing="1">RENDIMIENTO — SIN DIRECCIÓN</text>
+
+  <!-- Línea divisora central -->
+  <line x1="210" y1="52" x2="210" y2="300" stroke="rgba(184,115,51,0.12)" stroke-width="1" stroke-dasharray="3 4"/>
+  <!-- Flecha central -->
+  <g style="animation: fadeIn .5s ease forwards 1.2s; opacity:0">
+    <line x1="196" y1="160" x2="222" y2="160" stroke="#D97706" stroke-width="1.5"/>
+    <polygon points="222,160 216,156 216,164" fill="#D97706"/>
+    <text x="209" y="153" font-family="Montserrat,sans-serif" font-size="6.5" fill="#D97706" font-weight="700" text-anchor="middle" letter-spacing="0.5">ETRAZIA</text>
+  </g>
+
+  <!-- ── COLUMNA DERECHA: Después ── -->
+  <!-- Label -->
+  <text x="228" y="64" font-family="Montserrat,sans-serif" font-size="8" font-weight="700" fill="#D97706" letter-spacing="3">RESULTADO</text>
+  <line x1="228" y1="68" x2="395" y2="68" stroke="rgba(217,119,6,0.25)" stroke-width="1"/>
+
+  <!-- Métricas altas DESPUÉS -->
+  <!-- KPI 1 -->
+  <text x="228" y="90" font-family="Montserrat,sans-serif" font-size="8" fill="#D97706" letter-spacing="1">ALINEACIÓN DE EQUIPO</text>
+  <rect x="228" y="95" width="150" height="5" rx="2" fill="rgba(217,119,6,0.1)"/>
+  <rect x="228" y="95" width="135" height="5" rx="2" fill="url(#barGrad)"
+        style="animation: growBarA 1s ease forwards 1.0s; width:0"/>
+  <text x="386" y="101" font-family="Montserrat,sans-serif" font-size="9" font-weight="800" fill="#D97706" text-anchor="end">90%</text>
+
+  <!-- KPI 2 -->
+  <text x="228" y="120" font-family="Montserrat,sans-serif" font-size="8" fill="#D97706" letter-spacing="1">EFICIENCIA OPERATIVA</text>
+  <rect x="228" y="125" width="150" height="5" rx="2" fill="rgba(217,119,6,0.1)"/>
+  <rect x="228" y="125" width="127" height="5" rx="2" fill="url(#barGrad)"
+        style="animation: growBarB 1s ease forwards 1.15s; width:0"/>
+  <text x="386" y="131" font-family="Montserrat,sans-serif" font-size="9" font-weight="800" fill="#D97706" text-anchor="end">85%</text>
+
+  <!-- KPI 3 -->
+  <text x="228" y="150" font-family="Montserrat,sans-serif" font-size="8" fill="#D97706" letter-spacing="1">CLARIDAD ESTRATÉGICA</text>
+  <rect x="228" y="155" width="150" height="5" rx="2" fill="rgba(217,119,6,0.1)"/>
+  <rect x="228" y="155" width="142" height="5" rx="2" fill="url(#barGrad)"
+        style="animation: growBarC 1s ease forwards 1.3s; width:0"/>
+  <text x="386" y="161" font-family="Montserrat,sans-serif" font-size="9" font-weight="800" fill="#D97706" text-anchor="end">95%</text>
+
+  <!-- Sparkline ascendente DESPUÉS -->
+  <path d="M 228 240 L 248 228 L 268 215 L 288 200 L 310 180 L 330 162 L 352 148 L 375 132 L 395 118"
+    fill="none" stroke="url(#lineGrad)" stroke-width="2" stroke-linecap="round"
+    style="animation: drawLineUp 1.2s ease-out forwards 1s; stroke-dasharray:250; stroke-dashoffset:250"/>
+  <!-- Área bajo la curva -->
+  <path d="M 228 260 L 228 240 L 248 228 L 268 215 L 288 200 L 310 180 L 330 162 L 352 148 L 375 132 L 395 118 L 395 260 Z"
+    fill="url(#areaGrad)" style="animation: fadeIn .8s ease forwards 1.2s; opacity:0"/>
+  <text x="228" y="278" font-family="Montserrat,sans-serif" font-size="7" fill="#B87333" letter-spacing="1">RENDIMIENTO — CON ESTRATEGIA</text>
+
+  <!-- Punto final destacado -->
+  <circle cx="395" cy="118" r="4" fill="#D97706" style="animation: fadeIn .4s ease forwards 2s; opacity:0"/>
+  <circle cx="395" cy="118" r="8" fill="#D97706" fill-opacity="0.15" style="animation: fadeIn .4s ease forwards 2s; opacity:0"/>
+</svg>
 
     <!-- Cards de impacto flotantes -->
-    <div class="impact-cards">
-      <div class="impact-card ic-top-left reveal">
-        <div class="ic-icon">❓</div>
-        <div class="ic-label">Sin dirección</div>
-      </div>
-      <div class="impact-card ic-top-right reveal">
-        <div class="ic-icon">✅</div>
-        <div class="ic-label">Dirección clara</div>
-      </div>
-      <div class="impact-card ic-bottom-left reveal">
-        <div class="ic-icon">📉</div>
-        <div class="ic-label">Crecimiento lento</div>
-      </div>
-      <div class="impact-card ic-bottom-right reveal">
-        <div class="ic-icon">📈</div>
-        <div class="ic-label">Crecimiento 📊</div>
-      </div>
-    </div>
+
   </div>
 </section>
 
@@ -423,7 +441,7 @@ footer{background:var(--navy);border-top:1px solid rgba(184,115,51,0.1);padding:
         <p class="service-desc">Aplicamos Business Model Canvas, Lean Canvas y análisis de propuesta de valor para diseñar o rediseñar el modelo que sostendrá tu crecimiento en el largo plazo.</p>
       </div>
       <div class="service-card reveal">
-        <div class="service-icon">🎯</div>
+        <div class="service-icon">◆</div>
         <div class="service-name">Gestión por OKR</div>
         <p class="service-desc">Implementamos el sistema de Objetivos y Resultados Clave en tu organización para alinear equipos, priorizar lo que importa y medir el impacto real de cada iniciativa.</p>
       </div>
@@ -490,7 +508,7 @@ footer{background:var(--navy);border-top:1px solid rgba(184,115,51,0.1);padding:
         <div class="target-text"><strong>Organizaciones en transformación</strong><span>Que están cambiando su modelo de negocio, su cultura o su estructura y necesitan un guía para no perderse en el proceso.</span></div>
       </div>
       <div class="target-item reveal">
-        <div class="target-icon">📈</div>
+        <div class="target-icon">↑</div>
         <div class="target-text"><strong>Empresas que perdieron el norte</strong><span>Que crecieron rápido, pero sin dirección clara, y ahora necesitan volver a alinearse para seguir escalando.</span></div>
       </div>
     </div>
