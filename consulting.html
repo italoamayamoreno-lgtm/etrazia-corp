@@ -198,12 +198,15 @@ footer{background:var(--navy);border-top:1px solid rgba(184,115,51,0.1);padding:
 .ic-bottom-left{bottom:0;left:0;animation:slideBottomLeft .6s ease-out forwards 1.1s}
 .ic-bottom-right{bottom:0;right:0;animation:slideBottomRight .6s ease-out forwards 1.25s}
 
-.ic-label{font-size:10px;color:var(--graphite);letter-spacing:0.05em;margin-bottom:4px}
-.ic-value{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:800;background:linear-gradient(90deg,var(--copper),var(--amber));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.ic-icon{font-size:20px;margin-bottom:8px;display:block}
+.ic-label{font-size:11px;color:var(--ice);font-weight:600;letter-spacing:0.03em;line-height:1.3}
 
 /* Animaciones */
-@keyframes drawImpactLine{from{stroke-dashoffset:380}to{stroke-dashoffset:0}}
-@keyframes fadeImpact{from{opacity:0}to{opacity:1}}
+@keyframes drawSuccessLine{from{stroke-dashoffset:200}to{stroke-dashoffset:0}}
+@keyframes popIn{from{opacity:0;transform:scale(0)}to{opacity:1;transform:scale(1)}}
+@keyframes fillBar{from{width:0}to{width:100%}}
+@keyframes slideArrow{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
+@keyframes fadeInPath{from{opacity:0}to{opacity:1}}
 @keyframes slideTopLeft{from{opacity:0;transform:translate(-20px,-20px)}to{opacity:1;transform:translate(0,0)}}
 @keyframes slideTopRight{from{opacity:0;transform:translate(20px,-20px)}to{opacity:1;transform:translate(0,0)}}
 @keyframes slideBottomLeft{from{opacity:0;transform:translate(-20px,20px)}to{opacity:1;transform:translate(0,0)}}
@@ -279,92 +282,102 @@ footer{background:var(--navy);border-top:1px solid rgba(184,115,51,0.1);padding:
 
   <!-- GRÁFICO DE IMPACTO -->
   <div class="hero-visual" aria-hidden="true">
-    <svg id="impact-chart" viewBox="0 0 380 340" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="impactGrad" x1="0%" y1="100%" x2="0%" y2="0%">
-          <stop offset="0%" stop-color="#B87333" stop-opacity="0.1"/>
-          <stop offset="50%" stop-color="#D97706" stop-opacity="0.25"/>
-          <stop offset="100%" stop-color="#D97706" stop-opacity="0.4"/>
-        </linearGradient>
-        <filter id="impactGlow">
-          <feGaussianBlur stdDeviation="2" result="blur"/>
-          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
-      </defs>
+    <svg id="impact-chart" viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="afterGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#D97706"/>
+            <stop offset="100%" stop-color="#B87333"/>
+          </linearGradient>
+        </defs>
 
-      <!-- Grid background -->
-      <g opacity="0.08" stroke="#B87333" stroke-width="1">
-        <line x1="40" y1="0"   x2="40" y2="300"/>
-        <line x1="130" y1="0"  x2="130" y2="300"/>
-        <line x1="220" y1="0"  x2="220" y2="300"/>
-        <line x1="310" y1="0"  x2="310" y2="300"/>
-        <line x1="30" y1="50"  x2="340" y2="50"/>
-        <line x1="30" y1="100" x2="340" y2="100"/>
-        <line x1="30" y1="150" x2="340" y2="150"/>
-        <line x1="30" y1="200" x2="340" y2="200"/>
-        <line x1="30" y1="250" x2="340" y2="250"/>
-      </g>
+        <!-- ANTES (Izquierda) -->
+        <!-- Fondo antes -->
+        <rect x="20" y="40" width="160" height="200" rx="8" fill="rgba(184,115,51,0.05)" stroke="rgba(184,115,51,0.15)" stroke-width="1"/>
+        
+        <!-- Etiqueta ANTES -->
+        <text x="100" y="30" font-family="Montserrat,sans-serif" font-size="13" font-weight="800" fill="#B87333" text-anchor="middle">ANTES</text>
+        
+        <!-- Línea caótica/desordenada -->
+        <path d="M 35 120 Q 50 100 65 140 T 95 110 T 125 160 T 155 130 T 175 150" 
+              stroke="#B87333" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.5"
+              style="animation: fadeInPath .8s ease forwards 0.3s; opacity:0"/>
+        
+        <!-- Iconos problemas -->
+        <text x="55" y="80" font-size="24">❓</text>
+        <text x="120" y="75" font-size="24">📉</text>
+        <text x="85" y="180" font-size="24">⚠️</text>
+        
+        <!-- Barras bajas ANTES -->
+        <g style="animation: fadeInPath .6s ease forwards 0.6s; opacity:0">
+          <text x="45" y="220" font-family="Montserrat,sans-serif" font-size="9" fill="#94A3B8">Claridad</text>
+          <rect x="45" y="227" width="50" height="4" rx="2" fill="rgba(184,115,51,0.2)"/>
+          <rect x="45" y="227" width="15" height="4" rx="2" fill="#B87333"/>
+        </g>
+        
+        <g style="animation: fadeInPath .6s ease forwards 0.75s; opacity:0">
+          <text x="130" y="220" font-family="Montserrat,sans-serif" font-size="9" fill="#94A3B8">Crecimiento</text>
+          <rect x="120" y="227" width="50" height="4" rx="2" fill="rgba(184,115,51,0.2)"/>
+          <rect x="120" y="227" width="12" height="4" rx="2" fill="#B87333"/>
+        </g>
 
-      <!-- Eje Y (label) -->
-      <text x="8" y="25" font-family="Montserrat,sans-serif" font-size="9" font-weight="600" fill="#B87333" opacity="0.6">Impacto</text>
-      <!-- Eje X (labels) -->
-      <text x="35" y="320" font-family="Montserrat,sans-serif" font-size="9" font-weight="600" fill="#B87333" opacity="0.6" text-anchor="middle">Antes</text>
-      <text x="125" y="320" font-family="Montserrat,sans-serif" font-size="9" font-weight="600" fill="#B87333" opacity="0.6" text-anchor="middle">Diagnóstico</text>
-      <text x="215" y="320" font-family="Montserrat,sans-serif" font-size="9" font-weight="600" fill="#B87333" opacity="0.6" text-anchor="middle">Estrategia</text>
-      <text x="305" y="320" font-family="Montserrat,sans-serif" font-size="9" font-weight="600" fill="#B87333" opacity="0.6" text-anchor="middle">Impacto</text>
+        <!-- Línea divisoria -->
+        <line x1="210" y1="20" x2="210" y2="270" stroke="rgba(184,115,51,0.2)" stroke-width="1" stroke-dasharray="4 4"/>
 
-      <!-- Área bajo la curva -->
-      <path d="M 40 260 Q 130 200 220 120 T 340 40" fill="url(#impactGrad)" stroke="none"/>
+        <!-- DESPUÉS (Derecha) -->
+        <!-- Fondo después -->
+        <rect x="240" y="40" width="160" height="200" rx="8" fill="rgba(217,119,6,0.08)" stroke="rgba(184,115,51,0.3)" stroke-width="1.5"/>
+        
+        <!-- Etiqueta DESPUÉS -->
+        <text x="320" y="30" font-family="Montserrat,sans-serif" font-size="13" font-weight="800" fill="#D97706" text-anchor="middle">DESPUÉS</text>
+        
+        <!-- Línea clara creciente -->
+        <path d="M 255 160 L 270 140 L 285 125 L 300 105 L 315 85 L 330 65 L 345 50 L 360 40 L 375 35" 
+              stroke="url(#afterGrad)" stroke-width="3" fill="none" stroke-linecap="round"
+              style="animation: drawSuccessLine 1.2s ease-out forwards 0.5s; stroke-dasharray: 200; stroke-dashoffset: 200"/>
+        
+        <!-- Iconos éxito -->
+        <text x="275" y="80" font-size="24" style="animation: popIn .5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards 1s; opacity:0">✅</text>
+        <text x="340" y="75" font-size="24" style="animation: popIn .5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards 1.2s; opacity:0">📈</text>
+        <text x="305" y="180" font-size="24" style="animation: popIn .5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards 1.4s; opacity:0">🎯</text>
+        
+        <!-- Barras altas DESPUÉS -->
+        <g style="animation: fadeInPath .6s ease forwards 0.8s; opacity:0">
+          <text x="265" y="220" font-family="Montserrat,sans-serif" font-size="9" fill="#D97706" font-weight="600">Claridad</text>
+          <rect x="265" y="227" width="50" height="4" rx="2" fill="rgba(217,119,6,0.2)"/>
+          <rect x="265" y="227" width="48" height="4" rx="2" fill="#D97706" style="animation: fillBar .8s ease forwards 1s; width:0"/>
+        </g>
+        
+        <g style="animation: fadeInPath .6s ease forwards 0.95s; opacity:0">
+          <text x="340" y="220" font-family="Montserrat,sans-serif" font-size="9" fill="#D97706" font-weight="600">Crecimiento</text>
+          <rect x="330" y="227" width="50" height="4" rx="2" fill="rgba(217,119,6,0.2)"/>
+          <rect x="330" y="227" width="45" height="4" rx="2" fill="#D97706" style="animation: fillBar .8s ease forwards 1.15s; width:0"/>
+        </g>
 
-      <!-- Curva principal (línea de crecimiento) -->
-      <path id="impact-line" d="M 40 260 Q 130 200 220 120 T 340 40" 
-            stroke="url(#impactGrad)" stroke-width="3" fill="none" 
-            stroke-linecap="round" stroke-linejoin="round"
-            filter="url(#impactGlow)"
-            style="stroke-dasharray: 380; stroke-dashoffset: 380; animation: drawImpactLine 2.5s ease-in-out forwards 0.4s"/>
-
-      <!-- Puntos de hito en la curva -->
-      <g id="milestone-1" opacity="0" style="animation: fadeImpact 0.5s ease forwards 0.8s">
-        <circle cx="40" cy="260" r="6" fill="#B87333" opacity="0.4"/>
-        <circle cx="40" cy="260" r="3" fill="#D97706"/>
-      </g>
-      <g id="milestone-2" opacity="0" style="animation: fadeImpact 0.5s ease forwards 1.1s">
-        <circle cx="130" cy="200" r="6" fill="#B87333" opacity="0.4"/>
-        <circle cx="130" cy="200" r="3" fill="#D97706"/>
-      </g>
-      <g id="milestone-3" opacity="0" style="animation: fadeImpact 0.5s ease forwards 1.4s">
-        <circle cx="220" cy="120" r="6" fill="#B87333" opacity="0.4"/>
-        <circle cx="220" cy="120" r="3" fill="#D97706"/>
-      </g>
-      <g id="milestone-4" opacity="0" style="animation: fadeImpact 0.5s ease forwards 1.7s">
-        <circle cx="340" cy="40" r="6" fill="#B87333" opacity="0.4"/>
-        <circle cx="340" cy="40" r="3" fill="#D97706"/>
-      </g>
-
-      <!-- Etiquetas de impacto -->
-      <text x="40" y="285" font-family="Montserrat,sans-serif" font-size="9" font-weight="700" fill="#94A3B8" text-anchor="middle" opacity="0">Línea Base</text>
-      <text x="130" y="235" font-family="Montserrat,sans-serif" font-size="9" font-weight="700" fill="#94A3B8" text-anchor="middle" opacity="0">+15%</text>
-      <text x="220" y="85" font-family="Montserrat,sans-serif" font-size="9" font-weight="700" fill="#94A3B8" text-anchor="middle" opacity="0">+38%</text>
-      <text x="340" y="20" font-family="Montserrat,sans-serif" font-size="10" font-weight="800" fill="#D97706" text-anchor="middle" opacity="0">+67%</text>
-    </svg>
+        <!-- Flecha transformación -->
+        <g style="animation: slideArrow 1s ease-out forwards 0.6s; opacity:0">
+          <line x1="190" y1="140" x2="230" y2="140" stroke="#D97706" stroke-width="2"/>
+          <polygon points="230,140 220,135 220,145" fill="#D97706"/>
+          <text x="210" y="135" font-family="Montserrat,sans-serif" font-size="9" fill="#D97706" font-weight="600" text-anchor="middle">Etrazia</text>
+        </g>
+      </svg>
 
     <!-- Cards de impacto flotantes -->
     <div class="impact-cards">
       <div class="impact-card ic-top-left reveal">
-        <div class="ic-label">Eficiencia operativa</div>
-        <div class="ic-value">+45%</div>
+        <div class="ic-icon">❓</div>
+        <div class="ic-label">Sin dirección</div>
       </div>
       <div class="impact-card ic-top-right reveal">
-        <div class="ic-label">Claridad estratégica</div>
-        <div class="ic-value">100%</div>
+        <div class="ic-icon">✅</div>
+        <div class="ic-label">Dirección clara</div>
       </div>
       <div class="impact-card ic-bottom-left reveal">
-        <div class="ic-label">Ejecución alineada</div>
-        <div class="ic-value">+62%</div>
+        <div class="ic-icon">📉</div>
+        <div class="ic-label">Crecimiento lento</div>
       </div>
       <div class="impact-card ic-bottom-right reveal">
-        <div class="ic-label">ROI en 4 meses</div>
-        <div class="ic-value">3.2x</div>
+        <div class="ic-icon">📈</div>
+        <div class="ic-label">Crecimiento 📊</div>
       </div>
     </div>
   </div>
@@ -556,51 +569,6 @@ footer{background:var(--navy);border-top:1px solid rgba(184,115,51,0.1);padding:
 const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:0.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 window.addEventListener('scroll',()=>{document.getElementById('navbar').style.borderBottomColor=window.scrollY>60?'rgba(184,115,51,0.2)':'rgba(184,115,51,0.1)'});
-
-// ── Impact chart counters ──
-(function(){
-  const cards = document.querySelectorAll('.impact-card');
-  let counted = false;
-  
-  const animateCounter = (el, target, duration = 1.5) => {
-    const label = el.querySelector('.ic-label').textContent;
-    let current = 0;
-    const increment = target / (duration * 60);
-    const interval = setInterval(() => {
-      current += increment;
-      if (current >= target) {
-        current = target;
-        clearInterval(interval);
-      }
-      if (label.includes('+')) {
-        el.querySelector('.ic-value').textContent = '+' + Math.round(current) + (label.includes('%') ? '%' : (label.includes('x') ? 'x' : ''));
-      } else {
-        el.querySelector('.ic-value').textContent = Math.round(current) + (label.includes('%') ? '%' : (label.includes('x') ? 'x' : ''));
-      }
-    }, 16);
-  };
-  
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting && !counted) {
-        counted = true;
-        animateCounter(cards[0], 45, 1.5);  // +45%
-        animateCounter(cards[1], 100, 1.8); // 100%
-        animateCounter(cards[2], 62, 1.6);  // +62%
-        const card4 = cards[3];
-        let x = 0;
-        const inc = 3.2 / 90;
-        const int4 = setInterval(() => {
-          x += inc;
-          if (x >= 3.2) { x = 3.2; clearInterval(int4); }
-          card4.querySelector('.ic-value').textContent = x.toFixed(1) + 'x';
-        }, 16);
-      }
-    });
-  }, {threshold: 0.3});
-  
-  if (cards.length > 0) observer.observe(cards[0]);
-})();
 
 </script>
 </body>
