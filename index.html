@@ -2568,7 +2568,24 @@ footer{
 
 </style>
 </head>
-<body>
+<style>
+.summit-banner{position:fixed;top:0;left:0;right:0;z-index:200;background:linear-gradient(135deg,#B87333,#D97706);padding:9px 24px;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;text-align:center;}
+.summit-banner-text{font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;color:#fff;letter-spacing:0.3px;}
+.summit-banner-text strong{font-weight:900;}
+.summit-banner-cta{background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.5);color:#fff;font-family:'Montserrat',sans-serif;font-weight:800;font-size:12px;letter-spacing:0.5px;padding:5px 14px;border-radius:100px;text-decoration:none;white-space:nowrap;transition:background 0.2s;}
+.summit-banner-cta:hover{background:rgba(255,255,255,0.35);}
+.summit-banner-close{position:absolute;right:16px;background:none;border:none;color:rgba(255,255,255,0.8);font-size:20px;cursor:pointer;line-height:1;padding:0;}
+body.has-banner #navbar{top:40px;}
+</style>
+
+<body class="has-banner">
+
+<!-- BANNER SUMMIT -->
+<div class="summit-banner" id="summit-banner">
+  <span class="summit-banner-text">🔥 <strong>Etrazia Summit 2026</strong> — Workshop presencial para emprendedores · <strong>Sáb 18 de julio · Lima</strong> · S/50</span>
+  <a href="https://etrazia.com/summit.html" class="summit-banner-cta">Inscríbete ahora →</a>
+  <button class="summit-banner-close" onclick="cerrarBanner()" aria-label="Cerrar">×</button>
+</div>
 
 <!-- NAV -->
 <nav id="navbar">
@@ -2662,6 +2679,17 @@ footer{
       <a href="#what" class="btn-primary">Explorar Ecosistema</a>
       <a href="https://etraziapp.com" class="btn-secondary">Conoce EtraziApp →</a>
     </div>
+
+    <!-- CARD SUMMIT -->
+    <a href="https://etrazia.com/summit.html" style="display:inline-flex;align-items:center;gap:14px;background:rgba(184,115,51,0.1);border:1px solid rgba(184,115,51,0.35);border-radius:12px;padding:14px 20px;text-decoration:none;margin-top:24px;transition:border-color 0.2s,background 0.2s;max-width:520px;" onmouseover="this.style.background='rgba(184,115,51,0.18)'" onmouseout="this.style.background='rgba(184,115,51,0.1)'">
+      <div style="background:linear-gradient(135deg,#B87333,#D97706);border-radius:8px;padding:10px;flex-shrink:0;"><span style="font-size:20px;">🎯</span></div>
+      <div style="text-align:left;">
+        <div style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#D97706;margin-bottom:2px;">Próximo Evento</div>
+        <div style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:15px;color:#F8FAFC;margin-bottom:2px;">Etrazia Summit 2026</div>
+        <div style="font-size:13px;color:#94A3B8;">Sáb 18 julio · 9am–1pm · Coworking Miraflores · <span style="color:#B87333;font-weight:600;">Cupos limitados</span></div>
+      </div>
+      <div style="margin-left:auto;color:#B87333;font-size:18px;flex-shrink:0;">→</div>
+    </a>
   </div>
 
   <div class="hero-stats">
@@ -3951,6 +3979,11 @@ window.addEventListener('scroll', () => {
     });
   });
 })();
+
+function cerrarBanner() {
+  const b = document.getElementById('summit-banner');
+  if(b) { b.style.display='none'; document.body.classList.remove('has-banner'); document.getElementById('navbar').style.top='0'; }
+}
 </script>
 
 </body>
