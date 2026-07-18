@@ -35,6 +35,9 @@
     font-size:13.5px; padding:12px 22px; border-radius:100px; border:none; cursor:pointer;
   }
   .btn.secondary{ background:transparent; border:1px solid rgba(148,163,184,.3); color:var(--ice); }
+  .btn.danger{ background:transparent; border:1px solid rgba(248,113,113,.4); color:#f87171; }
+  .btn.danger:hover{ background:rgba(248,113,113,.1); }
+  .btn:disabled{ opacity:.35; cursor:not-allowed; }
   .error{ color:#f87171; font-size:12.5px; margin-top:10px; display:none; }
   .error.show{ display:block; }
 
@@ -77,8 +80,10 @@
         <div class="eyebrow">Etrazia · Brújula de Liderazgo</div>
         <h1>Leads registrados</h1>
       </div>
-      <div style="display:flex; gap:10px;">
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
         <button class="btn secondary" id="btn-refresh">Actualizar</button>
+        <button class="btn danger" id="btn-delete-selected" disabled>Eliminar seleccionados (<span id="selected-count">0</span>)</button>
+        <button class="btn danger" id="btn-delete-all">Eliminar todos</button>
         <button class="btn" id="btn-csv">Descargar CSV</button>
       </div>
     </div>
@@ -90,6 +95,7 @@
       <table id="leads-table" style="display:none;">
         <thead>
           <tr>
+            <th style="width:34px;"><input type="checkbox" id="check-all"></th>
             <th>Fecha</th>
             <th>Nombres</th>
             <th>Apellidos</th>
@@ -189,6 +195,7 @@ function renderLeads(leads) {
     const tr = document.createElement('tr');
     const fecha = new Date(l.fecha).toLocaleString('es-PE', { dateStyle: 'short', timeStyle: 'short' });
     tr.innerHTML =
+      '<td><input type="checkbox" class="row-check" data-id="' + l.id + '"></td>' +
       '<td>' + fecha + '</td>' +
       '<td>' + escapeHtml(l.nombres || '') + '</td>' +
       '<td>' + escapeHtml(l.apellidos || '') + '</td>' +
@@ -201,7 +208,51 @@ function renderLeads(leads) {
       '<td>' + (l.arquetipoIdeal || '—') + '</td>';
     body.appendChild(tr);
   });
+
+  document.getElementById('check-all').checked = false;
+  updateSelectedCount();
+  document.querySelectorAll('.row-check').forEach(cb => {
+    cb.addEventListener('change', updateSelectedCount);
+  });
 }
+
+function updateSelectedCount() {
+  const checked = document.querySelectorAll('.row-check:checked');
+  document.getElementById('selected-count').textContent = checked.length;
+  document.getElementById('btn-delete-selected').disabled = checked.length === 0;
+}
+
+document.getElementById('check-all').addEventListener('change', (e) => {
+  document.querySelectorAll('.row-check').forEach(cb => { cb.checked = e.target.checked; });
+  updateSelectedCount();
+});
+
+document.getElementById('btn-delete-selected').addEventListener('click', async () => {
+  const ids = Array.from(document.querySelectorAll('.row-check:checked')).map(cb => cb.dataset.id);
+  if (ids.length === 0) return;
+  if (!confirm('¿Eliminar ' + ids.length + ' registro(s) seleccionado(s)? Esta acción no se puede deshacer.')) return;
+
+  const key = sessionStorage.getItem('brujula-admin-key');
+  await fetch(WORKER_URL + '/leads', {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json', 'X-Admin-Key': key },
+    body: JSON.stringify({ ids }),
+  });
+  fetchLeads();
+});
+
+document.getElementById('btn-delete-all').addEventListener('click', async () => {
+  if (!confirm('¿Eliminar TODOS los registros? Esta acción no se puede deshacer.')) return;
+  if (!confirm('Confirma una vez más: se borrará toda la data de leads registrados hasta ahora.')) return;
+
+  const key = sessionStorage.getItem('brujula-admin-key');
+  await fetch(WORKER_URL + '/leads', {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json', 'X-Admin-Key': key },
+    body: JSON.stringify({ all: true }),
+  });
+  fetchLeads();
+});
 
 function escapeHtml(str) {
   const div = document.createElement('div');
