@@ -531,13 +531,22 @@ function renderStep() {
 
   const choicesEl = document.getElementById('level-choices');
   choicesEl.innerHTML = '';
-  step.ref.options.forEach(([arch, text]) => {
+  const shuffledOptions = shuffleArray(step.ref.options.slice());
+  shuffledOptions.forEach(([arch, text]) => {
     const card = document.createElement('div');
     card.className = 'choice';
     card.innerHTML = '<div class="dot-ico"></div><span>' + text + '</span>';
     card.addEventListener('click', () => selectChoice(arch, card));
     choicesEl.appendChild(card);
   });
+}
+
+function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
 }
 
 function selectChoice(arch, cardEl) {
