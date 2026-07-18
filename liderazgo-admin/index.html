@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brújula de Liderazgo — Panel Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B1120; --navy-2:#131B2E; --copper:#B87333; --amber:#D97706;
+    --ice:#F8FAFC; --graphite:#94A3B8;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--navy); color:var(--ice); font-family:'Inter', sans-serif;
+    min-height:100vh; padding:40px 24px;
+  }
+  h1,h2{font-family:'Montserrat', sans-serif; font-weight:900;}
+  .wrap{ max-width:1100px; margin:0 auto; }
+  .header{ display:flex; align-items:center; justify-content:space-between; margin-bottom:28px; flex-wrap:wrap; gap:14px; }
+  h1{ font-size:22px; }
+  .eyebrow{ color:var(--copper); font-size:11px; letter-spacing:.16em; text-transform:uppercase; font-weight:700; margin-bottom:6px; }
+
+  /* login gate */
+  .gate{
+    max-width:380px; margin:80px auto; text-align:center;
+  }
+  .gate input{
+    width:100%; background:rgba(255,255,255,.03); border:1px solid rgba(148,163,184,.25);
+    border-radius:10px; padding:13px 14px; color:var(--ice); font-size:14px; margin:18px 0;
+  }
+  .btn{
+    background:var(--amber); color:var(--navy); font-family:'Montserrat',sans-serif; font-weight:800;
+    font-size:13.5px; padding:12px 22px; border-radius:100px; border:none; cursor:pointer;
+  }
+  .btn.secondary{ background:transparent; border:1px solid rgba(148,163,184,.3); color:var(--ice); }
+  .error{ color:#f87171; font-size:12.5px; margin-top:10px; display:none; }
+  .error.show{ display:block; }
+
+  /* dashboard */
+  #dashboard{ display:none; }
+  .stats{ display:flex; gap:14px; margin-bottom:22px; flex-wrap:wrap; }
+  .stat{ border:1px solid rgba(148,163,184,.2); border-radius:14px; padding:16px 20px; min-width:140px; background:rgba(255,255,255,.02); }
+  .stat .k{ color:var(--graphite); font-size:11px; text-transform:uppercase; letter-spacing:.08em; margin-bottom:6px; }
+  .stat .v{ font-family:'Montserrat',sans-serif; font-weight:900; font-size:24px; }
+
+  table{ width:100%; border-collapse:collapse; font-size:12.5px; }
+  thead th{
+    text-align:left; color:var(--graphite); font-weight:600; text-transform:uppercase; font-size:10.5px;
+    letter-spacing:.06em; padding:10px 12px; border-bottom:1px solid rgba(148,163,184,.2);
+  }
+  tbody td{ padding:11px 12px; border-bottom:1px solid rgba(148,163,184,.08); }
+  tbody tr:hover{ background:rgba(255,255,255,.02); }
+  .badge{ padding:3px 9px; border-radius:100px; font-size:10.5px; font-weight:600; }
+  .badge.completado{ background:rgba(217,119,6,.15); color:var(--amber); }
+  .badge.registrado{ background:rgba(148,163,184,.15); color:var(--graphite); }
+  .table-wrap{ overflow-x:auto; border:1px solid rgba(148,163,184,.15); border-radius:14px; }
+  .loading, .empty{ color:var(--graphite); font-size:13px; padding:30px; text-align:center; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="gate" id="gate">
+    <div class="eyebrow">Etrazia · Brújula de Liderazgo</div>
+    <h1>Panel Admin</h1>
+    <input type="password" id="admin-key" placeholder="Clave de administrador">
+    <button class="btn" id="btn-login">Entrar</button>
+    <div class="error" id="gate-error">Clave incorrecta o error de conexión.</div>
+  </div>
+
+  <div id="dashboard">
+    <div class="header">
+      <div>
+        <div class="eyebrow">Etrazia · Brújula de Liderazgo</div>
+        <h1>Leads registrados</h1>
+      </div>
+      <div style="display:flex; gap:10px;">
+        <button class="btn secondary" id="btn-refresh">Actualizar</button>
+        <button class="btn" id="btn-csv">Descargar CSV</button>
+      </div>
+    </div>
+
+    <div class="stats" id="stats"></div>
+
+    <div class="table-wrap">
+      <div class="loading" id="loading">Cargando...</div>
+      <table id="leads-table" style="display:none;">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Correo</th>
+            <th>Teléfono</th>
+            <th>Empresa</th>
+            <th>Cargo</th>
+            <th>Estado</th>
+            <th>Arquetipo real</th>
+            <th>Arquetipo ideal</th>
+          </tr>
+        </thead>
+        <tbody id="leads-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ============================================================
+// CONFIG — reemplaza esta URL por la de tu Worker desplegado
+// (la misma que usaste en liderazgo.html)
+// ============================================================
+const WORKER_URL = "https://liderazgo-registro.italoamaya-moreno.workers.dev";
+
+let leadsCache = [];
+
+document.getElementById('btn-login').addEventListener('click', login);
+document.getElementById('admin-key').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') login();
+});
+
+async function login() {
+  const key = document.getElementById('admin-key').value.trim();
+  const errorEl = document.getElementById('gate-error');
+  if (!key) return;
+
+  try {
+    const res = await fetch(WORKER_URL + '/leads', {
+      headers: { 'X-Admin-Key': key },
+    });
+    if (!res.ok) throw new Error('unauthorized');
+    const data = await res.json();
+    leadsCache = data.leads;
+    sessionStorage.setItem('brujula-admin-key', key);
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+    renderLeads(leadsCache);
+  } catch (e) {
+    errorEl.classList.add('show');
+  }
+}
+
+async function fetchLeads() {
+  const key = sessionStorage.getItem('brujula-admin-key');
+  document.getElementById('loading').style.display = 'block';
+  document.getElementById('leads-table').style.display = 'none';
+  const res = await fetch(WORKER_URL + '/leads', { headers: { 'X-Admin-Key': key } });
+  const data = await res.json();
+  leadsCache = data.leads;
+  renderLeads(leadsCache);
+}
+
+document.getElementById('btn-refresh').addEventListener('click', fetchLeads);
+document.getElementById('btn-csv').addEventListener('click', downloadCSV);
+
+function renderLeads(leads) {
+  document.getElementById('loading').style.display = 'none';
+
+  const total = leads.length;
+  const completados = leads.filter(l => l.estado === 'completado').length;
+  document.getElementById('stats').innerHTML =
+    '<div class="stat"><div class="k">Registrados</div><div class="v">' + total + '</div></div>' +
+    '<div class="stat"><div class="k">Completaron el juego</div><div class="v">' + completados + '</div></div>';
+
+  const body = document.getElementById('leads-body');
+  body.innerHTML = '';
+
+  if (leads.length === 0) {
+    document.getElementById('leads-table').style.display = 'none';
+    body.innerHTML = '';
+    const wrap = document.querySelector('.table-wrap');
+    if (!document.getElementById('empty-msg')) {
+      const div = document.createElement('div');
+      div.id = 'empty-msg';
+      div.className = 'empty';
+      div.textContent = 'Todavía no hay registros.';
+      wrap.appendChild(div);
+    }
+    return;
+  }
+
+  document.getElementById('leads-table').style.display = 'table';
+
+  leads.forEach(l => {
+    const tr = document.createElement('tr');
+    const fecha = new Date(l.fecha).toLocaleString('es-PE', { dateStyle: 'short', timeStyle: 'short' });
+    tr.innerHTML =
+      '<td>' + fecha + '</td>' +
+      '<td>' + escapeHtml(l.nombres || '') + '</td>' +
+      '<td>' + escapeHtml(l.apellidos || '') + '</td>' +
+      '<td>' + escapeHtml(l.correo) + '</td>' +
+      '<td>' + escapeHtml(l.telefonoCompleto || '—') + '</td>' +
+      '<td>' + escapeHtml(l.empresa || '—') + '</td>' +
+      '<td>' + escapeHtml(l.cargo || '—') + '</td>' +
+      '<td><span class="badge ' + l.estado + '">' + l.estado + '</span></td>' +
+      '<td>' + (l.arquetipoReal || '—') + '</td>' +
+      '<td>' + (l.arquetipoIdeal || '—') + '</td>';
+    body.appendChild(tr);
+  });
+}
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+function downloadCSV() {
+  const headers = ['Fecha', 'Nombres', 'Apellidos', 'Correo', 'Teléfono', 'Empresa', 'Cargo', 'Consentimiento', 'Estado', 'Arquetipo real', 'Arquetipo ideal'];
+  const rows = leadsCache.map(l => [
+    l.fecha, l.nombres || '', l.apellidos || '', l.correo, l.telefonoCompleto || '',
+    l.empresa || '', l.cargo || '', l.consentimiento ? 'Sí' : 'No',
+    l.estado, l.arquetipoReal || '', l.arquetipoIdeal || ''
+  ]);
+
+  let csv = headers.join(',') + '\\n';
+  rows.forEach(row => {
+    csv += row.map(v => '"' + String(v).replace(/"/g, '""') + '"').join(',') + '\\n';
+  });
+
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'brujula-liderazgo-leads-' + new Date().toISOString().slice(0,10) + '.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// Si ya había sesión iniciada en este navegador, entra directo
+const savedKey = sessionStorage.getItem('brujula-admin-key');
+if (savedKey) {
+  document.getElementById('admin-key').value = savedKey;
+  login();
+}
+</script>
+</body>
+</html>
