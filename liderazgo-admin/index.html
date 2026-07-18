@@ -104,6 +104,7 @@
             <th>Teléfono</th>
             <th>Empresa</th>
             <th>Cargo</th>
+            <th>Consentimiento</th>
             <th>Estado</th>
             <th>Arquetipo real</th>
             <th>Arquetipo ideal</th>
@@ -213,6 +214,7 @@ function renderLeads(leads) {
       '<td>' + escapeHtml(l.telefonoCompleto || '—') + '</td>' +
       '<td>' + escapeHtml(l.empresa || '—') + '</td>' +
       '<td>' + escapeHtml(l.cargo || '—') + '</td>' +
+      '<td>' + (l.consentimiento ? '<span class="badge completado">Sí</span>' : '<span class="badge registrado">No</span>') + '</td>' +
       '<td><span class="badge ' + l.estado + '">' + l.estado + '</span></td>' +
       '<td>' + (l.arquetipoReal || '—') + '</td>' +
       '<td>' + (l.arquetipoIdeal || '—') + '</td>' +
