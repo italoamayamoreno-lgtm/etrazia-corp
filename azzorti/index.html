@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Embajadores de cultura — Azzorti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+  :root{
+    --azz-yellow:#FBDD19;
+    --azz-black:#08080A;
+    --gray-bg:#F2F2F0;
+    --border:#E6E6E4;
+    --text-2:#5B5B58;
+    --copper:#B87333;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{height:100%;}
+  body{
+    background:var(--gray-bg);font-family:'Inter',sans-serif;
+    display:flex;align-items:center;justify-content:center;padding:24px 12px;
+    min-height:100vh;
+  }
+  .panel{
+    width:420px;max-width:100%;background:#fff;border-radius:20px;overflow:hidden;
+    box-shadow:0 10px 40px rgba(0,0,0,.12);position:relative;
+  }
+  .cobrand{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 20px;border-bottom:1px solid var(--border);
+  }
+  .azz-logo{height:26px;}
+  .etz-mini{display:flex;align-items:center;gap:6px;opacity:.8;}
+  .etz-mini svg{width:16px;height:16px;}
+  .etz-mini span{font-family:'Montserrat';font-weight:800;font-size:10.5px;color:var(--azz-black);letter-spacing:.02em;}
+  .screen{display:none;}
+  .screen.active{display:block;}
+
+  /* Registro */
+  .reg-body{padding:20px 22px 26px;}
+  .reg-eyebrow{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--copper);margin-bottom:6px;}
+  .reg-title{font-family:'Montserrat';font-weight:800;font-size:20px;color:var(--azz-black);margin-bottom:8px;line-height:1.25;}
+  .reg-sub{font-size:12.5px;color:var(--text-2);line-height:1.5;margin-bottom:20px;}
+  .field{margin-bottom:12px;}
+  .field label{display:block;font-size:11px;font-weight:600;color:var(--azz-black);margin-bottom:5px;}
+  .field label .req{color:#C2453F;margin-left:2px;}
+  .field input{
+    width:100%;border:1px solid var(--border);border-radius:8px;padding:11px 12px;font-size:13px;
+    color:var(--azz-black);background:#FAFAF9;font-family:'Inter';
+  }
+  .field input:focus{outline:none;border-color:var(--azz-yellow);background:#fff;}
+  .field-row{display:flex;gap:10px;}
+  .field-row .field{flex:1;}
+  .req-note{font-size:10px;color:var(--text-2);margin:2px 0 14px;}
+  .field-error{font-size:10.5px;color:#C2453F;margin-top:4px;display:none;}
+  .field.has-error input{border-color:#C2453F;}
+  .field.has-error .field-error{display:block;}
+  .consent{display:flex;gap:9px;align-items:flex-start;margin:6px 0 6px;}
+  .consent input[type=checkbox]{width:16px;height:16px;margin-top:1px;flex-shrink:0;accent-color:var(--azz-black);}
+  .consent p{font-size:10.5px;color:var(--text-2);line-height:1.5;}
+  .consent p .req{color:#C2453F;}
+  #consent-error{font-size:10.5px;color:#C2453F;margin:0 0 14px;display:none;}
+  .btn-yellow{
+    width:100%;background:var(--azz-yellow);color:var(--azz-black);font-family:'Montserrat';font-weight:800;
+    font-size:14px;padding:14px;border-radius:9px;text-align:center;border:none;cursor:pointer;
+  }
+  .btn-yellow:hover{opacity:.92;}
+  .btn-yellow:disabled{opacity:.5;cursor:not-allowed;}
+  .form-error{font-size:11.5px;color:#C2453F;text-align:center;margin-top:10px;display:none;}
+
+  /* Bienvenida */
+  .wel-body{padding:24px 22px 28px;}
+  .wel-title{font-family:'Montserrat';font-weight:900;font-size:22px;color:var(--azz-black);line-height:1.2;margin-bottom:10px;}
+  .wel-sub{font-size:13px;color:var(--text-2);line-height:1.55;margin-bottom:20px;}
+  .wel-block{display:flex;gap:12px;align-items:flex-start;padding:13px 0;border-top:1px solid var(--border);}
+  .wel-block:last-of-type{border-bottom:1px solid var(--border);margin-bottom:22px;}
+  .wel-ico{
+    width:30px;height:30px;border-radius:8px;background:var(--gray-bg);display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;font-family:'Montserrat';font-weight:800;font-size:13px;color:var(--azz-black);
+  }
+  .wel-t{font-size:13px;font-weight:600;color:var(--azz-black);margin-bottom:2px;}
+  .wel-d{font-size:11.5px;color:var(--text-2);line-height:1.4;}
+
+  /* Escenario */
+  .p2-top{padding:16px 20px 0;}
+  .progress-track{height:5px;background:var(--gray-bg);border-radius:3px;overflow:hidden;margin:14px 0 5px;}
+  .progress-fill{height:100%;background:var(--azz-yellow);transition:width .25s ease;}
+  .progress-label{font-size:11px;color:var(--text-2);margin-bottom:18px;}
+  .scenario-text{font-size:15px;line-height:1.55;color:var(--azz-black);padding:0 20px;margin-bottom:20px;font-weight:500;}
+  .options{padding:0 20px;display:flex;flex-direction:column;gap:9px;}
+  .opt{
+    background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:13px 15px;
+    font-size:13px;line-height:1.5;color:#3a3a38;cursor:pointer;text-align:left;width:100%;font-family:'Inter';
+  }
+  .opt.sel{border-color:var(--azz-yellow);background:#FFFBEB;}
+  .opt-letter{
+    display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;border-radius:50%;
+    background:var(--gray-bg);color:var(--text-2);font-size:10.5px;font-weight:700;margin-right:9px;flex-shrink:0;
+  }
+  .opt.sel .opt-letter{background:var(--azz-yellow);color:var(--azz-black);}
+  .nav-row{display:flex;gap:10px;padding:22px 20px 24px;}
+  .nav-btn{flex:1;text-align:center;padding:13px;border-radius:9px;font-family:'Montserrat';font-weight:700;font-size:13px;border:none;cursor:pointer;}
+  .nav-btn.prev{border:1.5px solid var(--border);background:#fff;color:var(--text-2);}
+  .nav-btn.prev:disabled{opacity:.4;cursor:not-allowed;}
+  .nav-btn.next{background:var(--azz-black);color:#fff;}
+  .nav-btn.next:disabled{opacity:.4;cursor:not-allowed;}
+
+  /* Cierre */
+  .close-body{padding:50px 26px 40px;text-align:center;}
+  .close-check{
+    width:64px;height:64px;border-radius:50%;background:var(--azz-yellow);display:flex;align-items:center;justify-content:center;
+    margin:0 auto 22px;
+  }
+  .close-title{font-family:'Montserrat';font-weight:900;font-size:22px;color:var(--azz-black);margin-bottom:10px;}
+  .close-sub{font-size:13px;color:var(--text-2);line-height:1.6;margin-bottom:28px;}
+
+  /* Resultado */
+  .res-body{padding:22px 20px 26px;}
+  .res-head{text-align:center;margin-bottom:16px;}
+  .res-eyebrow{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--copper);font-weight:600;margin-bottom:6px;}
+  .res-name{font-family:'Montserrat';font-weight:800;font-size:19px;color:var(--azz-black);}
+  .block-black{background:var(--azz-black);border-radius:16px;padding:20px 16px;margin-bottom:14px;}
+  .radar-wrap{display:flex;justify-content:center;}
+  .legend{display:flex;justify-content:center;gap:18px;font-size:11px;color:#c9c9c6;margin-top:8px;}
+  .legend span{display:inline-flex;align-items:center;gap:6px;}
+  .dot{width:8px;height:8px;border-radius:50%;}
+  .level-tag{
+    display:inline-block;background:var(--azz-yellow);color:var(--azz-black);font-family:'Montserrat';font-weight:800;
+    font-size:12px;padding:6px 14px;border-radius:100px;margin:2px 0 0;
+  }
+  .meaning-block{background:var(--gray-bg);border-radius:14px;padding:16px;margin-bottom:14px;}
+  .meaning-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--copper);margin-bottom:8px;}
+  .meaning-text{font-size:12.5px;line-height:1.55;color:#3a3a38;}
+  .scores{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:18px;}
+  .score-card{background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:12px 13px;}
+  .score-card .sc-label{font-size:10.5px;color:var(--text-2);margin-bottom:4px;line-height:1.3;}
+  .score-card .sc-val{font-family:'Montserrat';font-weight:800;font-size:19px;color:var(--azz-black);}
+  .score-card .sc-gap{font-size:10px;color:#c2453f;margin-top:2px;}
+  .dl-btn{
+    width:100%;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--azz-yellow);color:var(--azz-black);
+    font-family:'Montserrat';font-weight:800;font-size:14px;padding:15px;border-radius:10px;border:none;cursor:pointer;
+  }
+  .dl-btn:hover{opacity:.92;}
+  .dl-sub{text-align:center;font-size:10.5px;color:var(--text-2);margin-top:8px;}
+</style>
+</head>
+<body>
+
+<div class="panel">
+
+  <!-- ═══ HEADER CO-BRAND (fijo en todas las pantallas visibles) ═══ -->
+  <div class="cobrand">
+    <img class="azz-logo" src="data:image/png;base64,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" alt="Azzorti">
+    <div class="etz-mini"><svg viewBox="0 0 100 100"><circle cx="38" cy="50" r="26" fill="none" stroke="#B87333" stroke-width="10"/><circle cx="62" cy="50" r="26" fill="none" stroke="#3B5C8C" stroke-width="10"/><rect x="43" y="43" width="14" height="14" fill="#B87333" transform="rotate(45 50 50)"/></svg><span>ETRAZIA</span></div>
+  </div>
+
+  <!-- ═══ PANTALLA 0: REGISTRO ═══ -->
+  <div class="screen active" id="screen-registro">
+    <div class="reg-body">
+      <div class="reg-eyebrow">Embajadores de cultura</div>
+      <div class="reg-title">Regístrate para empezar</div>
+      <div class="reg-sub">Con esto identificamos tu resultado y puedes descargar tu informe personalizado al terminar.</div>
+
+      <div class="field-row">
+        <div class="field" id="f-nombres"><label>Nombres<span class="req">*</span></label><input type="text" id="in-nombres" placeholder="María Fernanda"><div class="field-error">Ingresa tus nombres</div></div>
+        <div class="field" id="f-apellidos"><label>Apellidos<span class="req">*</span></label><input type="text" id="in-apellidos" placeholder="Rodríguez"><div class="field-error">Ingresa tus apellidos</div></div>
+      </div>
+      <div class="field" id="f-correo"><label>Correo electrónico<span class="req">*</span></label><input type="email" id="in-correo" placeholder="mfernanda@correo.com"><div class="field-error">Ingresa un correo válido</div></div>
+      <div class="field-row">
+        <div class="field" id="f-telefono"><label>Teléfono<span class="req">*</span></label><input type="tel" id="in-telefono" placeholder="+51 999 999 999"><div class="field-error">Ingresa tu teléfono</div></div>
+        <div class="field" id="f-equipo"><label>País / equipo<span class="req">*</span></label><input type="text" id="in-equipo" placeholder="Lima Sur"><div class="field-error">Ingresa tu equipo</div></div>
+      </div>
+      <div class="field" id="f-cargo"><label>Cargo / rol en Azzorti<span class="req">*</span></label><input type="text" id="in-cargo" placeholder="Coordinadora de zona"><div class="field-error">Ingresa tu cargo</div></div>
+      <div class="req-note"><span class="req">*</span> Campos obligatorios para continuar</div>
+
+      <div class="consent">
+        <input type="checkbox" id="in-consent">
+        <p><span class="req">*</span> Acepto el tratamiento de mis datos personales para fines del diagnóstico y comunicaciones de Azzorti y Etrazia, conforme a la Ley 29733.</p>
+      </div>
+      <div id="consent-error">Debes aceptar el tratamiento de datos para continuar</div>
+
+      <button class="btn-yellow" id="btn-registro" onclick="submitRegistro()">Comenzar diagnóstico</button>
+      <div class="form-error" id="registro-form-error"></div>
+    </div>
+  </div>
+
+  <!-- ═══ PANTALLA 1: BIENVENIDA ═══ -->
+  <div class="screen" id="screen-bienvenida">
+    <div class="wel-body">
+      <div class="wel-title" id="wel-title">Antes de comenzar</div>
+      <div class="wel-sub">Vas a pasar por 24 situaciones reales de equipo. No hay respuestas correctas — responde con lo que harías de verdad, no lo que "deberías" responder.</div>
+      <div class="wel-block"><div class="wel-ico">8m</div><div><div class="wel-t">Dura unos 8 minutos</div><div class="wel-d">24 situaciones, 4 alternativas cada una.</div></div></div>
+      <div class="wel-block"><div class="wel-ico">↺</div><div><div class="wel-t">Puedes ir y volver</div><div class="wel-d">Navega entre preguntas con los botones de abajo antes de terminar.</div></div></div>
+      <div class="wel-block"><div class="wel-ico">✓</div><div><div class="wel-t">Recibes tu resultado al instante</div><div class="wel-d">Con tu nivel de embajadora y tu informe descargable.</div></div></div>
+      <button class="btn-yellow" onclick="goToQuestion(0)">Comenzar</button>
+    </div>
+  </div>
+
+  <!-- ═══ PANTALLA 2: ESCENARIO ═══ -->
+  <div class="screen" id="screen-pregunta">
+    <div class="p2-top">
+      <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+      <div class="progress-label" id="progress-label">Situación 1 de 24</div>
+    </div>
+    <div class="scenario-text" id="scenario-text"></div>
+    <div class="options" id="scenario-options"></div>
+    <div class="nav-row">
+      <button class="nav-btn prev" id="btn-prev" onclick="prevQuestion()">← Anterior</button>
+      <button class="nav-btn next" id="btn-next" onclick="nextQuestion()">Siguiente →</button>
+    </div>
+  </div>
+
+  <!-- ═══ PANTALLA 3: CIERRE ═══ -->
+  <div class="screen" id="screen-cierre">
+    <div class="close-body">
+      <div class="close-check">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="#08080A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="close-title" id="close-title">¡Listo!</div>
+      <div class="close-sub">Gracias por responder con honestidad. Eso es justo lo que nos ayuda a diseñar una mejor hoja de ruta con acciones concretas para tu desarrollo como embajadora.</div>
+      <button class="btn-yellow" onclick="showResult()">Ver mi resultado →</button>
+    </div>
+  </div>
+
+  <!-- ═══ PANTALLA 4: RESULTADO ═══ -->
+  <div class="screen" id="screen-resultado">
+    <div class="res-body">
+      <div class="res-head">
+        <div class="res-eyebrow">Tu resultado</div>
+        <div class="res-name" id="res-name"></div>
+        <div class="level-tag" id="res-level"></div>
+      </div>
+
+      <div class="block-black">
+        <div class="radar-wrap"><svg id="radar-svg" width="240" height="240" viewBox="0 0 320 320"></svg></div>
+        <div class="legend">
+          <span><span class="dot" style="background:#FBDD19;"></span>Tu resultado</span>
+          <span><span class="dot" style="background:transparent;border:1px dashed #FBDD19;"></span>Nivel requerido</span>
+        </div>
+      </div>
+
+      <div class="meaning-block">
+        <div class="meaning-title" id="meaning-title"></div>
+        <div class="meaning-text" id="meaning-text"></div>
+      </div>
+
+      <div class="scores" id="res-scores"></div>
+
+      <button class="dl-btn" onclick="downloadMyReport()">⬇ Descargar mi informe (PDF)</button>
+      <div class="dl-sub">Guárdalo — es tu hoja de ruta personal.</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════════
+// CONFIG
+// ═══════════════════════════════════════════════════════════════════════
+const WORKER_URL = "https://azzorti-embajadores-worker.italoamaya-moreno.workers.dev";
+
+// ═══════════════════════════════════════════════════════════════════════
+// BANCO DE ESCENARIOS (24) — orden intercalado entre las 4 dimensiones
+// Cada opción a-d corresponde a Nivel 1-4 → score 0/33/66/100 respectivamente
+// ═══════════════════════════════════════════════════════════════════════
+const LEVELS = [0, 33, 66, 100];
+
+const RAW_SCENARIOS = [
+  { dim: 'comunicacion', text: 'Una asesora de tu equipo lleva 3 semanas sin cumplir su cuota y evita responder tus mensajes. ¿Qué haces?', opts: [
+    'Dejo pasar el tema, espero que ella se acerque cuando esté lista.',
+    'Le escribo: "Necesito que mejores tus números esta semana, no está funcionando así."',
+    'Le digo que noto que no ha cumplido la meta y le pregunto qué está pasando.',
+    '"He notado que llevas 3 semanas sin cumplir la cuota, me preocupa porque sé que esto no es normal en ti. ¿Podemos hablar 15 min hoy?"'
+  ]},
+  { dim: 'escucha', text: 'Una compañera te cuenta que está desmotivada mientras revisas tu celular. ¿Qué haces?', opts: [
+    'Sigo en el celular, respondo "ajá, ok".',
+    'Dejo el celular pero cambio el tema hacia algo que me interesa a mí.',
+    'Dejo el celular y la escucho hasta que termina.',
+    'Dejo el celular, la miro, y al final le reflejo lo que entendí: "Entonces sientes que no se está valorando tu esfuerzo, ¿es así?"'
+  ]},
+  { dim: 'cambio', text: 'Se anuncia un nuevo sistema de pedidos que reemplaza el que usan hace años. ¿Qué haces?', opts: [
+    'Sigo usando el sistema viejo en paralelo porque "el nuevo no sirve".',
+    'Sé que hay que cambiar, pero lo pospongo todo lo posible.',
+    'Aprendo el nuevo sistema y lo uso, aunque a veces me frustro.',
+    'Aprendo el nuevo sistema, lo uso consistentemente, y ayudo a otras asesoras que están trabadas.'
+  ]},
+  { dim: 'conflictos', text: 'Notas que dos asesoras de tu equipo, que antes eran cercanas, ya no se hablan. ¿Qué haces?', opts: [
+    'No lo noto o asumo que "ya se les pasará".',
+    'Lo noto solo cuando ya afecta abiertamente el trabajo del equipo.',
+    'Lo noto temprano, pero decido no meterme "para no armar problema".',
+    'Lo noto temprano, hablo con cada una por separado, y si es necesario lo reporto al área de Cultura y Desarrollo.'
+  ]},
+  { dim: 'comunicacion', text: 'En una llamada de equipo, un colega interrumpe constantemente tus ideas. ¿Qué haces?', opts: [
+    'Dejo de participar el resto de la reunión.',
+    'Le digo en el chat grupal: "Deja de interrumpirme".',
+    'Espero que termine y retomo mi punto sin decir nada de la interrupción.',
+    '"Quiero terminar la idea antes de pasar a la tuya, ¿me permites un minuto más?"'
+  ]},
+  { dim: 'escucha', text: 'En una llamada, alguien expresa una queja larga sobre el nuevo sistema de pedidos. ¿Qué haces?', opts: [
+    'La corto rápido: "ya entendí, sigamos".',
+    'Escucho solo la parte que me toca resolver a mí, ignoro el resto.',
+    'Escucho todo sin interrumpir, tomo nota.',
+    'Escucho todo, y antes de responder resumo: "Si te entiendo bien, lo que más te complica es X y Y, ¿cierto?"'
+  ]},
+  { dim: 'cambio', text: 'Tu equipo debe migrar a un nuevo formato de reporte semanal. ¿Qué haces?', opts: [
+    'No entiendo para qué sirve el cambio y sigo reportando como antes.',
+    'Entiendo por qué se hace el cambio, pero no me motiva hacerlo.',
+    'Lo hago cuando me lo recuerdan, no por iniciativa propia.',
+    'Lo adopté desde la primera semana y lo promuevo activamente en mi equipo.'
+  ]},
+  { dim: 'conflictos', text: 'Empiezas a ver comentarios pasivo-agresivos entre dos personas en el chat grupal. ¿Qué haces?', opts: [
+    'No le doy importancia, "así es la gente".',
+    'Solo actúo cuando alguien explota abiertamente.',
+    'Lo noto y pienso hablarlo, pero lo voy postergando.',
+    'Lo identifico de inmediato como una señal temprana y converso en privado con ambas partes ese mismo día.'
+  ]},
+  { dim: 'comunicacion', text: 'Tu líder te asigna una tarea adicional sin consultarte, y ya tienes sobrecarga. ¿Qué haces?', opts: [
+    'Acepto sin decir nada, aunque sé que no voy a llegar.',
+    'Respondo: "No puedo, ya tengo demasiado, siempre me cargan a mí".',
+    'Digo que estoy con mucho trabajo pero termino aceptando igual.',
+    '"Tengo estas 3 prioridades esta semana. Si esto es urgente, ayúdame a decidir qué bajamos de prioridad."'
+  ]},
+  { dim: 'escucha', text: 'Un miembro del equipo propone una idea distinta a la tuya para resolver un problema. ¿Qué haces?', opts: [
+    'La descarto de inmediato sin explicar por qué.',
+    'La escucho pero ya estoy pensando en mi respuesta mientras habla.',
+    'La escucho completa y luego doy mi punto de vista.',
+    'La escucho completa, hago una pregunta para entender mejor antes de opinar.'
+  ]},
+  { dim: 'cambio', text: 'La empresa cambia la política de comisiones de las asesoras. ¿Qué haces?', opts: [
+    'Me quejo abiertamente con el equipo sin buscar entender el porqué.',
+    'Entiendo la razón del cambio pero sigo sintiendo que "antes era mejor".',
+    'Me adapto al cambio, pero sin explicárselo bien a mi equipo.',
+    'Me adapto, entiendo el porqué, y ayudo a mi equipo a entender el beneficio detrás del cambio.'
+  ]},
+  { dim: 'conflictos', text: 'Notas que un compañero ha empezado a excluir a otro de las conversaciones del equipo. ¿Qué haces?', opts: [
+    'No lo relaciono con un conflicto, lo veo como algo normal.',
+    'Lo noto cuando la persona excluida ya se queja abiertamente.',
+    'Lo noto temprano, pero espero a ver si se resuelve solo.',
+    'Lo noto temprano y converso con la persona que excluye para entender qué está pasando, antes de que crezca.'
+  ]},
+  { dim: 'comunicacion', text: 'Una compañera de otro país cuestiona tu forma de trabajar en el chat grupal, frente a todos. ¿Qué haces?', opts: [
+    'No respondo nada, me quedo callada el resto del día.',
+    'Respondo en el mismo chat defendiéndome con firmeza y algo de molestia visible.',
+    'Le escribo en privado pidiendo que no lo haga en público.',
+    'Le escribo en privado: "Vi tu comentario en el grupo, me hizo sentir expuesta. Prefiero que hablemos directo la próxima vez, ¿te parece?"'
+  ]},
+  { dim: 'escucha', text: 'Una asesora nueva te pide ayuda justo cuando tienes prisa por otra reunión. ¿Qué haces?', opts: [
+    'Le digo que no tengo tiempo y me voy.',
+    'La escucho a medias mientras recojo mis cosas.',
+    'Me tomo 2 minutos completos para escucharla, aunque llegue tarde.',
+    'Le digo: "Tengo 2 min ahora, cuéntame lo esencial, y te agendo 15 min hoy para lo demás" — y cumplo la escucha completa en ese espacio.'
+  ]},
+  { dim: 'cambio', text: 'Se reestructuran los equipos de zona y pierdes a algunas personas de tu grupo. ¿Qué haces?', opts: [
+    'Siento que es injusto y lo transmito así al equipo.',
+    'Acepto el cambio pero evito hablar de ello con mi equipo.',
+    'Acepto el cambio y respondo dudas cuando me preguntan.',
+    'Acepto el cambio, comunico proactivamente el nuevo esquema, y ayudo a las asesoras nuevas a integrarse.'
+  ]},
+  { dim: 'conflictos', text: 'Se están formando "bandos" en tu equipo por una decisión reciente de la empresa. ¿Qué haces?', opts: [
+    'Me uno a uno de los bandos sin darme cuenta del riesgo.',
+    'Lo noto solo cuando ya hay roces abiertos en las reuniones.',
+    'Lo noto temprano, me mantengo neutral, pero no hago nada más.',
+    'Lo noto temprano, me mantengo neutral, y busco un espacio de diálogo abierto antes de que se polarice más.'
+  ]},
+  { dim: 'comunicacion', text: 'Notas que un nuevo proceso está afectando la moral del equipo, pero nadie lo menciona en la reunión. ¿Qué haces?', opts: [
+    'No digo nada, asumo que no es mi lugar.',
+    'Interrumpo la reunión diciendo que el proceso "es un desastre".',
+    'Lo menciono de forma general, sin dar ejemplos concretos.',
+    '"Noto que desde el nuevo proceso el equipo está más callado en las reuniones. ¿Podemos abrir un espacio para escuchar cómo lo están viviendo?"'
+  ]},
+  { dim: 'escucha', text: 'Durante una capacitación virtual, alguien comparte una experiencia personal difícil relacionada con el tema. ¿Qué haces?', opts: [
+    'Sigo con la agenda como si no hubiera pasado.',
+    'Digo "gracias por compartir" y cambio de tema de inmediato.',
+    'Me detengo un momento y agradezco genuinamente antes de continuar.',
+    'Me detengo, reconozco lo que compartió, y le pregunto al grupo si alguien más se identifica antes de continuar.'
+  ]},
+  { dim: 'cambio', text: 'Se lanza una nueva app y varias asesoras de tu equipo se resisten a usarla. ¿Qué haces?', opts: [
+    'Comparto la resistencia del equipo en vez de ayudar a resolverla.',
+    'Uso la app yo misma pero no me involucro con las que se resisten.',
+    'Ayudo a algunas asesoras cuando me preguntan directamente.',
+    'Organizo una sesión corta con mi equipo para mostrar cómo usarla y resolver dudas antes de que se generen problemas.'
+  ]},
+  { dim: 'conflictos', text: 'Una persona de tu equipo se queja constantemente contigo en privado, pero nunca lo dice en el grupo. ¿Qué haces?', opts: [
+    'Solo escucho la queja y no hago nada con esa información.',
+    'Le digo que lo hable ella misma en el grupo y no le doy seguimiento.',
+    'Le sugiero cómo plantearlo, pero no verifico si lo hizo.',
+    'Identifico que esto es una señal de tensión no resuelta, y ayudo a canalizarlo apropiadamente (conversación directa o reporte a Cultura y Desarrollo).'
+  ]},
+  { dim: 'comunicacion', text: 'Una asesora te habla en tono agresivo por un problema con su pedido. ¿Qué haces?', opts: [
+    'Le doy la razón en todo para calmarla, aunque no sea así.',
+    'Respondo en el mismo tono, defendiéndome.',
+    'Le explico la solución sin reconocer cómo se siente.',
+    '"Entiendo que esto te frustra, vamos a resolverlo. Esto es lo que puedo hacer ahora mismo…"'
+  ]},
+  { dim: 'escucha', text: 'Un compañero te da feedback sobre algo que hiciste mal. ¿Qué haces?', opts: [
+    'Me pongo a la defensiva de inmediato, interrumpo para explicarme.',
+    'Lo escucho pero por dentro ya estoy armando mi justificación.',
+    'Lo escucho completo, en silencio, y luego respondo.',
+    'Lo escucho completo y le devuelvo: "Entonces lo que notaste fue X, gracias por decírmelo directamente" antes de dar mi perspectiva.'
+  ]},
+  { dim: 'cambio', text: 'Cambia el líder de tu equipo de un día para otro. ¿Qué haces?', opts: [
+    'Comparo todo el tiempo al nuevo líder con el anterior, frente al equipo.',
+    'Me reservo mi opinión, pero internamente no le doy oportunidad.',
+    'Le doy el beneficio de la duda y trabajo normal.',
+    'Busco activamente conocerlo, entender su estilo, y ayudo al equipo a hacer una buena transición.'
+  ]},
+  { dim: 'conflictos', text: 'Notas que alguien que antes participaba activamente ahora está callado y visiblemente tenso en las llamadas. ¿Qué haces?', opts: [
+    'No lo noto o lo atribuyo a que "está ocupada".',
+    'Lo noto pero recién actúo cuando deja de conectarse a las llamadas.',
+    'Lo noto temprano y pienso escribirle, pero no lo hago.',
+    'Lo noto temprano y le escribo en privado para preguntar cómo está, genuinamente.'
+  ]},
+];
+
+// Barajar las 4 opciones de cada escenario (anti-sesgo de posición), conservando su score real
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+const SCENARIOS = RAW_SCENARIOS.map(s => ({
+  dim: s.dim,
+  text: s.text,
+  options: shuffle(s.opts.map((text, i) => ({ text, score: LEVELS[i] })))
+}));
+
+const answers = new Array(SCENARIOS.length).fill(null); // índice de opción elegida por pregunta
+let currentQ = 0;
+let leadId = null;
+let userData = {};
+
+// ═══════════════════════════════════════════════════════════════════════
+// PANTALLA 0 — REGISTRO
+// ═══════════════════════════════════════════════════════════════════════
+function validarCampo(id, valido) {
+  const wrap = document.getElementById('f-' + id);
+  wrap.classList.toggle('has-error', !valido);
+  return valido;
+}
+
+async function submitRegistro() {
+  const nombres = document.getElementById('in-nombres').value.trim();
+  const apellidos = document.getElementById('in-apellidos').value.trim();
+  const correo = document.getElementById('in-correo').value.trim();
+  const telefono = document.getElementById('in-telefono').value.trim();
+  const equipo = document.getElementById('in-equipo').value.trim();
+  const cargo = document.getElementById('in-cargo').value.trim();
+  const consent = document.getElementById('in-consent').checked;
+  const correoValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo);
+
+  let ok = true;
+  ok = validarCampo('nombres', nombres.length > 0) && ok;
+  ok = validarCampo('apellidos', apellidos.length > 0) && ok;
+  ok = validarCampo('correo', correoValido) && ok;
+  ok = validarCampo('telefono', telefono.length > 0) && ok;
+  ok = validarCampo('equipo', equipo.length > 0) && ok;
+  ok = validarCampo('cargo', cargo.length > 0) && ok;
+
+  document.getElementById('consent-error').style.display = consent ? 'none' : 'block';
+  ok = consent && ok;
+
+  const formError = document.getElementById('registro-form-error');
+  formError.style.display = 'none';
+  if (!ok) return;
+
+  userData = { nombres, apellidos, correo, telefonoCompleto: telefono, empresa: equipo, cargo, consentimiento: true };
+
+  const btn = document.getElementById('btn-registro');
+  btn.disabled = true;
+  btn.textContent = 'Registrando...';
+
+  try {
+    const res = await fetch(WORKER_URL + '/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(userData),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Error al registrar');
+    leadId = data.id;
+    document.getElementById('wel-title').textContent = 'Antes de comenzar, ' + nombres;
+    document.getElementById('close-title').textContent = '¡Listo, ' + nombres + '!';
+    showScreen('screen-bienvenida');
+  } catch (e) {
+    formError.textContent = 'No pudimos registrarte. Intenta de nuevo en unos segundos.';
+    formError.style.display = 'block';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Comenzar diagnóstico';
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// NAVEGACIÓN DE PANTALLAS
+// ═══════════════════════════════════════════════════════════════════════
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// PANTALLA 2 — ESCENARIOS
+// ═══════════════════════════════════════════════════════════════════════
+function goToQuestion(i) {
+  currentQ = i;
+  showScreen('screen-pregunta');
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const s = SCENARIOS[currentQ];
+  document.getElementById('scenario-text').textContent = s.text;
+  document.getElementById('progress-label').textContent = 'Situación ' + (currentQ + 1) + ' de ' + SCENARIOS.length;
+  document.getElementById('progress-fill').style.width = (((currentQ + 1) / SCENARIOS.length) * 100) + '%';
+
+  const optsWrap = document.getElementById('scenario-options');
+  optsWrap.innerHTML = '';
+  const letters = ['A', 'B', 'C', 'D'];
+  s.options.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'opt' + (answers[currentQ] === i ? ' sel' : '');
+    btn.innerHTML = '<span class="opt-letter">' + letters[i] + '</span>' + opt.text;
+    btn.onclick = () => selectOption(i);
+    optsWrap.appendChild(btn);
+  });
+
+  document.getElementById('btn-prev').disabled = currentQ === 0;
+  const nextBtn = document.getElementById('btn-next');
+  nextBtn.textContent = currentQ === SCENARIOS.length - 1 ? 'Terminar' : 'Siguiente →';
+  nextBtn.disabled = answers[currentQ] === null;
+}
+
+function selectOption(i) {
+  answers[currentQ] = i;
+  renderQuestion();
+}
+
+function prevQuestion() {
+  if (currentQ > 0) goToQuestion(currentQ - 1);
+}
+
+function nextQuestion() {
+  if (answers[currentQ] === null) return;
+  if (currentQ < SCENARIOS.length - 1) {
+    goToQuestion(currentQ + 1);
+  } else {
+    finishGame();
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// CÁLCULO DE RESULTADOS
+// ═══════════════════════════════════════════════════════════════════════
+const DIMS = ['comunicacion', 'escucha', 'cambio', 'conflictos'];
+const NIVEL_REQUERIDO = { comunicacion: 85, escucha: 90, cambio: 75, conflictos: 90 };
+const DIM_LABELS = { comunicacion: 'Comunicación asertiva', escucha: 'Escucha activa', cambio: 'Gestión del cambio', conflictos: 'Identif. de conflictos' };
+
+const NIVEL_SIGNIFICADO = {
+  'Embajadora en Formación': 'Recién estás construyendo tus bases como embajadora. Es momento de observar y practicar en situaciones simples antes de tomar casos más desafiantes.',
+  'Embajadora en Desarrollo': 'Ya reconoces qué deberías hacer en la mayoría de situaciones, pero todavía no es consistente — depende del día o de con quién estés. Con práctica dirigida puedes dar el salto a "Competente".',
+  'Embajadora Competente': 'Aplicas las 4 competencias de forma consistente en tu equipo. Estás lista para tomar casos más desafiantes y apoyar a otras embajadoras.',
+  'Embajadora Referente': 'Eres modelo para tu equipo en estas 4 competencias. Tu siguiente reto es multiplicar lo que sabes en otras embajadoras.',
+};
+
+const ACCIONES = {
+  comunicacion: [
+    'Antes de una instrucción difícil, prepara: hecho + cómo te sientes + qué necesitas.',
+    'Practica decir "no" a una petición que no puedes cumplir esta semana, sin justificarte de más.',
+    'Pide feedback sobre tu tono en tu próxima conversación difícil.',
+  ],
+  escucha: [
+    'Resume en voz alta lo que entendiste antes de responder — mínimo 2 veces esta semana.',
+    'Antes de responder un mensaje del equipo, espera 10 segundos antes de escribir.',
+    'Pide a una compañera que te avise cuando note que respondes antes de tiempo.',
+  ],
+  cambio: [
+    'Ante el próximo cambio anunciado, identifica primero el beneficio real para tu equipo antes de opinar.',
+    'Comparte un cambio reciente explicando el "por qué", no solo el "qué".',
+    'Identifica a quien más resistencia tiene en tu equipo y conversa con ella esta semana.',
+  ],
+  conflictos: [
+    'Dedica 5 min al inicio de cada semana a observar el ánimo del equipo en el chat y las llamadas.',
+    'Ante la primera señal de tensión, conversa en privado ese mismo día — no esperes.',
+    'Si detectas algo que no puedes resolver tú misma, repórtalo a Cultura y Desarrollo en 48 horas.',
+  ],
+};
+
+function computeScores() {
+  const sums = { comunicacion: [], escucha: [], cambio: [], conflictos: [] };
+  SCENARIOS.forEach((s, i) => {
+    const chosenIdx = answers[i];
+    const score = s.options[chosenIdx].score;
+    sums[s.dim].push(score);
+  });
+  const scores = {};
+  DIMS.forEach(d => {
+    const arr = sums[d];
+    scores[d] = Math.round(arr.reduce((a, b) => a + b, 0) / arr.length);
+  });
+  return scores;
+}
+
+function computeNivel(scores) {
+  const avg = DIMS.reduce((sum, d) => sum + scores[d], 0) / DIMS.length;
+  if (avg < 40) return 'Embajadora en Formación';
+  if (avg < 70) return 'Embajadora en Desarrollo';
+  if (avg < 90) return 'Embajadora Competente';
+  return 'Embajadora Referente';
+}
+
+let lastScores = null;
+let lastNivel = null;
+
+// ═══════════════════════════════════════════════════════════════════════
+// PANTALLA 3 — CIERRE
+// ═══════════════════════════════════════════════════════════════════════
+async function finishGame() {
+  lastScores = computeScores();
+  lastNivel = computeNivel(lastScores);
+  showScreen('screen-cierre');
+
+  try {
+    await fetch(WORKER_URL + '/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        id: leadId,
+        respuestas: answers,
+        scores: lastScores,
+        nivelEmbajadora: lastNivel,
+      }),
+    });
+  } catch (e) {
+    // si falla el envío, igual mostramos el resultado — no bloqueamos la experiencia
+    console.error('Error al guardar resultado:', e);
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// PANTALLA 4 — RESULTADO
+// ═══════════════════════════════════════════════════════════════════════
+function showResult() {
+  showScreen('screen-resultado');
+  document.getElementById('res-name').textContent = userData.nombres + ' ' + userData.apellidos;
+  document.getElementById('res-level').textContent = lastNivel;
+  document.getElementById('meaning-title').textContent = '¿Qué significa ser "' + lastNivel.replace('Embajadora ', '') + '"?';
+  document.getElementById('meaning-text').textContent = NIVEL_SIGNIFICADO[lastNivel];
+
+  renderRadar(lastScores);
+
+  const scoresWrap = document.getElementById('res-scores');
+  scoresWrap.innerHTML = '';
+  DIMS.forEach(d => {
+    const gap = lastScores[d] - NIVEL_REQUERIDO[d];
+    const card = document.createElement('div');
+    card.className = 'score-card';
+    card.innerHTML =
+      '<div class="sc-label">' + DIM_LABELS[d] + '</div>' +
+      '<div class="sc-val">' + lastScores[d] + '%</div>' +
+      '<div class="sc-gap">' + (gap >= 0 ? '+' : '') + gap + ' pts</div>';
+    scoresWrap.appendChild(card);
+  });
+}
+
+function renderRadar(scores) {
+  const cx = 160, cy = 160, r = 110;
+  const angles = { comunicacion: 0, escucha: 90, cambio: 180, conflictos: 270 };
+  function pt(angleDeg, value) {
+    const rad = (angleDeg * Math.PI) / 180;
+    const v = (value / 100) * r;
+    return [cx + v * Math.sin(rad), cy - v * Math.cos(rad)];
+  }
+  const idealPts = DIMS.map(d => pt(angles[d], NIVEL_REQUERIDO[d]));
+  const realPts = DIMS.map(d => pt(angles[d], scores[d]));
+  const toPoly = pts => pts.map(p => p.join(',')).join(' ');
+
+  let svg = '';
+  [0.25, 0.5, 0.75, 1].forEach(f => {
+    svg += `<circle cx="${cx}" cy="${cy}" r="${r * f}" fill="none" stroke="#2A2A28" stroke-width="1"/>`;
+  });
+  svg += `<line x1="${cx}" y1="${cy - r}" x2="${cx}" y2="${cy + r}" stroke="#2A2A28" stroke-width="1"/>`;
+  svg += `<line x1="${cx - r}" y1="${cy}" x2="${cx + r}" y2="${cy}" stroke="#2A2A28" stroke-width="1"/>`;
+  svg += `<polygon points="${toPoly(idealPts)}" fill="none" stroke="#FBDD19" stroke-width="2" stroke-dasharray="4,3"/>`;
+  svg += `<polygon points="${toPoly(realPts)}" fill="rgba(251,221,25,0.22)" stroke="#FBDD19" stroke-width="2.5"/>`;
+  realPts.forEach(p => { svg += `<circle cx="${p[0]}" cy="${p[1]}" r="4" fill="#FBDD19"/>`; });
+  svg += `<text x="${cx}" y="${cy - r - 12}" text-anchor="middle" fill="#e8e8e6" font-family="Inter" font-size="10.5" font-weight="500">Comunicación</text>`;
+  svg += `<text x="${cx + r + 10}" y="${cy + 4}" text-anchor="start" fill="#e8e8e6" font-family="Inter" font-size="10.5" font-weight="500">Escucha</text>`;
+  svg += `<text x="${cx}" y="${cy + r + 18}" text-anchor="middle" fill="#e8e8e6" font-family="Inter" font-size="10.5" font-weight="500">Gestión del cambio</text>`;
+  svg += `<text x="${cx - r - 10}" y="${cy + 4}" text-anchor="end" fill="#e8e8e6" font-family="Inter" font-size="10.5" font-weight="500">Conflictos</text>`;
+
+  document.getElementById('radar-svg').innerHTML = svg;
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// PDF DESCARGABLE (jsPDF) — igual estructura que ve el panel admin
+// ═══════════════════════════════════════════════════════════════════════
+function downloadMyReport() {
+  const nombreCompleto = (userData.nombres + ' ' + userData.apellidos).trim();
+  const s = lastScores, nivel = lastNivel;
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+  const pageW = 595, pageH = 842;
+  const black = [8, 8, 10], yellow = [251, 221, 25], white = [255, 255, 255], gray = [91, 91, 88], copper = [184, 115, 51];
+
+  // Página 1
+  doc.setFillColor(...black); doc.rect(0, 0, pageW, pageH, 'F');
+  let y = 56;
+  doc.setTextColor(...yellow); doc.setFont('helvetica', 'bold'); doc.setFontSize(9);
+  doc.text('EMBAJADORES DE CULTURA · INFORME INDIVIDUAL', 46, y);
+  y += 26;
+  doc.setTextColor(...white); doc.setFont('helvetica', 'bold'); doc.setFontSize(20);
+  doc.text('Tu resultado como embajadora', 46, y);
+  y += 22;
+  doc.setTextColor(200, 200, 197); doc.setFont('helvetica', 'normal'); doc.setFontSize(11);
+  doc.text(nombreCompleto + (userData.empresa ? ' — ' + userData.empresa : ''), 46, y);
+  y += 34;
+
+  const cx = pageW / 2, cyR = y + 130, r = 100;
+  const angles = { comunicacion: 0, escucha: 90, cambio: 180, conflictos: 270 };
+  function pt(angleDeg, value) {
+    const rad = (angleDeg * Math.PI) / 180;
+    const v = (value / 100) * r;
+    return [cx + v * Math.sin(rad), cyR - v * Math.cos(rad)];
+  }
+  doc.setDrawColor(42, 42, 40);
+  [0.25, 0.5, 0.75, 1].forEach(f => doc.circle(cx, cyR, r * f, 'S'));
+  doc.line(cx, cyR - r, cx, cyR + r);
+  doc.line(cx - r, cyR, cx + r, cyR);
+
+  const idealPts = DIMS.map(d => pt(angles[d], NIVEL_REQUERIDO[d]));
+  doc.setDrawColor(...yellow); doc.setLineDashPattern([3, 2], 0);
+  doc.lines(
+    [[idealPts[1][0]-idealPts[0][0], idealPts[1][1]-idealPts[0][1]],
+     [idealPts[2][0]-idealPts[1][0], idealPts[2][1]-idealPts[1][1]],
+     [idealPts[3][0]-idealPts[2][0], idealPts[3][1]-idealPts[2][1]],
+     [idealPts[0][0]-idealPts[3][0], idealPts[0][1]-idealPts[3][1]]],
+    idealPts[0][0], idealPts[0][1], [1, 1], 'S', true
+  );
+  doc.setLineDashPattern([], 0);
+
+  const realPts = DIMS.map(d => pt(angles[d], s[d]));
+  doc.setDrawColor(...yellow); doc.setFillColor(251, 221, 25);
+  doc.lines(
+    [[realPts[1][0]-realPts[0][0], realPts[1][1]-realPts[0][1]],
+     [realPts[2][0]-realPts[1][0], realPts[2][1]-realPts[1][1]],
+     [realPts[3][0]-realPts[2][0], realPts[3][1]-realPts[2][1]],
+     [realPts[0][0]-realPts[3][0], realPts[0][1]-realPts[3][1]]],
+    realPts[0][0], realPts[0][1], [1, 1], 'FD', true
+  );
+
+  doc.setTextColor(220, 220, 217); doc.setFont('helvetica', 'normal'); doc.setFontSize(9);
+  doc.text('Comunicación', cx, cyR - r - 12, { align: 'center' });
+  doc.text('Escucha', cx + r + 10, cyR + 3);
+  doc.text('Gestión del cambio', cx, cyR + r + 18, { align: 'center' });
+  doc.text('Conflictos', cx - r - 10, cyR + 3, { align: 'right' });
+
+  y = cyR + r + 40;
+  doc.setFillColor(...yellow);
+  doc.roundedRect(46, y, doc.getTextWidth(nivel) + 28, 22, 11, 11, 'F');
+  doc.setTextColor(...black); doc.setFont('helvetica', 'bold'); doc.setFontSize(10.5);
+  doc.text(nivel, 60, y + 15);
+  y += 44;
+
+  doc.setTextColor(...copper); doc.setFont('helvetica', 'bold'); doc.setFontSize(10);
+  doc.text('¿QUÉ SIGNIFICA "' + nivel.toUpperCase() + '"?', 46, y);
+  y += 16;
+  doc.setTextColor(220, 220, 217); doc.setFont('helvetica', 'normal'); doc.setFontSize(10);
+  const meaningLines = doc.splitTextToSize(NIVEL_SIGNIFICADO[nivel] || '', pageW - 92);
+  doc.text(meaningLines, 46, y);
+  y += meaningLines.length * 13 + 24;
+
+  const scoreW = (pageW - 92 - 12) / 2;
+  DIMS.forEach((d, i) => {
+    const col = i % 2, row = Math.floor(i / 2);
+    const bx = 46 + col * (scoreW + 12), by = y + row * 56;
+    doc.setDrawColor(37, 49, 74); doc.roundedRect(bx, by, scoreW, 46, 8, 8, 'S');
+    doc.setTextColor(...gray); doc.setFont('helvetica', 'normal'); doc.setFontSize(8.5);
+    doc.text(DIM_LABELS[d], bx + 12, by + 16);
+    doc.setTextColor(...white); doc.setFont('helvetica', 'bold'); doc.setFontSize(15);
+    doc.text(s[d] + '%', bx + 12, by + 36);
+  });
+
+  doc.setTextColor(...gray); doc.setFont('helvetica', 'normal'); doc.setFontSize(8.5);
+  doc.text('Azzorti × Etrazia · Página 1 de 2', 46, pageH - 30);
+
+  // Página 2 — hoja de ruta
+  doc.addPage();
+  doc.setFillColor(...white); doc.rect(0, 0, pageW, pageH, 'F');
+  doc.setFillColor(...black); doc.rect(0, 0, pageW, 110, 'F');
+  doc.setTextColor(...yellow); doc.setFont('helvetica', 'bold'); doc.setFontSize(9);
+  doc.text('EMBAJADORES DE CULTURA · INFORME INDIVIDUAL', 46, 46);
+  doc.setTextColor(...white); doc.setFont('helvetica', 'bold'); doc.setFontSize(17);
+  doc.text('Tu hoja de ruta como embajadora', 46, 74);
+
+  const ordered = [...DIMS].sort((a, b) => s[a] - s[b]);
+  y = 150;
+  ordered.forEach(d => {
+    doc.setFillColor(...yellow); doc.circle(50, y - 4, 3, 'F');
+    doc.setTextColor(...black); doc.setFont('helvetica', 'bold'); doc.setFontSize(12);
+    doc.text(DIM_LABELS[d], 60, y);
+    doc.setTextColor(...copper); doc.setFont('helvetica', 'bold'); doc.setFontSize(10.5);
+    doc.text(s[d] + '%', pageW - 46, y, { align: 'right' });
+    y += 18;
+    ACCIONES[d].forEach((accion, i) => {
+      doc.setDrawColor(230, 230, 228); doc.line(66, y - 10, 66, y + 4);
+      doc.setTextColor(176, 175, 172); doc.setFont('helvetica', 'bold'); doc.setFontSize(8.5);
+      doc.text('0' + (i + 1), 76, y - 2);
+      doc.setTextColor(58, 58, 56); doc.setFont('helvetica', 'normal'); doc.setFontSize(10);
+      const lines = doc.splitTextToSize(accion, pageW - 46 - 96);
+      doc.text(lines, 96, y);
+      y += lines.length * 13 + 10;
+    });
+    y += 14;
+  });
+
+  doc.setTextColor(...gray); doc.setFont('helvetica', 'normal'); doc.setFontSize(8.5);
+  doc.text('Azzorti × Etrazia · Página 2 de 2', 46, pageH - 30);
+
+  doc.save('azzorti-embajadora-' + nombreCompleto.replace(/\s+/g, '-').toLowerCase() + '.pdf');
+}
+</script>
+</body>
+</html>
