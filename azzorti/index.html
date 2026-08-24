@@ -611,9 +611,9 @@ function computeScores() {
 
 function computeNivel(scores) {
   const avg = DIMS.reduce((sum, d) => sum + scores[d], 0) / DIMS.length;
-  if (avg < 40) return 'Embajadora en Formación';
-  if (avg < 70) return 'Embajadora en Desarrollo';
-  if (avg < 90) return 'Embajadora Competente';
+  if (avg < 75) return 'Embajadora en Formación';
+  if (avg < 85) return 'Embajadora en Desarrollo';
+  if (avg < 95) return 'Embajadora Competente';
   return 'Embajadora Referente';
 }
 
