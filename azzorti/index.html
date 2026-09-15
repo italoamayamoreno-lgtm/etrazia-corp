@@ -279,7 +279,7 @@ const RAW_SCENARIOS = [
   ]},
   { dim: 'escucha', text: 'Una compañera te cuenta que está desmotivada mientras revisas tu celular. ¿Qué haces?', opts: [
     'Sigo en el celular, respondo "ajá, ok".',
-    'Dejo el celular pero cambio el tema hacia algo que me interesa a mí.',
+    'Dejo el celular pero cambio el tema hacia otro asunto.',
     'Dejo el celular y la escucho hasta que termina.',
     'Dejo el celular, la miro, y al final le reflejo lo que entendí: "Entonces sientes que no se está valorando tu esfuerzo, ¿es así?"'
   ]},
@@ -320,7 +320,7 @@ const RAW_SCENARIOS = [
     'Lo identifico de inmediato como una señal temprana y converso en privado con ambas partes ese mismo día.'
   ]},
   { dim: 'comunicacion', text: 'Tu líder te asigna una tarea adicional sin consultarte, y ya tienes sobrecarga. ¿Qué haces?', opts: [
-    'Acepto sin decir nada, aunque sé que no voy a llegar.',
+    'Acepto sin decir nada, aunque tengo dudas de que me alcance el tiempo.',
     'Respondo: "No puedo, ya tengo demasiado, siempre me cargan a mí".',
     'Digo que estoy con mucho trabajo pero termino aceptando igual.',
     '"Tengo estas 3 prioridades esta semana. Si esto es urgente, ayúdame a decidir qué bajamos de prioridad."'
@@ -332,7 +332,7 @@ const RAW_SCENARIOS = [
     'La escucho completa, hago una pregunta para entender mejor antes de opinar.'
   ]},
   { dim: 'cambio', text: 'La empresa cambia la política de comisiones de las Gerentes de zona. ¿Qué haces?', opts: [
-    'Me quejo abiertamente con el equipo sin buscar entender el porqué.',
+    'Me quejo abiertamente con el equipo sobre el cambio.',
     'Entiendo la razón del cambio pero sigo sintiendo que "antes era mejor".',
     'Me adapto al cambio, pero sin explicárselo bien a mi equipo.',
     'Me adapto, entiendo el porqué, y ayudo a mi equipo a entender el beneficio detrás del cambio.'
@@ -362,9 +362,9 @@ const RAW_SCENARIOS = [
     'Acepto el cambio, comunico proactivamente el nuevo esquema, y ayudo a los compañeros nuevos a integrarse.'
   ]},
   { dim: 'conflictos', text: 'Se están formando "bandos" en tu equipo por una decisión reciente de la empresa. ¿Qué haces?', opts: [
-    'Me uno a uno de los bandos sin darme cuenta del riesgo.',
+    'Me uno a uno de los bandos porque comparto su punto de vista.',
     'Lo noto solo cuando ya hay roces abiertos en las reuniones.',
-    'Lo noto temprano, me mantengo neutral, pero no hago nada más.',
+    'Lo noto temprano, me mantengo neutral, y sigo con mis actividades normales.',
     'Lo noto temprano, me mantengo neutral, e informo a Cultura y Desarrollo antes de que se polarice más.'
   ]},
   { dim: 'comunicacion', text: 'Notas que un nuevo proceso está afectando la moral del equipo, pero nadie lo menciona en la reunión. ¿Qué haces?', opts: [
@@ -380,39 +380,39 @@ const RAW_SCENARIOS = [
     'Me detengo, reconozco lo que compartió, y le pregunto al grupo si alguien más se identifica antes de continuar.'
   ]},
   { dim: 'cambio', text: 'Se lanza una nueva app y varios compañeros de tu equipo se resisten a usarla. ¿Qué haces?', opts: [
-    'Comparto la resistencia del equipo en vez de ayudar a resolverla.',
-    'Uso la app yo misma pero no me involucro con las que se resisten.',
+    'Entiendo la resistencia del equipo y prefiero no insistir por ahora.',
+    'Uso la app yo misma pero no me involucro con quienes se resisten.',
     'Ayudo a algunos compañeros cuando me preguntan directamente.',
     'Organizo una sesión corta con mi equipo para mostrar cómo usarla y resolver dudas antes de que se generen problemas.'
   ]},
   { dim: 'conflictos', text: 'Una persona de tu equipo se queja constantemente contigo en privado, pero nunca lo dice en el grupo. ¿Qué haces?', opts: [
-    'Solo escucho la queja y no hago nada con esa información.',
-    'Le digo que lo hable ella misma en el grupo y no le doy seguimiento.',
+    'Escucho la queja y pienso que probablemente se resuelva con el tiempo.',
+    'Le sugiero que lo hable directamente con la persona y confío en que se resuelva.',
     'Le sugiero cómo plantearlo, pero no verifico si lo hizo.',
     'Identifico que esto es una señal de tensión no resuelta, y ayudo a canalizarlo apropiadamente (reporte a Cultura y Desarrollo).'
   ]},
   { dim: 'comunicacion', text: 'Una Gerente de zona te habla en tono agresivo por un problema con su pedido. ¿Qué haces?', opts: [
-    'Le doy la razón en todo para calmarla, aunque no sea así.',
+    'Le doy la razón en todo para calmarla y evitar el conflicto.',
     'Respondo en el mismo tono, defendiéndome.',
-    'Le explico la solución sin reconocer cómo se siente.',
+    'Le explico la solución de inmediato, enfocándome en resolver el problema.',
     '"Entiendo que esto te frustra, vamos a resolverlo. Esto es lo que puedo hacer ahora mismo…"'
   ]},
   { dim: 'escucha', text: 'Un compañero te da feedback sobre algo que hiciste mal. ¿Qué haces?', opts: [
-    'Me pongo a la defensiva de inmediato, interrumpo para explicarme.',
+    'Explico mi punto de vista de inmediato, antes de que termine de contarme la situación.',
     'Lo escucho pero por dentro ya estoy armando mi justificación.',
     'Lo escucho completo, en silencio, y luego respondo.',
     'Lo escucho completo y le devuelvo: "Entonces lo que notaste fue X, gracias por decírmelo directamente" antes de dar mi perspectiva.'
   ]},
   { dim: 'cambio', text: 'Cambia el líder de tu equipo de un día para otro. ¿Qué haces?', opts: [
     'Comparo todo el tiempo al nuevo líder con el anterior, frente al equipo.',
-    'Me reservo mi opinión, pero internamente no le doy oportunidad.',
+    'Me reservo mi opinión, pero internamente sigo comparando su estilo con el anterior.',
     'Le doy el beneficio de la duda y trabajo normal.',
     'Busco activamente conocerlo, entender su estilo, y ayudo al equipo a hacer una buena transición.'
   ]},
   { dim: 'conflictos', text: 'Notas que alguien que antes participaba activamente ahora está callado y visiblemente tenso en las reuniones. ¿Qué haces?', opts: [
     'No lo noto o lo atribuyo a que "está ocupada".',
-    'Lo noto pero recién actúo cuando deja de conectarse a las llamadas.',
-    'Lo noto temprano y pienso escribirle, pero no lo hago.',
+    'Lo noto pero recién actúo cuando deja de conectarse a las reuniones.',
+    'Lo noto temprano y pienso escribirle, pero decido esperar unos días más.',
     'Lo noto temprano y le escribo en privado para preguntar cómo está, genuinamente.'
   ]},
 ];
